@@ -1,0 +1,62 @@
+{
+    "info": {
+        "_postman_id": "5e3e8d98-813d-5d2a-a79a-39cd12328d63",
+        "name": "Prime Solo Routes",
+        "description": "Routes setup to test registration, login, and getting basic user data from the server.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "http://localhost:5000/api/user/register",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"username\":\"new-user\",\n    \"password\":\"1234\"\n}"
+                },
+                "url": "http://localhost:5000/api/user/register",
+                "description": "Registration"
+            },
+            "response": []
+        },
+        {
+            "name": "http://localhost:5000/api/user/login",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"username\":\"new-user\",\n    \"password\":\"1234\"\n}"
+                },
+                "url": "http://localhost:5000/api/user/login",
+                "description": "Login"
+            },
+            "response": []
+        },
+        {
+            "name": "http://localhost:5000/api/user/",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                    "mode": "formdata",
+                    "formdata": []
+                },
+                "url": "http://localhost:5000/api/user/",
+                "description": "User Info"
+            },
+            "response": []
+        }
+    ]
+}
