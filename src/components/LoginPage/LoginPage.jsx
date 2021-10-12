@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
+import useStyles from '../styles/styles.jsx'
+
 
 function LoginPage() {
+  const classes = useStyles();
   const history = useHistory();
 
   return (

@@ -12,7 +12,7 @@ import userSaga from './user.saga';
 // and login triggers setting the user
 export default function* rootSaga() {
   yield all([
-    loginSaga(), // login saga is now registered
+    loginSaga(), // login saga is now registered //important
     registrationSaga(),
     userSaga(),
   ]);

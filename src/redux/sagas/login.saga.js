@@ -60,7 +60,7 @@ function* logoutUser(action) {
 
 function* loginSaga() {
   yield takeLatest('LOGIN', loginUser);
-  yield takeLatest('LOGOUT', logoutUser);
+  yield takeLatest('LOGOUT', logoutUser); //important from LogOutButton page > to _root.saga
 }
 
 export default loginSaga;

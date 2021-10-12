@@ -20,6 +20,8 @@ Container
 
 .container {
   padding: 20px;
+  text-align: center;
+  align-items: center;
 }
 
 /* --------------------------------------------------------------------------------
@@ -91,19 +93,23 @@ Alert
   font-size: 0.8rem;
 }
 
-/* --------------------------------------------------------------------------------
-Form Treatment
--------------------------------------------------------------------------------- */
+/* -------------------------Form Treatment----------------------------- */
+
 
 .formPanel {
   box-sizing: border-box;
+  font-family: 'Cabin Condensed', sans-serif;
   width: 400px;
-  max-width: 100%;
-  padding: 25px;
+  max-width: 70%;
+  padding-top: 17px;
   margin: 0 auto 20px;
-  background-color: #efefef;
+  background-color: white;
   border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+  /* box-shadow: 0 5px 8px rgb(0, 0, 0, 0.4); */
+}
+
+.loginText {
+  font-size: 2em;
 }
 
 input {

@@ -20,12 +20,18 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
+import Disclaimer from '../Disclaimer/Disclaimer';
+
 import './App.css';
+
+import { makeStyles } from '@material-ui/core/styles';
+
 
 function App() {
   const dispatch = useDispatch();
-
   const user = useSelector(store => store.user);
+
+
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
@@ -37,7 +43,17 @@ function App() {
         <Nav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/home" />
+          <Redirect exact from="/" to="/disclaimer" /> 
+          {/* updated arrival is now disclaimer page*/}
+
+          {/* important ADDING DISCLAIMER PAGE ON LOAD */}
+
+          <Route exact path="/disclaimer">
+            <Disclaimer />
+          </Route>
+
+          {/* IMPORTANT  */}
+
 
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route

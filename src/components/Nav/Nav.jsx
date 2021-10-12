@@ -3,14 +3,17 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
+import useStyles from '../styles/styles.jsx'
+
 
 function Nav() {
   const user = useSelector((store) => store.user);
+  const classes = useStyles();
 
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <h2 className="nav-title">Magic Beans CryptoFolio</h2>
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
