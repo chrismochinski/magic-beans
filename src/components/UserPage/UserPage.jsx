@@ -58,27 +58,15 @@ function UserPage() {
         }
     }
 
-    // useEffect(() => {
-    //     setIsLoading(true);
-    //     axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=50&page=1&sparkline=false')
-    //         .then(res => {
-    //             setCoins(res.data);
-    //             console.log('Coin response is:', res.data);
-    //             setIsLoading(false);
-    //         }).catch(error => console.log('error getting cryptos:', error))
-    // }, []);
 
 //updated HEADED TO ROOT /SAGA/REDUCER NOW...
 
-    // useEffect(() => { 
-    //     dispatch({ type: 'FETCH_CRYPTO_LIST'}); //fix unmute this!
-    // }, [] )
+    useEffect(() => { 
+        dispatch({ type: 'FETCH_CRYPTO_LIST'}); //fix unmute this!
+    }, [] )
 
-    //test:::
-    const TEMPBUTTON = () => {
-        dispatch({ type: 'FETCH_CRYPTO_LIST'}); //deletelater
-    }
 
+  
 
 
     return (
@@ -86,7 +74,6 @@ function UserPage() {
         <div className="userContainer">
             <h2 className="userHeadline">Welcome, {user.username}!</h2>
             {/* <p>Your ID is: {user.id}</p> */}
-            <button onClick={() => TEMPBUTTON()}>THIS BUTTON IS TEMPORARY</button>
 
             <Container className={classes.tableMain}>
                 <Paper className={classes.assetHeader} elevation={10}>
@@ -121,8 +108,8 @@ function UserPage() {
                         </TableHead>
                         <TableBody className={classes.tableBody}>
 
-
-                            {cryptoList.map(coin => {
+                            
+                            {cryptoList.map(coin => {    //cryptoList = top coins from redux store
                                 return (
                                     <Coin key={coin.id}
                                         id={coin.id}

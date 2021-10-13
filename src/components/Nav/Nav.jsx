@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom';
 
 import useStyles from '../styles/styles.jsx';
 
-import { SwipeableDrawer, IconButton, Container, Divider } from '@mui/material';
+import { IconButton } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
 import LoginIcon from '@mui/icons-material/Login';
 

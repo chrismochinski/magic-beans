@@ -11,4 +11,3 @@ const cryptoListReducer = (state = [], action) => {
 
 export default cryptoListReducer;
 
-//updated done?????

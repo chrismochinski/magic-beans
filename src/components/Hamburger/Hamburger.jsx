@@ -11,11 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { SwipeableDrawer, IconButton, Container, Divider } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-
-
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 
 
 
@@ -51,7 +47,7 @@ const Hamburger = () => { //idea
                 <Divider />
                 <div>
                     <ListItem>
-                        <Link   to="/user">
+                        <Link to="/user">
                             <HomeIcon className="hamburgerLink" onClick={() => setOpen(false)} />
                         </Link >
                     </ListItem>
