@@ -12,7 +12,7 @@ function Nav() {
 
   return (
     <div className="nav">
-      <Link to="/home">
+      <Link to="/user">
         <h2 className="nav-title"><b>Magic Beans</b><br /><span className="cryptofolio">Cryptofolio</span></h2>
       </Link>
       <div>

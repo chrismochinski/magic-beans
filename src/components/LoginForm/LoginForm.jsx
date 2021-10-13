@@ -40,7 +40,7 @@ function LoginForm() {
 
   return (
 
-    <Grid container xs={12} sm={12} md={12} lg={12} className={classes.loginForm} spacing={1} >
+    <Grid container className={classes.loginForm} spacing={1} >
       <form className="formPanel" onSubmit={login}>
         <img className={classes.logo} src="/images/magic-beans-logo.png" />
 

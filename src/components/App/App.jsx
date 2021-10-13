@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import OopsPage from '../OopsPage/OopsPage';
 
 import Disclaimer from '../Disclaimer/Disclaimer';
 
@@ -122,13 +123,14 @@ function App() {
               <Redirect to="/user" />
               :
               // Otherwise, show the Landing page
-              <LoginPage />
+              <LoginPage /> //updated Changed to bypass landing page
             }
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
-            <h1>404</h1>
+            {/* <h1><img src="/images/magic-beans-logo.png" width="180px"/></h1> */}
+            <OopsPage />
           </Route>
         </Switch>
         <Footer />
