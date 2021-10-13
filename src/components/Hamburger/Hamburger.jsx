@@ -7,11 +7,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 
 import React, { useState } from 'react'
-import { IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { SwipeableDrawer } from '@mui/material';
-import { Container } from '@mui/material';
-import { Divider } from '@mui/material';
+import { SwipeableDrawer, IconButton, Container, Divider } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 
@@ -37,7 +34,7 @@ const Hamburger = () => { //idea
     return (
         <div>
             <IconButton>
-                <MenuIcon onClick={() => setOpen(true)} />
+                <MenuIcon className="hamburgerIcon" onClick={() => setOpen(true)} />
             </IconButton>
 
             <SwipeableDrawer
@@ -46,25 +43,27 @@ const Hamburger = () => { //idea
                 onOpen={() => setOpen(true)}
                 onClose={() => setOpen(false)} >
 
-                <div>
-                    <IconButton>
-                        <ChevronRightIcon className="hamburgerLink" onClick={() => setOpen(false)} />
+                <div className="closeDrawerButton" style={{textAlign: 'center'}}>
+                    <IconButton  style={{marginBottom: '10px', textAlign: 'center'}} onClick={() => setOpen(false)}>
+                        <ChevronRightIcon className="hamburgerLink"/>
                     </IconButton>
                 </div>
                 <Divider />
                 <div>
                     <ListItem>
-                        <Link className="hamburgerLink" to="/user">
-                            <HomeIcon onClick={() => setOpen(false)} />
-                        </Link>
+                        <Link   to="/user">
+                            <HomeIcon className="hamburgerLink" onClick={() => setOpen(false)} />
+                        </Link >
                     </ListItem>
                     <ListItem>
-                        <Link className="hamburgerLink" to="/info">
-                            <SearchIcon onClick={() => setOpen(false)} />
-                        </Link>
+                        <Link  to="/info">
+                            <SearchIcon className="hamburgerLink" onClick={() => setOpen(false)} />
+                        </Link >
                     </ListItem>
                     <ListItem>
-                        <LogoutIcon className="hamburgerLink" onClick={() => handleLogoutClick()} />
+                        <Link  to="/home">
+                            <LogoutIcon className="hamburgerLink" onClick={() => handleLogoutClick()} />
+                        </Link >
                         {/* <LogOutButton className="navLink" /> */}
                     </ListItem>
                 </div>

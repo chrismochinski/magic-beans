@@ -5,9 +5,11 @@ import Hamburger from '../Hamburger/Hamburger'; //fix
 import './Nav.css';
 import { useSelector, useDispatch } from 'react-redux';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useHistory } from 'react-router-dom';
 
 import useStyles from '../styles/styles.jsx';
 
+import { SwipeableDrawer, IconButton, Container, Divider } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
@@ -20,31 +22,45 @@ function Nav() {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const classes = useStyles();
+  const history = useHistory();
+
+  const navToLogin = () => {
+    history.push('/login')
+  }
+
+  const navToAbout = () => {
+    history.push('/about')
+  }
+
+  const navToUserPage = () => {
+    history.push('/user')
+  }
+
 
   return (
     <div className="nav">
-      <Link to="/user">                 
-        <h2 className="nav-title" ><b>Magic Beans</b><br /><span className="cryptofolio">Cryptofolio</span></h2>
+      <Link to="/user">
+        <h2 className="nav-title"><b>Magic Beans</b><br /><span className="cryptofolio">Cryptofolio</span></h2>
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
         {user.id === undefined && (
           // If there's no user, show login/registration links
           <div>
-            <Link className="navIconL" to="/login">
-              <LoginIcon />
-            </Link>
+            <IconButton onClick={() => navToLogin()}>
+              <LoginIcon className="navIconL" />
+            </IconButton>
 
-            <Link className="navIconR" to="/about">
-              <InfoIcon />
-            </Link>
+            <IconButton onClick={() => navToAbout()}>
+              <InfoIcon className="navIconR" />
+            </IconButton>
           </div>
         )}
 
         {/* If a user is logged in, show these links */}
         {user.id && (
-         <Hamburger />
-          
+          <Hamburger />
+
         )}
 
 

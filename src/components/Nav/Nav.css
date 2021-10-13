@@ -24,6 +24,15 @@
   margin-top: 14px;
 }
 
+.nav-title:focus {
+  /* figure this out */
+}
+
+.nav-title:hover {
+  cursor: pointer;
+
+}
+
 
 
 .navLink {
@@ -50,16 +59,25 @@
 
 .hamburgerLink {
  color: #49689E; 
-  transform: scale(2);
+  transform: scale(2.3);
 
- margin: 10px 14px;
+ margin-top: 20px;
+ margin-left: 4px;
+ margin-right: 4px;
 
  border: none;
  cursor: pointer;
  outline: 0;
+ text-align: center;
+}
 
-
-
+.hamburgerIcon {
+  color: white;
+  border: none;
+  cursor: pointer;
+  outline: 0;
+  transform: scale(2.3);
+ margin-right: 20px;
 }
 
 .navIconR {
@@ -70,8 +88,7 @@
   margin-right: 20px;
   margin-top: 28px;
   margin-bottom: 28px;
-  transform: scale(1.3);
-}
+  transform: scale(2.1);}
 
 .navIconR:focus {
   background-color: #49689E;
@@ -82,11 +99,10 @@
   color: #f2f2f2;
   text-align: center;
   /* padding: 24px 5px; */
-  margin-right: 15px;
+  margin-right: 20px;
   margin-top: 28px;
   margin-bottom: 28px;
-  transform: scale(1.3);
-}
+  transform: scale(2.1);}
 
 .navLink:hover {
   color: rgb(225, 225, 225);
