@@ -38,6 +38,10 @@ const useStyles = makeStyles(() => ({
 
  //-------------imported from spike-------------//
 
+ tableMain: {
+  margin: '0',
+  padding: '0',
+ },
 
     assetHeader: {
       padding: '30px',
@@ -69,7 +73,7 @@ assetHeader: {
 tableCell: {
   textAlign: 'center',
   padding: '0',
-  fontSize: '18px',
+  fontSize: '16px',
 },
 
 tableHeader: {

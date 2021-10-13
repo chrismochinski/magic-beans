@@ -50,20 +50,19 @@ const handleAddClick = () => {
 }
 
 
-const renderPage = () => {
+const renderPage = () => { //IDEA REPLACE THIS WITH AN ICON OF SOME SORT
   if (isLoading) {
-      return <div>Loading Crypto List...</div> //idea loading?
+      return <div>Loading Crypto List...</div> 
   }
 }
 
-
-
-
 useEffect(() => {
+  setIsLoading(true);
   axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=50&page=1&sparkline=false')
       .then(res => {
           setCoins(res.data);
           console.log('Coin response is:', res.data);
+          setIsLoading(false);
       }).catch(error => console.log('error getting cryptos:', error))
 }, []);
 
@@ -94,7 +93,7 @@ useEffect(() => {
 
 
 
-      <Paper elevation={6} sx={{ width: '100%', overflow: 'hidden' }}>
+      {/* <Paper elevation={6} sx={{ width: '100%', overflow: 'hidden' }}> */}
                 <TableContainer sx={{ maxHeight: 470 }}>
                     <Table className="center" stickyHeader aria-label="sticky table">
                         <TableHead >
@@ -128,10 +127,10 @@ useEffect(() => {
                         </TableBody>
                     </Table>
                     <Container>
-                        <Typography style={{padding: "40px" }} variant="h3">{renderPage()}</Typography> 
+                        <Typography style={{padding: "40px" }} variant="h5">{renderPage()}</Typography> 
                     </Container>
                 </TableContainer>
-            </Paper>
+            {/* </Paper> */}
         </Container>
 
 
