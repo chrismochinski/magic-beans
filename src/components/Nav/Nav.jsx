@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
-import useStyles from '../styles/styles.jsx'
-
+import useStyles from '../styles/styles.jsx';
+import InfoIcon from '@mui/icons-material/Info';
 
 function Nav() {
   const user = useSelector((store) => store.user);
@@ -13,7 +13,7 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Magic Beans CryptoFolio</h2>
+        <h2 className="nav-title"><b>Magic Beans</b><br /><span className="cryptofolio">Cryptofolio</span></h2>
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
@@ -40,7 +40,8 @@ function Nav() {
         )}
 
         <Link className="navLink" to="/about">
-          About
+        {/* <i class="far fa-info-circle"></i> */}
+          <InfoIcon style={{fontSize: '35px'}}/>
         </Link>
       </div>
     </div>

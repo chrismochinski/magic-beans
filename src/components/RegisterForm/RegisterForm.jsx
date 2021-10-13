@@ -51,7 +51,7 @@ function RegisterForm() {
             {/* Username: */}
             <TextField className={classes.loginTextField}
               variant="outlined"
-              label="username"
+              label="new username"
               type="text"
               name="username"
               value={username}
@@ -65,7 +65,7 @@ function RegisterForm() {
             {/* Password: */}
             <TextField className={classes.loginTextField}
               variant="outlined"
-              label="password"
+              label="new password"
               type="password"
               name="password"
               value={password}

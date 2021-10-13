@@ -15,12 +15,13 @@
 }
 
 .nav-title {
-  font-size: 24px;
-  /* font-weight: 700; */
+  font-size: 30px;
+  font-weight: 400;
   color: #f2f2f2;
-  font-family: 'Cabin Condensed', sans-serif;
-  padding-left: 10px;
-  margin: 0;
+  font-family: 'Josefin Sans', sans-serif; 
+  padding-left: 20px;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .navLink {
@@ -44,4 +45,8 @@
 
 .navLink:hover {
   background-color: #008183;
+}
+
+.cryptofolio {
+  font-size: 20px;
 }

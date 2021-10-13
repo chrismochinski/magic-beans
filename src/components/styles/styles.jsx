@@ -13,11 +13,12 @@ const useStyles = makeStyles(() => ({
         marginTop: '40px',
         paddingTop: '40px'
     },
+    
 
  //-------------Login / Register-------------//
 
     logo: {
-        width: '200px',
+        width: '70%',
         marginBottom: '0',
     },
     loginForm: {
@@ -25,6 +26,11 @@ const useStyles = makeStyles(() => ({
     },
     loginButton: {
       marginTop: '15px',
+      fontSize: '20px',
+      fontWeight: 'bolder',
+      backgroundColor: '#5C9827',
+      color: 'white',
+      
     },
     loginTextField: {
       width: '25ch', 
