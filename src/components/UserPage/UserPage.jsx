@@ -70,8 +70,8 @@ useEffect(() => {
 
   return (
 
-    <div className="container">
-      <h2>Welcome, {user.username}!</h2>
+    <div className="userContainer">
+      <h2 className="userHeadline">Welcome, {user.username}!</h2>
       {/* <p>Your ID is: {user.id}</p> */}
 
 
@@ -106,7 +106,7 @@ useEffect(() => {
                                 <TableCell className={classes.tableHeader}>24h Price Change</TableCell>
                             </TableRow>
                         </TableHead>
-                        <TableBody>
+                        <TableBody className={classes.tableBody}>
                           
                           
                         {coins.map(coin => {

@@ -82,8 +82,11 @@ tableHeader: {
   textAlign: 'center',
   paddingTop: '4px',
   paddingBottom: '4px',
-  fontFamily: 'Cabin Condensed', //fix this font sucks here
+  fontFamily: 'Cabin Condensed', //fix use a new font here
+},
 
+tableBody: {
+  //fix poking through above head - fix
 }
 
 

@@ -125,6 +125,21 @@ input {
   text-align: center;
 }
 
+/* -------------------------UserPage----------------------------- */
+
+.userHeadline {
+  font-family: 'Josefin Sans', sans-serif; 
+  font-size: 30px;
+  margin: 0;
+}
+
+.userContainer {
+  padding-top: 10px;
+  text-align: center;
+  align-items: center;
+}
+
+
 /* -------------------------Imported from spike----------------------------- */
 
 .upGreen {

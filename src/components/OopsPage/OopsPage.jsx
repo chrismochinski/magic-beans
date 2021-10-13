@@ -15,10 +15,10 @@ const OopsPage = () => {
 
     return (
         <div className="oopsPage">
-            <img src="/images/magic-beans-logo.png" style={{marginTop: '15px'}}width="160px"/>
+            <img src="/images/magic-beans-logo-404.png" style={{marginTop: '35px', marginBottom: '25px'}} width="230px"/>
             <Typography variant="h2"><b>Oops!</b></Typography>
             <Typography variant="h5">That page doesn't exist.</Typography>
-            <Button onClick={() => goHome()}className={classes.loginButton} size="large" variant="contained" name="submit">Home</Button>
+            <Button onClick={() => goHome()} className={classes.loginButton} size="large" variant="contained" name="submit">Home</Button>
         </div>
     )
 }
