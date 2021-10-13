@@ -1,5 +1,5 @@
 // this used to be InfoPage.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Typography, CssBaseline, Container, Card, CardMedia, CardContent, CardActions, Grid } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
@@ -13,6 +13,7 @@ function CoinSearchPage({ coins }) {
 
   const classes = useStyles();
   const history = useHistory();
+  const dispatch = useDispatch();
   const cryptoList = useSelector(store => store.cryptoListReducer);
 
   console.log('cryptolistreducer is:', cryptoList)
@@ -46,6 +47,11 @@ function CoinSearchPage({ coins }) {
     console.log('coin id:', id)
     history.push(`/coin-details/${id}`)
   }
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_CRYPTO_LIST' }); 
+}, [])
+
 
 
   return (
