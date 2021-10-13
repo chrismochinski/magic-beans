@@ -48,7 +48,7 @@ function UserPage() {
 
     const handleAddClick = () => {
         console.log('add button clicked')
-        history.push('/coin-search') //important add this page for search, SHARE WITH HOURGLASS HAMBURGER LINK
+        history.push('/search') //important add this page for search, SHARE WITH HOURGLASS HAMBURGER LINK
     }
 
 

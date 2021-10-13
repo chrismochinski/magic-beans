@@ -15,7 +15,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+import CoinSearchPage from '../CoinSearchPage/CoinSearchPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -91,12 +91,12 @@ function App() {
 
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
-            // IMPORTANT MAKE THIS THE 'DETAILS' PAGE
+            // logged in shows CoinSearchPage else shows LoginPage
+            // UPDATED used to be info page
             exact
-            path="/info"
+            path="/search"
           >  
-            <InfoPage /> 
+            <CoinSearchPage /> 
           </ProtectedRoute>
 
           

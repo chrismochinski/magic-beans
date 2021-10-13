@@ -52,7 +52,7 @@ const Hamburger = () => { //idea
                         </Link >
                     </ListItem>
                     <ListItem>
-                        <Link  to="/info">
+                        <Link  to="/search">
                             <SearchIcon className="hamburgerLink" onClick={() => setOpen(false)} />
                         </Link >
                     </ListItem>
