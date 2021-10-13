@@ -25,18 +25,14 @@ function UserPage() {
     const cryptoList = useSelector(store => store.cryptoListReducer);
     const user = useSelector((store) => store.user);
     const dispatch = useDispatch();
-
-    //deletelater
-    console.log('coming back from cryptoListReducer.data:', cryptoList)
-
     const classes = useStyles();
 
-    const [coins, setCoins] = useState([])
+    // const [coins, setCoins] = useState([])
     const history = useHistory();
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
 
 
-    const shortenBigNumber = (value) => {
+    const shortenBigNumber = (value) => {  //important for market cap on details page!
         const suffixes = ["", "K", "M", "B", "T"];
         let suffixNum = Math.floor(("" + value).length / 3);
         let shortValue = parseFloat((suffixNum !== 0 ? (value / Math.pow(1000, suffixNum)) : value).toPrecision(4));
@@ -52,21 +48,21 @@ function UserPage() {
     }
 
 
-    const renderPage = () => { //IDEA REPLACE THIS WITH AN ICON OF SOME SORT
-        if (isLoading) {
-            return <div>Loading Crypto List...</div>
-        }
-    }
+    // const renderPage = () => { //updated might not be able to use this
+    //     if (isLoading) {
+    //         return <div>Loading Crypto List...</div>
+    //     }
+    // }
 
 
-//updated HEADED TO ROOT /SAGA/REDUCER NOW...
+    //updated HEADED TO ROOT /SAGA/REDUCER NOW...
 
-    useEffect(() => { 
-        dispatch({ type: 'FETCH_CRYPTO_LIST'}); //fix unmute this!
-    }, [] )
+    useEffect(() => {
+        dispatch({ type: 'FETCH_CRYPTO_LIST' }); //fix unmute this!
+    }, [])
 
 
-  
+
 
 
     return (
@@ -92,8 +88,6 @@ function UserPage() {
                 </Paper>
 
 
-
-                {/* <Paper elevation={6} sx={{ width: '100%', overflow: 'hidden' }}> */}
                 <TableContainer sx={{ maxHeight: 470 }}>
                     <Table className="center" stickyHeader aria-label="sticky table">
                         <TableHead >
@@ -108,7 +102,7 @@ function UserPage() {
                         </TableHead>
                         <TableBody className={classes.tableBody}>
 
-                            
+
                             {cryptoList.map(coin => {    //cryptoList = top coins from redux store
                                 return (
                                     <Coin key={coin.id}
@@ -126,18 +120,13 @@ function UserPage() {
 
                         </TableBody>
                     </Table>
-                    <Container>
-                        <Typography style={{ padding: "40px" }} variant="h5">{renderPage()}</Typography>
-                    </Container>
+                    {/* <Container> */}
+                        {/* <Typography style={{ padding: "40px" }} variant="h5">{renderPage()}</Typography> */}
+                    {/* </Container> */}
                 </TableContainer>
-                {/* </Paper> */}
             </Container>
 
-
-
-
-
-            <LogOutButton className="btn" />
+            {/* <LogOutButton className="btn" /> */}
         </div>
     );
 }

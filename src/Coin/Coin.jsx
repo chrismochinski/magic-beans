@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import TableCell from "@material-ui/core/TableCell";
@@ -17,7 +18,7 @@ function Coin({ id, name, image, symbol, price, marketCap, priceChange, shortenB
 
     const getDetails = (id, name, image, symbol, price, marketCap, priceChange) => {
         console.log('coin id:', id)
-        history.push(`/coin-details/${id}`)
+        history.push(`/coin-details/${id}`) //send to coin-details page with coin ID
     }
 
  
@@ -25,7 +26,6 @@ function Coin({ id, name, image, symbol, price, marketCap, priceChange, shortenB
 
     return (
 
-        
         <TableRow className={classes.tableRow} onClick={() => getDetails(id, name, image, symbol, price, marketCap, priceChange)} key={id}>
             <TableCell className={classes.tableCell}><img className={classes.coinIcon} src={image} alt="icon" /></TableCell>
             {/* <TableCell className={classes.tableCell}><h4>{name}</h4></TableCell> */}

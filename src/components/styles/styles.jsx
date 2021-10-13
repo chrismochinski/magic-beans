@@ -87,7 +87,45 @@ tableHeader: {
 
 tableBody: {
   //fix poking through above head - fix
-}
+},
+
+
+ //-------------SearchForm / CoinSearchPage---------------//
+
+ searchPaper: {
+        
+  paddingTop: '20px',
+  paddingBottom: '200px',
+  width: '90%',
+  margin: 'auto',
+},
+
+main: {
+  padding: '20px',
+},
+
+card: {
+  //fix nothing here yet
+},
+
+
+cardContent: {
+  //fix nothing here yet
+},
+
+
+
+floatLeft: {
+  width: '100%',
+  margin: 'auto',
+},
+
+floatRight: {
+  width: '100%',
+  margin: 'auto',
+},
+
+
 
 
   }))

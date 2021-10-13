@@ -15,7 +15,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+import CoinSearchPage from '../CoinSearchPage/CoinSearchPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -33,17 +33,9 @@ function App() {
   const dispatch = useDispatch();
   const user = useSelector(store => store.user);
 
-
-  
-
-
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
-
-
-
-
 
   return (
     <Router>
@@ -91,12 +83,12 @@ function App() {
 
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
-            // IMPORTANT MAKE THIS THE 'DETAILS' PAGE
+            // logged in shows CoinSearchPage else shows LoginPage
+            // IMPORTANT this was the InfoPage - now the CoinSearchPage
             exact
-            path="/info"
+            path="/coin-search"
           >  
-            <InfoPage /> 
+            <CoinSearchPage />  
           </ProtectedRoute>
 
           
