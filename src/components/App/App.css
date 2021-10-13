@@ -124,3 +124,20 @@ input {
 .oopsPage {
   text-align: center;
 }
+
+/* -------------------------Imported from spike----------------------------- */
+
+.upGreen {
+  color: green;
+}
+
+.downRed {
+  color: red;
+}
+
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+
+}
