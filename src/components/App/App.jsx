@@ -63,6 +63,7 @@ function App() {
           {/* IMPORTANT  */}
 
 
+            
           {/* Visiting localhost:3000/about will show the about page. */}
           <Route
             // shows AboutPage at all times (logged in or not)
@@ -71,6 +72,9 @@ function App() {
           >
             <AboutPage />
           </Route>
+
+
+
 
           {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
@@ -84,13 +88,18 @@ function App() {
             <UserPage />
           </ProtectedRoute>
 
+
+
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
+            // IMPORTANT MAKE THIS THE 'DETAILS' PAGE
             exact
             path="/info"
-          >
-            <InfoPage />
+          >  
+            <InfoPage /> 
           </ProtectedRoute>
+
+          
 
           <Route
             exact
@@ -105,6 +114,7 @@ function App() {
               <LoginPage />
             }
           </Route>
+
 
           <Route
             exact
@@ -130,7 +140,7 @@ function App() {
               <Redirect to="/user" />
               :
               // Otherwise, show the Landing page
-              <LoginPage /> //updated Changed to bypass landing page
+              <LoginPage /> //updated Changed to bypass landing page - now landing HERE
             }
           </Route>
 

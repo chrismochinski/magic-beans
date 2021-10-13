@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Typography, Grid, Container } from '@material-ui/core';
 
 import LogOutButton from '../LogOutButton/LogOutButton';
-import {useSelector} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import useStyles from '../styles/styles';
 import Button from '@material-ui/core/Button';
@@ -22,78 +22,91 @@ import axios from 'axios';
 
 function UserPage() {
 
-    // this component doesn't do much to start, just renders some user reducer info to the DOM
+    const cryptoList = useSelector(store => store.cryptoListReducer);
     const user = useSelector((store) => store.user);
+    const dispatch = useDispatch();
 
-  const classes = useStyles();
+    //deletelater
+    console.log('coming back from cryptoListReducer.data:', cryptoList)
 
-  const [coins, setCoins] = useState([])
-  const history = useHistory();
-  const [isLoading, setIsLoading] = useState(false);
+    const classes = useStyles();
+
+    const [coins, setCoins] = useState([])
+    const history = useHistory();
+    const [isLoading, setIsLoading] = useState(false);
 
 
-  // optimize does nothing for now
-  const shortenBigNumber = (value) => {
-    const suffixes = ["", "K", "M", "B", "T"];
-    let suffixNum = Math.floor(("" + value).length / 3);
-    let shortValue = parseFloat((suffixNum !== 0 ? (value / Math.pow(1000, suffixNum)) : value).toPrecision(4));
-    if (shortValue % 1 !== 0) {
-        shortValue = shortValue.toFixed(2);
+    const shortenBigNumber = (value) => {
+        const suffixes = ["", "K", "M", "B", "T"];
+        let suffixNum = Math.floor(("" + value).length / 3);
+        let shortValue = parseFloat((suffixNum !== 0 ? (value / Math.pow(1000, suffixNum)) : value).toPrecision(4));
+        if (shortValue % 1 !== 0) {
+            shortValue = shortValue.toFixed(2);
+        }
+        return shortValue + suffixes[suffixNum];
     }
-    return shortValue + suffixes[suffixNum];
-}
 
-  //FIX does nothing for now
-const handleAddClick = () => {
-  console.log('add button clicked')
-  history.push('/coin-search')
-}
+    const handleAddClick = () => {
+        console.log('add button clicked')
+        history.push('/coin-search') //important add this page for search, SHARE WITH HOURGLASS HAMBURGER LINK
+    }
 
 
-const renderPage = () => { //IDEA REPLACE THIS WITH AN ICON OF SOME SORT
-  if (isLoading) {
-      return <div>Loading Crypto List...</div> 
-  }
-}
+    const renderPage = () => { //IDEA REPLACE THIS WITH AN ICON OF SOME SORT
+        if (isLoading) {
+            return <div>Loading Crypto List...</div>
+        }
+    }
 
-useEffect(() => {
-  setIsLoading(true);
-  axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=50&page=1&sparkline=false')
-      .then(res => {
-          setCoins(res.data);
-          console.log('Coin response is:', res.data);
-          setIsLoading(false);
-      }).catch(error => console.log('error getting cryptos:', error))
-}, []);
+    // useEffect(() => {
+    //     setIsLoading(true);
+    //     axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=50&page=1&sparkline=false')
+    //         .then(res => {
+    //             setCoins(res.data);
+    //             console.log('Coin response is:', res.data);
+    //             setIsLoading(false);
+    //         }).catch(error => console.log('error getting cryptos:', error))
+    // }, []);
+
+//updated HEADED TO ROOT /SAGA/REDUCER NOW...
+
+    // useEffect(() => { 
+    //     dispatch({ type: 'FETCH_CRYPTO_LIST'}); //fix unmute this!
+    // }, [] )
+
+    //test:::
+    const TEMPBUTTON = () => {
+        dispatch({ type: 'FETCH_CRYPTO_LIST'}); //deletelater
+    }
 
 
 
-  return (
+    return (
 
-    <div className="userContainer">
-      <h2 className="userHeadline">Welcome, {user.username}!</h2>
-      {/* <p>Your ID is: {user.id}</p> */}
+        <div className="userContainer">
+            <h2 className="userHeadline">Welcome, {user.username}!</h2>
+            {/* <p>Your ID is: {user.id}</p> */}
+            <button onClick={() => TEMPBUTTON()}>THIS BUTTON IS TEMPORARY</button>
 
-
-      <Container className={classes.tableMain}>
-            <Paper className={classes.assetHeader} elevation={10}>
-                <Grid container spacing={2}>
-                    <Grid item className={classes.assetHeadline} xs={12} s={10} md={10} lg={10} xl={10}>
-                        <Typography variant="h4" style={{ color: '#F70C8A' }}>No Assets Yet</Typography>
+            <Container className={classes.tableMain}>
+                <Paper className={classes.assetHeader} elevation={10}>
+                    <Grid container spacing={2}>
+                        <Grid item className={classes.assetHeadline} xs={12} s={10} md={10} lg={10} xl={10}>
+                            <Typography variant="h4" style={{ color: '#F70C8A' }}>No Assets Yet</Typography>
+                        </Grid>
+                        <Grid item className={classes.addButton} xs={12} s={2} md={2} lg={2} xl={2}>
+                            <Button
+                                variant="outlined"
+                                size="small"
+                                onClick={handleAddClick}
+                                style={{ backgroundColor: '#3f51b5', color: 'white' }}><b>Add</b></Button>
+                        </Grid>
                     </Grid>
-                    <Grid item className={classes.addButton} xs={12} s={2} md={2} lg={2} xl={2}>
-                        <Button
-                            variant="outlined"
-                            size="small"
-                            onClick={handleAddClick}
-                            style={{ backgroundColor: '#3f51b5', color: 'white' }}><b>Add</b></Button>
-                    </Grid>
-                </Grid>
-            </Paper>
+                </Paper>
 
 
 
-      {/* <Paper elevation={6} sx={{ width: '100%', overflow: 'hidden' }}> */}
+                {/* <Paper elevation={6} sx={{ width: '100%', overflow: 'hidden' }}> */}
                 <TableContainer sx={{ maxHeight: 470 }}>
                     <Table className="center" stickyHeader aria-label="sticky table">
                         <TableHead >
@@ -107,9 +120,9 @@ useEffect(() => {
                             </TableRow>
                         </TableHead>
                         <TableBody className={classes.tableBody}>
-                          
-                          
-                        {coins.map(coin => {
+
+
+                            {cryptoList.map(coin => {
                                 return (
                                     <Coin key={coin.id}
                                         id={coin.id}
@@ -127,19 +140,19 @@ useEffect(() => {
                         </TableBody>
                     </Table>
                     <Container>
-                        <Typography style={{padding: "40px" }} variant="h5">{renderPage()}</Typography> 
+                        <Typography style={{ padding: "40px" }} variant="h5">{renderPage()}</Typography>
                     </Container>
                 </TableContainer>
-            {/* </Paper> */}
-        </Container>
+                {/* </Paper> */}
+            </Container>
 
 
 
 
 
-      <LogOutButton className="btn" />
-    </div>
-  );
+            <LogOutButton className="btn" />
+        </div>
+    );
 }
 
 // this allows us to use <App /> in index.js

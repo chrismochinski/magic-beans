@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import Hamburger from '../Hamburger/Hamburger'; //fix
+import Hamburger from '../Hamburger/Hamburger'; 
 import './Nav.css';
 import { useSelector, useDispatch } from 'react-redux';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -11,8 +11,6 @@ import useStyles from '../styles/styles.jsx';
 
 import { SwipeableDrawer, IconButton, Container, Divider } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
-import HomeIcon from '@mui/icons-material/Home';
-import SearchIcon from '@mui/icons-material/Search';
 import LoginIcon from '@mui/icons-material/Login';
 
 
@@ -32,9 +30,9 @@ function Nav() {
     history.push('/about')
   }
 
-  const navToUserPage = () => {
-    history.push('/user')
-  }
+  // const navToUserPage = () => {
+  //   history.push('/user')
+  // } //this didn't quite do what I wanted //deletelater
 
 
   return (
