@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import OopsPage from '../OopsPage/OopsPage';
+import Hamburger from '../Hamburger/Hamburger';
 
 import Disclaimer from '../Disclaimer/Disclaimer';
 
@@ -125,6 +126,10 @@ function App() {
               // Otherwise, show the Landing page
               <LoginPage /> //updated Changed to bypass landing page
             }
+          </Route>
+
+          <Route exact path="/hamburger">
+            <Hamburger />
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}

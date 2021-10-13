@@ -1,12 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import Hamburger from '../Hamburger/Hamburger'; //fix
 import './Nav.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import LogoutIcon from '@mui/icons-material/Logout';
+
 import useStyles from '../styles/styles.jsx';
+
 import InfoIcon from '@mui/icons-material/Info';
+import HomeIcon from '@mui/icons-material/Home';
+import SearchIcon from '@mui/icons-material/Search';
+import LoginIcon from '@mui/icons-material/Login';
+
+
+
 
 function Nav() {
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
   const classes = useStyles();
 
@@ -17,32 +28,26 @@ function Nav() {
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
-        {user.id === null &&
+        {user.id === undefined && (
           // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
-            Login / Register
-          </Link>
-        }
+          <div>
+            <Link className="navIconL" to="/login">
+              <LoginIcon />
+            </Link>
+
+            <Link className="navIconR" to="/about">
+              <InfoIcon />
+            </Link>
+          </div>
+        )}
 
         {/* If a user is logged in, show these links */}
         {user.id && (
-          <>
-            <Link className="navLink" to="/user">
-              Home
-            </Link>
-
-            <Link className="navLink" to="/info">
-              Info Page
-            </Link>
-
-            <LogOutButton className="navLink" />
-          </>
+         <Hamburger />
+          
         )}
 
-        <Link className="navLink" to="/about">
-        {/* <i class="far fa-info-circle"></i> */}
-          <InfoIcon style={{fontSize: '35px'}}/>
-        </Link>
+
       </div>
     </div>
   );
