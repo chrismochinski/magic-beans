@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
-import cryptoListReducer from './crypto_list.reducer'; //updated
+import cryptoListReducer from './crypto.reducer'; //updated
 
 
 // rootReducer is the primary reducer for our entire project

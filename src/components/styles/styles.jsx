@@ -90,16 +90,14 @@ tableBody: {
 
  //-------------SearchPage > CoinSearchPage-------------//
 
- searchPaper: {
-        
+
+mainSearchPage: {
+  padding: '20px',
+  textAlign: 'center',
   paddingTop: '20px',
   paddingBottom: '200px',
-  width: '90%',
-  margin: 'auto',
-},
 
-main: {
-  padding: '20px',
+  margin: 'auto',
 },
 
 
@@ -112,6 +110,20 @@ floatRight: {
   width: '100%',
   margin: 'auto',
 },
+
+
+
+
+
+searchButton: {
+  marginTop: '15px',
+  fontSize: '20px',
+  fontWeight: 'bolder',
+  backgroundColor: '#5C9827',
+  color: 'white',
+  
+},
+
 
   }))
 

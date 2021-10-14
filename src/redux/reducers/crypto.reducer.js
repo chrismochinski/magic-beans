@@ -1,5 +1,5 @@
 
-      //important use this name over in instance of store?
+//updated bam
 const cryptoListReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_CRYPTO_LIST':

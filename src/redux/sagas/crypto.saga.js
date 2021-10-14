@@ -5,11 +5,11 @@ import { put, takeEvery } from 'redux-saga/effects';
 function* fetchCryptoList() {
     console.log('in fetchCryptoList saga!'); 
     try {
-        const response = yield axios.get('/api/crypto_list');
+        const response = yield axios.get('/api/crypto');
         console.log('response is:', response)
         yield put({ type: 'SET_CRYPTO_LIST', payload: response.data }); 
     } catch (error) {       //updated THIS TO REDUCER
-        console.log('Failure to GET in crypto_list.saga.js', error);
+        console.log('Failure to GET in crypto.saga.js', error);
     }
 }
 

@@ -1,7 +1,7 @@
 import { all } from 'redux-saga/effects';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
-import fetchCryptoListSaga from './crypto_list.saga'; //updated
+import fetchCryptoListSaga from './crypto.saga'; //updated
 import userSaga from './user.saga';
 
 // rootSaga is the primary saga.
