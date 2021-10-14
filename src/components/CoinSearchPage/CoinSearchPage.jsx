@@ -121,4 +121,3 @@ function CoinSearchPage({ coins }) {
 }
 
 export default CoinSearchPage;
-

@@ -13,7 +13,6 @@ const useStyles = makeStyles(() => ({
         paddingTop: '40px'
     },
     
-
  //-------------Login / Register-------------//
 
     logo: {
@@ -91,7 +90,6 @@ tableBody: {
 
  //-------------SearchPage > CoinSearchPage-------------//
 
-
  searchPaper: {
         
   paddingTop: '20px',
@@ -103,8 +101,6 @@ tableBody: {
 main: {
   padding: '20px',
 },
-
-
 
 
 floatLeft: {
