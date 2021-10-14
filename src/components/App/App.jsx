@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import OopsPage from '../OopsPage/OopsPage';
 import Hamburger from '../Hamburger/Hamburger';
+import CoinDetails from '../CoinDetails/CoinDetails';
 
 import Disclaimer from '../Disclaimer/Disclaimer';
 
@@ -82,6 +83,7 @@ function App() {
 
 
 
+
           <ProtectedRoute
             // logged in shows CoinSearchPage else shows LoginPage
             // UPDATED used to be info page
@@ -89,6 +91,14 @@ function App() {
             path="/search"
           >  
             <CoinSearchPage /> 
+          </ProtectedRoute>
+
+          <ProtectedRoute 
+          //let's try one from scratch...
+          exact path="/coin-details/:id"
+          >
+            <CoinDetails />
+
           </ProtectedRoute>
 
           

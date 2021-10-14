@@ -81,7 +81,7 @@ tableHeader: {
   textAlign: 'center',
   paddingTop: '4px',
   paddingBottom: '4px',
-  fontFamily: 'Cabin Condensed', //fix use a new font here
+  fontFamily: 'Cabin Condensed', 
 },
 
 tableBody: {
@@ -90,6 +90,12 @@ tableBody: {
 
  //-------------SearchPage > CoinSearchPage-------------//
 
+
+ pageHeader: {
+  fontFamily: 'Poppins', 
+  padding: '10px',
+  textAlign: 'center',
+},
 
 mainSearchPage: {
   padding: '20px',
@@ -112,9 +118,6 @@ floatRight: {
 },
 
 
-
-
-
 searchButton: {
   marginTop: '15px',
   fontSize: '20px',
@@ -123,6 +126,14 @@ searchButton: {
   color: 'white',
   
 },
+
+cardMedia: {
+  width: '70%',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  padding: '0',
+
+}
 
 
   }))

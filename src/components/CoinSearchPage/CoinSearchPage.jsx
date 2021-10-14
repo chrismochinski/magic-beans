@@ -7,11 +7,13 @@ import TextField from '@mui/material/TextField';
 import Paper from "@material-ui/core/Paper";
 import { useHistory } from 'react-router-dom';
 import './CoinSearchPage.css';
+import SearchIcon from '@mui/icons-material/Search';
+
 
 import useStyles from '../styles/styles';
 
 
-function CoinSearchPage({ coins }) {
+function CoinSearchPage() {
 
   const classes = useStyles();
   const history = useHistory();
@@ -45,14 +47,20 @@ function CoinSearchPage({ coins }) {
     console.log(searchArray)
     setNewSearch('');
   }
+  // id, name, image, symbol, price, marketCap, priceChange //deletelater revist later?
+  const getDetails = (card) => {
+    console.log('card.id from search page:', card)
+    dispatch({ type: 'TEMP_COIN_DETAILS', payload: card }); //UPDATED CHECKING THIS...
+    navToDetailsPage(card)
+  }
 
-  const getDetails = (id, name, image, symbol, price, marketCap, priceChange) => {
-    console.log('coin id:', id)
-    history.push(`/coin-details/${id}`)
+  const navToDetailsPage = (card) => {
+    history.push(`/coin-details/${card.id}`)
+
   }
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_CRYPTO_LIST' });
+    dispatch({ type: 'FETCH_CRYPTO_LIST' }); //API call for clean top 200 list
 
   }, [])
 
@@ -63,7 +71,7 @@ function CoinSearchPage({ coins }) {
     <div>
       {/* <Paper elevation={1} className={classes.searchPaper}> */}
         <Container maxWidth="sm" className={classes.mainSearchPage}>
-          <Typography className="search-title" variant="h4" >Crypto Search</Typography>
+          <Typography className={classes.pageHeader} variant="h4" >Crypto Search!</Typography>
           <form onSubmit={handleChange} style={{textAlign: 'center'}}>
             <TextField
               id="standard-basic"
@@ -85,27 +93,25 @@ function CoinSearchPage({ coins }) {
 
 
           {searchArray.map((card) => (
-            <Grid style={{ paddingTop: '40px', width: '80%', marginLeft: 'auto', marginRight: 'auto' }} item key={card}>
-              <Card style={{ cursor: 'pointer' }} className={classes.card} elevation={5} >
+            <Grid style={{ paddingTop: '40px', width: '90%', marginLeft: 'auto', marginRight: 'auto' }} item key={card}>
+              <Card className={classes.card} elevation={5} >
                 <CardMedia
                   className={classes.cardMedia}
                   component="img"
                   height="140"
                   image={card.image}
-                  title="Image Title"
+                  title="Crypto Icon"
                   alt="Image Broken"
                 />
                 <CardContent className={classes.cardContent}>
                   <Grid>
                     <Grid item className={classes.floatLeft} xs={12} s={10} md={10} lg={10} xl={10}>
                       <Typography variant="h6">
-                        {card.name} || {card.symbol.toUpperCase()} || ${card.current_price.toFixed(2)}
+                        {card.name} || ${card.symbol.toUpperCase()} || ${card.current_price.toFixed(2)}
                       </Typography>
                     </Grid>
                     <Grid item className={classes.floatRight} xs={12} s={2} md={2} lg={2} xl={2}>
-                      <CardActions>
-                        <Button onClick={() => getDetails(card.id)} variant="outlined" size="medium" color="primary">Details</Button>
-                      </CardActions>
+                        <Button style={{padding: '10px', marginTop: '10px'}} onClick={() => getDetails(card)} variant="outlined" size="large" color="primary"><b>Details</b></Button>
                     </Grid>
                   </Grid>
                 </CardContent>
