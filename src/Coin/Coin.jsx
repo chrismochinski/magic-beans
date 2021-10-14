@@ -32,7 +32,14 @@ function Coin({ id, name, image, symbol, price, marketCap, priceChange, shortenB
             <TableCell className={classes.tableCell}><p className="coinSymbol">{symbol.toUpperCase()}</p></TableCell>
             <TableCell className={classes.tableCell}> <p className="coinPrice">${price}</p></TableCell>
             {/* <TableCell className={classes.tableCell}> <p className="coinMarketCap">${marketCap}</p></TableCell> */}
-            <TableCell className={classes.tableCell}> {priceChange < 0 ? (<p className="downRed"><KeyboardArrowDownIcon />{priceChange.toFixed(2)}%</p>) : (<p className="upGreen"> <KeyboardArrowUpIcon /> {priceChange.toFixed(2)}%</p>)}</TableCell>
+           
+            <TableCell className={classes.tableCell}> {priceChange < 0 
+            ? 
+            (<p className="downRed"><KeyboardArrowDownIcon />{priceChange.toFixed(2)}%</p>) 
+            : 
+            (<p className="upGreen"> <KeyboardArrowUpIcon /> {priceChange.toFixed(2)}%</p>)}
+            </TableCell>
+
         </TableRow>
 
     )

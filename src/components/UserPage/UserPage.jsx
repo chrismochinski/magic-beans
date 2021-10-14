@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, Grid, Container } from '@material-ui/core';
 
-import LogOutButton from '../LogOutButton/LogOutButton';
 import { useSelector, useDispatch } from 'react-redux';
 
 import useStyles from '../styles/styles';
@@ -68,7 +67,7 @@ function UserPage() {
     return (
 
         <div className="userContainer">
-            <h2 className="userHeadline">Welcome, {user.username}!</h2>
+            <Typography variant="h4" style={{paddingTop: '0'}} className={classes.pageHeader}>Welcome, {user.username}!</Typography>
             {/* <p>Your ID is: {user.id}</p> */}
 
             <Container className={classes.tableMain}>

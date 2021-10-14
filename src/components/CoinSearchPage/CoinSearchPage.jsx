@@ -15,6 +15,8 @@ import useStyles from '../styles/styles';
 
 function CoinSearchPage() {
 
+  const [elevation, setElevation ] = useState('4')
+
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -47,22 +49,29 @@ function CoinSearchPage() {
     console.log(searchArray)
     setNewSearch('');
   }
-  // id, name, image, symbol, price, marketCap, priceChange //deletelater revist later?
-  const getDetails = (card) => {
-    console.log('card.id from search page:', card)
-    dispatch({ type: 'TEMP_COIN_DETAILS', payload: card }); //UPDATED CHECKING THIS...
-    navToDetailsPage(card)
-  }
+  // id, name, image, symbol, price, marketCap, priceChange 
+  // const getDetails = (card) => {
+  //   console.log('card.id from search page:', card)
+  //   dispatch({ type: 'TEMP_COIN_DETAILS', payload: card }); 
+  //   navToDetailsPage(card)
+  // }
 
-  const navToDetailsPage = (card) => {
+  const getDetails = (card) => {
     history.push(`/coin-details/${card.id}`)
 
   }
 
   useEffect(() => {
     dispatch({ type: 'FETCH_CRYPTO_LIST' }); //API call for clean top 200 list
-
   }, [])
+
+  const mouseEnter = () => {
+    setElevation(12)
+  }
+
+  const mouseLeave = () => {
+    setElevation(5)
+  }
 
 
 
@@ -94,7 +103,10 @@ function CoinSearchPage() {
 
           {searchArray.map((card) => (
             <Grid style={{ paddingTop: '40px', width: '90%', marginLeft: 'auto', marginRight: 'auto' }} item key={card}>
-              <Card className={classes.card} elevation={5} >
+              <Card 
+              onMouseEnter={mouseEnter}
+              onMouseLeave={mouseLeave}
+              className={classes.card} elevation={elevation} >
                 <CardMedia
                   className={classes.cardMedia}
                   component="img"
@@ -121,7 +133,7 @@ function CoinSearchPage() {
           ))}
           {/* <h1>{search}</h1> */}
           {/* <h1>{newCoinName}</h1> */}
-          {/* <img src={newCoinImageSource} /> */}
+          {/* <img src={newCoinImageSource} //deletelater /> */} 
 
 
         </Container>

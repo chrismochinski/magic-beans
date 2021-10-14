@@ -14,27 +14,26 @@ import useStyles from '../styles/styles';
 function CoinDetails({card}) {
 
     const classes = useStyles();
-    const coinInfo = useSelector(store => store.cryptoListReducer)
+    // const coinInfo = useSelector(store => store.cryptoListReducer)
 
     const { id } = useParams() //important REDUX STORE!
 
     const navBack = () => {
-        history.push('/')
+        history.push('/search')
     }
 
     const history = useHistory();
     // const classes = useStyles();
 
     useEffect(() => {
-       console.log('id of coin:', card)
-       console.log('...and from the reducer:', coinInfo)
+       console.log('NEED SELECTED COIN INFO...for now, we only have id which is:', id)
     }, []);
 
 
     return (
         <Container className={classes.detailsPage}>
             <Typography className={classes.pageHeader} variant="h3">Coin Details Page</Typography>
-            <Typography variant="h6">{JSON.stringify(coinInfo)}}</Typography>
+            <Typography variant="h6">We need selected coin info. For now we only have ID which, in this case, is: {id}</Typography>
             <Button className={classes.loginButton} size="large" variant="contained" onClick={() => navBack()}>Go Back</Button>
 
         </Container>
