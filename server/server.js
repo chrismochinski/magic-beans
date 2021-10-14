@@ -24,7 +24,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/crypto', cryptoListRouter)
+app.use('/api/crypto', cryptoListRouter);
 
 // Serve static files
 app.use(express.static('build'));

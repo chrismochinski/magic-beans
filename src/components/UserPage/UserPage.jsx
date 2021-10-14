@@ -47,11 +47,11 @@ function UserPage() {
     }
 
 
-    // const renderPage = () => { //updated might not be able to use this
-    //     if (isLoading) {
-    //         return <div>Loading Crypto List...</div>
-    //     }
-    // }
+    const renderPage = () => { //FIX THIS
+        if (cryptoList) {
+            return <div>Loading Crypto List...</div>
+        }
+    }
 
 
     //updated HEADED TO ROOT /SAGA/REDUCER NOW...
@@ -119,9 +119,9 @@ function UserPage() {
 
                         </TableBody>
                     </Table>
-                    {/* <Container> */}
-                        {/* <Typography style={{ padding: "40px" }} variant="h5">{renderPage()}</Typography> */}
-                    {/* </Container> */}
+                    <Container>
+                        <Typography style={{ paddingTop: "40px" }} variant="h2">{renderPage()}</Typography>
+                    </Container>
                 </TableContainer>
             </Container>
 
