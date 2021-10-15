@@ -19,7 +19,7 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered 
     registrationSaga(),
     userSaga(),
-    fetchCryptoListSaga(), //updated to get all cryptos for home page
-    addToPositionSaga(),
+    fetchCryptoListSaga(), //updated to GET all cryptos for home page
+    addToPositionSaga(), //updated to POST user position to database
   ]);
 }

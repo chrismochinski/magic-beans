@@ -53,6 +53,8 @@ function CoinDetails({ card }) {
         history.push('/search')
     }
 
+    /*GET*/
+    //API
     //todo needs own page = chartPage
     useEffect(() => {
         setIsLoading(true) //IMPORTANT BEGIN LOADING
@@ -66,6 +68,8 @@ function CoinDetails({ card }) {
         fetchCoinInfo()
     }, [])
 
+    /*GET*/
+    //API
     //todo needs own page = infoPage
     const fetchCoinInfo = async () => { //important updates coin INFO such as description
         await axios.get(`https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
@@ -82,6 +86,8 @@ function CoinDetails({ card }) {
         fetchCoinPriceInfo();
     };
 
+    /*GET*/
+    //API
     //todo MAYBE own page??????
     const fetchCoinPriceInfo = async () => { //important updates all coin PRICE-related info such as MC
         await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true`)
@@ -114,16 +120,17 @@ function CoinDetails({ card }) {
             symbol: coinSymbol,
             name: coinName,
             coins_held: parseFloat(coinAmount),
-            totalCost: coinAmount * coinPrice,
+            total_cost: coinAmount * coinPrice,
             per_coin_val: parseFloat(coinPrice)
         })
         readyToDispatch(objectToSend);
         console.log('testing object to send:', objectToSend)
     }
 
-    const readyToDispatch = (newPosition) => { //coming from objectToSend
-        console.log('SENDING TO DB:', newPosition) //important - headed to DB!!!
-        dispatch({ type: 'ADD_POSITION_TO_DB', payload: newPosition}); //updated to saga
+            //POST----------------//SUCCESS
+    const readyToDispatch = (newPosition) => { 
+        console.log('SENDING TO DB:', newPosition) 
+        dispatch({ type: 'ADD_POSITION_TO_DB', payload: newPosition}); 
     }
 
 

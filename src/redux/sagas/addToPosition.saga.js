@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
+    //POST--------------
 function* postPosition(action) {
     console.log('in postPosition saga!!!!'); 
     try {
@@ -9,15 +10,15 @@ function* postPosition(action) {
             method: 'POST',
             url: '/api/crypto/',
             data: action.payload
-        });
-        yield put({ type: 'NOTHING_HERE_YET_CHANGE_THIS_LATER' })
-    } catch (error) {
+        });                     //FIX NOT SURE WHAT TO DO HERE YET
+        yield put({ type: 'ADD_POSITION_TO_REDUX' }) //UPDATED get user stuff into redux store
+    } catch (error) {                             
         console.log('error in sending new position (addToPositionSaga):', error)
     }
 }
 
 function* addToPositionSaga() {
-    yield takeEvery('ADD_POSITION_TO_DB', postPosition);
+    yield takeEvery('ADD_POSITION_TO_DB', postPosition); //UPDATED FROM COINDETAIL.JSX
 }
 
 export default addToPositionSaga;

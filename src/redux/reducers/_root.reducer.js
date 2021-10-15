@@ -4,6 +4,7 @@ import user from './user.reducer';
 import cryptoListReducer from './crypto.reducer'; //updated
 import sevenDayChartReducer from './sevenDayReducer';
 import coinDetailsReducer from './coinDetailsReducer';
+import positionReducer from './position.reducer'; //updated for post
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -14,9 +15,10 @@ import coinDetailsReducer from './coinDetailsReducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-  cryptoListReducer, //updated
+  cryptoListReducer, //get //updated
   sevenDayChartReducer, //deletelater
   coinDetailsReducer,
+  positionReducer, //post //updated
 });
 
 export default rootReducer;
