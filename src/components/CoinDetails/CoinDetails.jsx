@@ -8,9 +8,8 @@ import { useParams } from 'react-router';
 
 import Button from '@material-ui/core/Button';
 import useStyles from '../styles/styles';
-
-
-
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 function CoinDetails({ card }) {
 
@@ -34,6 +33,7 @@ function CoinDetails({ card }) {
     const [coinWebsite, setCoinWebsite] = useState('');
     const [coinForum, setCoinForum] = useState('');
     const [coinDescription, setCoinDescription] = useState('');
+    const [coinImage, setCoinImage] = useState('');
 
     //setting state of coin PRICE information (all numbers)
     const [coinPrice, setCoinPrice] = useState();
@@ -81,19 +81,43 @@ function CoinDetails({ card }) {
 
     //todo MAYBE own page??????
     const fetchCoinPriceInfo = async () => { //important updates all coin PRICE-related info such as MC
-        await axios.get(`    https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true
-        `)
+        await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true`)
             .then(res => {
-                setCoinInfo(res.data);
-                console.log('res.data in fetchCoinPRICEinfo', res.data)
-                setCoinPrice(res.data.usd)
-                setCoinMarketCap(res.data.usd_market_cap)
-                setCoinVolume(res.data.usd_24h_vol)
-                setCoinPriceChange(res.data.usd_24h_change)
-                setCoinLastUpdated(res.data.last_updated_at)
+                setCoinPrice(res.data[id].usd.toFixed(2))
+                setCoinMarketCap(res.data[id].usd_market_cap.toFixed(2))
+                setCoinVolume(res.data[id].usd_24h_vol.toFixed(2))
+                setCoinPriceChange(res.data[id].usd_24h_change.toFixed(2))
+                setCoinLastUpdated(res.data[id].last_updated_at)
                 setIsLoading(false); //IMPORTANT END LOADING
+                // console.log('COIN DATA:', res.data)
             }).catch(error => console.log('error getting coin details!', error));
     };
+
+
+    // const shortenBigNumber = (value) => {  //important for market cap on details page!
+    //     const suffixes = ["", "K", "M", "B", "T"];
+    //     let suffixNum = Math.floor(("" + value).length / 3);
+    //     let shortValue = parseFloat((suffixNum !== 0 ? (value / Math.pow(1000, suffixNum)) : value).toPrecision(4));
+    //     if (shortValue % 1 !== 0) {
+    //         shortValue = shortValue.toFixed(2);
+    //     }
+    //     return shortValue + suffixes[suffixNum];
+    // }
+
+
+    const handleAddCoins = () => { //todo POST ROUTE
+
+        console.log(`
+        User wants to add ${coinAmount} of ${coinName} 
+        which is a total user cost of $${(coinAmount * coinPrice).toLocaleString()}
+         $${coinPrice} per coin.
+        Current MC of $${(coinMarketCap * 1).toLocaleString()}. ${coinName}'s 
+        volume is ${(coinVolume * 1).toLocaleString()} and in the last 24 
+        hours its price has changed by ${coinPriceChange}%.`)
+        dispatch({ type: 'SEND_COIN_ADDITION' }); 
+    }
+
+
 
 
     const renderPage = () => { //FIX Shows a loading dialogue if loading (CHANGE TO A COOL ANIMATION)
@@ -102,22 +126,14 @@ function CoinDetails({ card }) {
         }
     }
 
-    const handleAddCoins = () => { //updated POST ROUTE
-        console.log(`user added ${coinAmount} of ${coinName} which is ID of ${id} at price of ${coinPrice}`)
-        console.log('coin price is:', coinPrice)
-        dispatch({ type: 'SEND_COIN_ADDITION' }); //fix unmute this!
-
-
-    }
-
-
 
     return (
         <Container className={classes.detailsPage}>
             {/* <Typography className={classes.pageHeader} variant="h3">Coin Details Page</Typography> */}
             <Typography variant="h4">{coinName}</Typography>
             <Typography variant="h3">{coinSymbol}</Typography>
-            {/* {coinPlatform == null || coinPlatform == undefined ? (<Typography variant="h5">Platform: N/A</Typography>) : (<Typography variant="h5">{coinPlatform}</Typography>)} */}
+            <Typography variant="h3">${coinPrice}</Typography>
+            <Typography variant="h4"> {coinPriceChange < 0 ? (<p className="downRed"><KeyboardArrowDownIcon />{coinPriceChange}%</p>) : (<p className="upGreen"> <KeyboardArrowUpIcon /> {coinPriceChange}%</p>)}</Typography>
             <Typography variant="h5" style={{ color: 'blue' }}>@{coinTwitter}</Typography>
             <Typography variant="h5" style={{ color: 'red' }}>{coinWebsite}</Typography>
             <Typography variant="h5" style={{ color: 'purple' }}>{coinForum}</Typography>

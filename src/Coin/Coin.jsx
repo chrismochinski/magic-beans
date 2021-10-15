@@ -9,9 +9,7 @@ import useStyles from '../components/styles/styles';
 
 
 
-//important use reduxStore!!!!
-
-function Coin({ id, name, image, symbol, price, marketCap, priceChange, shortenBigNumber }) {
+function Coin({ id, name, image, symbol, price, marketCap, priceChange, shortenBigNumber }) { //deletelater unnecessary variables
 
     const history = useHistory();
     const classes = useStyles();
@@ -22,7 +20,6 @@ function Coin({ id, name, image, symbol, price, marketCap, priceChange, shortenB
     }
 
  
-
 
     return (
 
