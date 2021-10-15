@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import useStyles from '../styles/styles';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { Stream } from '@mui/icons-material';
 
 function CoinDetails({ card }) {
 
@@ -17,6 +18,7 @@ function CoinDetails({ card }) {
     const { id } = useParams();
     const history = useHistory();
     const dispatch = useDispatch();
+    const user = useSelector(store => store.user)
 
     //set state of search / chart info results
     const [chartData, setChartData] = useState([]);
@@ -37,24 +39,25 @@ function CoinDetails({ card }) {
 
     //setting state of coin PRICE information (all numbers)
     const [coinPrice, setCoinPrice] = useState();
+    const [totalCost, setTotalCost] = useState();
     const [coinMarketCap, setCoinMarketCap] = useState();
     const [coinVolume, setCoinVolume] = useState();
     const [coinPriceChange, setCoinPriceChange] = useState();
     const [coinLastUpdated, setCoinLastUpdated] = useState('');
 
+    //STUFF TO SEND!
     const [coinAmount, setCoinAmount] = useState();
-
 
 
     const navBack = () => {
         history.push('/search')
     }
 
-           //todo needs own page = chartPage
+    //todo needs own page = chartPage
     useEffect(() => {
         setIsLoading(true) //IMPORTANT BEGIN LOADING
-
-        dispatch({type: 'FETCH_COIN_LIST' })
+        console.log('user ID is:', user)
+        dispatch({ type: 'FETCH_COIN_LIST' })
         axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=7&interval=hourly`)
             .then(res => {
                 setChartData(res.data.prices);
@@ -83,30 +86,52 @@ function CoinDetails({ card }) {
     const fetchCoinPriceInfo = async () => { //important updates all coin PRICE-related info such as MC
         await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true`)
             .then(res => {
-                setCoinPrice(res.data[id].usd.toFixed(2))
-                setCoinMarketCap(res.data[id].usd_market_cap.toFixed(2))
-                setCoinVolume(res.data[id].usd_24h_vol.toFixed(2))
-                setCoinPriceChange(res.data[id].usd_24h_change.toFixed(2))
-                setCoinLastUpdated(res.data[id].last_updated_at)
-                setIsLoading(false); //IMPORTANT END LOADING
+                setCoinPrice(res.data[id].usd.toFixed(2));
+                setCoinMarketCap(res.data[id].usd_market_cap.toFixed(2));
+                setCoinVolume(res.data[id].usd_24h_vol.toFixed(2));
+                setCoinPriceChange(res.data[id].usd_24h_change.toFixed(2));
+                setCoinLastUpdated(res.data[id].last_updated_at);
+                setIsLoading(false); //IMPORTANT END LOADING;
                 // console.log('COIN DATA:', res.data)
             }).catch(error => console.log('error getting coin details!', error));
     };
 
     const handleAddCoins = () => { //todo POST ROUTE
-
+        setTotalCost(coinAmount * coinPrice);
         console.log(`
-        User wants to add ${coinAmount} of ${coinName} 
+        User wants to add ${coinAmount} 
+        of ${coinName} 
         which is a total user cost of $${(coinAmount * coinPrice).toLocaleString()}
-         $${coinPrice} per coin.
-        Current MC of $${(coinMarketCap * 1).toLocaleString()}. ${coinName}'s 
-        volume is ${(coinVolume * 1).toLocaleString()} and in the last 24 
-        hours its price has changed by ${coinPriceChange}%.`)
-        dispatch({ type: 'SEND_COIN_ADDITION' }); 
+        at $${coinPrice} per coin.
+        Current MC of $${(coinMarketCap * 1).toLocaleString()}. 
+        ${coinName}'s volume is ${(coinVolume * 1).toLocaleString()} 
+        and, in the last 24 hours, 
+        its price has changed by ${coinPriceChange}%.`) //fix
+
+        let objectToSend = ({
+            user_id: user.id,
+            coin_id: id,
+            symbol: coinSymbol,
+            name: coinName,
+            coins_held: parseFloat(coinAmount),
+            totalCost: coinAmount * coinPrice,
+            per_coin_val: parseFloat(coinPrice)
+        })
+        readyToDispatch(objectToSend);
+        console.log('testing object to send:', objectToSend)
+    }
+
+    const readyToDispatch = (newPosition) => { //coming from objectToSend
+        console.log('SENDING TO DB:', newPosition) //important - headed to DB!!!
+        dispatch({ type: 'ADD_POSITION_TO_DB', payload: newPosition}); //updated to saga
     }
 
 
 
+
+
+
+    // console.log('object to send is:', objectToSend)
 
     const renderPage = () => { //FIX Shows a loading dialogue if loading (CHANGE TO A COOL ANIMATION)
         if (isLoading) {
@@ -116,11 +141,10 @@ function CoinDetails({ card }) {
 
 
     return (
-        <Container className={classes.detailsPage}>
-            {/* <Typography className={classes.pageHeader} variant="h3">Coin Details Page</Typography> */}
-            <Typography variant="h3">{coinName}</Typography>
-            <Typography variant="h2"><b>{coinSymbol}</b></Typography>
-            <Typography variant="h3">${coinPrice}</Typography>
+        <Container className={classes.detailsPage} >
+            <Typography variant="h4">{coinName}</Typography>
+            <Typography variant="h3"><b>{coinSymbol}</b></Typography>
+            <Typography variant="h2">${coinPrice}</Typography>
             <Typography variant="h5"> {coinPriceChange < 0 ? (<p className="downRed"><KeyboardArrowDownIcon />{coinPriceChange}% today</p>) : (<p className="upGreen"><KeyboardArrowUpIcon />{coinPriceChange}% today</p>)}</Typography>
 
             <Typography variant="h6">Market Cap: ${(coinMarketCap * 1).toLocaleString()}</Typography>
@@ -128,7 +152,7 @@ function CoinDetails({ card }) {
             <Typography variant="h5" style={{ color: 'blue' }}>@{coinTwitter}</Typography>
             <Typography variant="h5" style={{ color: 'red' }}>{coinWebsite}</Typography>
             <Typography variant="h5" style={{ color: 'purple' }}>{coinForum}</Typography>
-            <Typography variant="h6">{coinDescription}</Typography><br />
+            <Typography variant="h6" style={{ overflowWrap: 'anywhere' }}>{coinDescription}</Typography><br />
 
             {/* {JSON.stringify(coinInfo)}  //deletelater json stringify of all details */}
             {/* {JSON.stringify(chartData)}  // deletelater json stringify of chart data */}
@@ -137,7 +161,7 @@ function CoinDetails({ card }) {
 
                 <Container maxWidth="sm">
                     <form onSubmit={handleAddCoins} style={{ textAlign: 'center' }}>
-                        <TextField style={{marginRight: '5px'}} 
+                        <TextField style={{ marginRight: '5px' }}
                             id="standard-basic"
                             variant="standard"
                             type="number"
@@ -147,9 +171,9 @@ function CoinDetails({ card }) {
                             label="Amount To Add"
                             onChange={(event) => setCoinAmount(event.target.value)} //important setting amount user is adding
                         />
-                        
-                            <Button style={{marginLeft: '5px'}} variant="contained" size="medium" type="submit" className={classes.searchButton}>Add</Button>
-                       
+
+                        <Button style={{ marginLeft: '5px' }} variant="contained" size="medium" type="submit" className={classes.searchButton}>Add</Button>
+
                     </form>
                 </Container>
 

@@ -19,8 +19,9 @@ CREATE TABLE "positions" (
     "coins_held" DECIMAL(14,4),
     "total_cost" DECIMAL(12,2),
     "per_coin_val" DECIMAL(12,2),
-    "date_time" TIMESTAMP
+    "date_time" DEFAULT GETDATE(),
 );
+
 
 -- Sample starting query TBD
 

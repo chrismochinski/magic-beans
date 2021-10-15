@@ -58,9 +58,8 @@ function UserPage() {
 
     useEffect(() => {
         dispatch({ type: 'FETCH_CRYPTO_LIST' }); //fix unmute this!
+        console.log('user id is:', user)
     }, [])
-
-
 
 
 
