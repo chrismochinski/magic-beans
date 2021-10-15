@@ -18,8 +18,6 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered 
     registrationSaga(),
     userSaga(),
-    fetchCryptoListSaga(), //updated
-    sevenDaySaga(),
-    coinDetailsSaga(),
+    fetchCryptoListSaga(), //updated to get all cryptos for home page
   ]);
 }

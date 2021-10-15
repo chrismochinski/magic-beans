@@ -16,20 +16,10 @@ function CoinDetails({ card }) {
 
     const classes = useStyles();
     const { id } = useParams();
-
-
     const history = useHistory();
-
     const dispatch = useDispatch();
-    // const sevenDayResponse = useDispatch(store => store.prices); //fix
-
-    const [chartData, setChartData] = useState([])
-
-    // console.log('sevenday respons eis:', sevenDayResponse)
-
-    // const [coinSevenDay, setSevenDay] = useState({}) //fix
-
-    // setSevenDay(sevenDayResponse); //fix
+    const [chartData, setChartData] = useState([]);
+    const [coinDetails, setCoinDetails] = useState([]);
 
     const navBack = () => {
         history.push('/search')
@@ -48,40 +38,53 @@ function CoinDetails({ card }) {
      * I hope this will suffice!
      * 
      * This message will self destruct 
-     */           //TODO LOADING DIALOGUE!!!!!
+     */           //todo needs own page
     useEffect(() => {
         axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=7&interval=hourly`)
             .then(res => {
                 setChartData(res.data.prices);
                 console.log('Response of seven day chart data is:', res.data.prices);
             }).catch(error => console.log('error getting cryptos:', error))
-
         fetchCoinInfo()
     }, [])
 
+        //todo needs own page
+    const fetchCoinInfo = async () => {
+        console.log('in fetchCoininfo! id:', id)
+        await axios.get(`https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
+            .then(res => {
+                setCoinDetails(res.data);
+                console.log('res.data in fetchCoinInfo is:', res.data)
+            }).catch(error => console.log('error getting coin details!', error))
+
+    }
+
 
     const renderPage = () => { //FIX THIS
-        if (chartData) {
-            return <div>Loading Coin Details...</div>
+        if (chartData && coinDetails) {
+            return <div>Loading coin info...</div>
         }
     }
-
-
-    //TODO get chart data and coin details back
-    const fetchCoinInfo = () => {
-        // dispatch({ type: 'FETCH_COIN_DETAILS', payload: id })  //TODO
-    }
-
-    // useEffect(() => { //deletelater
-    //     dispatch({ type: '7_DAY_CHART',})
-    // }, [])
 
 
 
     return (
         <Container className={classes.detailsPage}>
-            <Typography className={classes.pageHeader} variant="h3">Coin Details Page</Typography>
-            <Typography variant="h6">We need selected coin info. For now we only have ID which, in this case, is: {id}</Typography>
+            {/* <Typography className={classes.pageHeader} variant="h3">Coin Details Page</Typography> */}
+            <Typography variant="h4">{coinDetails.name}</Typography>
+            <Typography variant="h2">{coinDetails.symbol.toUpperCase()}</Typography>
+            <Typography variant="h5">{coinDetails.categories}</Typography><br />
+
+            {/* <Typography variant="h5">Platform: {coinDetails.asset_platform_id}</Typography><br /> */}
+            
+            <Typography variant="h5">{coinDetails.description.en}</Typography><br />
+           
+            <Typography variant="h5">Twitter: {coinDetails.links.twitter_screen_name}</Typography><br />
+            <Typography variant="h5">Website: {coinDetails.links.homepage}</Typography><br />
+
+
+
+            {JSON.stringify(coinDetails)}
             {JSON.stringify(chartData)}
             <Button className={classes.loginButton} size="large" variant="contained" onClick={() => navBack()}>Go Back</Button>
             <Container>

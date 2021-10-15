@@ -40,25 +40,25 @@ const Hamburger = () => { //idea
                 onClose={() => setOpen(false)} >
 
                 <div className="closeDrawerButton" style={{textAlign: 'center'}}>
-                    <IconButton  style={{marginBottom: '10px', textAlign: 'center'}} onClick={() => setOpen(false)}>
-                        <ChevronRightIcon className="hamburgerLink"/>
+                    <IconButton  style={{marginBottom: '10px', textAlign: 'center'}}>
+                        <ChevronRightIcon className="hamburgerLink"  onClick={() => setOpen(false)} />
                     </IconButton>
                 </div>
                 <Divider />
                 <div>
-                    <ListItem>
+                    <ListItem onClick={() => setOpen(false)} >
                         <Link to="/user">
-                            <HomeIcon className="hamburgerLink" onClick={() => setOpen(false)} />
+                            <HomeIcon className="hamburgerLink"/>
                         </Link >
                     </ListItem>
-                    <ListItem>
+                    <ListItem onClick={() => setOpen(false)} >
                         <Link  to="/search">
-                            <SearchIcon className="hamburgerLink" onClick={() => setOpen(false)} />
+                            <SearchIcon className="hamburgerLink" />
                         </Link >
                     </ListItem>
-                    <ListItem>
+                    <ListItem onClick={() => handleLogoutClick()}>
                         <Link  to="/home">
-                            <LogoutIcon className="hamburgerLink" onClick={() => handleLogoutClick()} />
+                            <LogoutIcon className="hamburgerLink"  />
                         </Link >
                         {/* <LogOutButton className="navLink" /> */}
                     </ListItem>

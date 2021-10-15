@@ -25,9 +25,6 @@ function CoinSearchPage() {
   console.log('cryptolistreducer is:', cryptoList)
 
   const [newSearch, setNewSearch] = useState('');
-  // const [newCoinName, setNewCoinName] = useState('');
-  // const [newCoinImageSource, setNewCoinImageSource] = useState('');
-  // const [search, setSearch] = useState('');
   const [searchArray, setSearchArray] = useState([]);
 
   const handleChange = (event) => {
