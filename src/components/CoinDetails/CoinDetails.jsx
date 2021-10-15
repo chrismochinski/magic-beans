@@ -39,25 +39,41 @@ function CoinDetails({ card }) {
      * 
      * This message will self destruct 
      */           //todo needs own page
+    // useEffect(() => {
+    //     axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=7&interval=hourly`)
+    //         .then(res => {
+    //             setChartData(res.data.prices);
+    //             console.log('Response of seven day chart data is:', res.data.prices);
+    //         }).catch(error => console.log('error getting cryptos:', error))
+    //     fetchCoinInfo()
+    // }, [])
+
+    //     //todo needs own page
+    // const fetchCoinInfo = async () => {
+    //     console.log('in fetchCoininfo! id:', id)
+    //     await axios.get(`https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
+    //         .then(res => {
+    //             setCoinDetails(res.data);
+    //             console.log('res.data in fetchCoinInfo is:', res.data)
+    //         }).catch(error => console.log('error getting coin details!', error))
+
+    // }
+
     useEffect(() => {
         axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=7&interval=hourly`)
             .then(res => {
                 setChartData(res.data.prices);
                 console.log('Response of seven day chart data is:', res.data.prices);
             }).catch(error => console.log('error getting cryptos:', error))
-        fetchCoinInfo()
-    }, [])
-
-        //todo needs own page
-    const fetchCoinInfo = async () => {
-        console.log('in fetchCoininfo! id:', id)
-        await axios.get(`https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
+        axios.get(`https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
             .then(res => {
                 setCoinDetails(res.data);
                 console.log('res.data in fetchCoinInfo is:', res.data)
             }).catch(error => console.log('error getting coin details!', error))
 
-    }
+    }, [])
+
+
 
 
     const renderPage = () => { //FIX THIS
@@ -72,15 +88,15 @@ function CoinDetails({ card }) {
         <Container className={classes.detailsPage}>
             {/* <Typography className={classes.pageHeader} variant="h3">Coin Details Page</Typography> */}
             <Typography variant="h4">{coinDetails.name}</Typography>
-            <Typography variant="h2">{coinDetails.symbol.toUpperCase()}</Typography>
+            {/* <Typography variant="h2">{coinDetails.symbol.toUpperCase()}</Typography> */}
             <Typography variant="h5">{coinDetails.categories}</Typography><br />
 
             {/* <Typography variant="h5">Platform: {coinDetails.asset_platform_id}</Typography><br /> */}
-            
-            <Typography variant="h5">{coinDetails.description.en}</Typography><br />
-           
+
+            {/* <Typography variant="h5">{coinDetails.description.en}</Typography><br /> */}
+{/* 
             <Typography variant="h5">Twitter: {coinDetails.links.twitter_screen_name}</Typography><br />
-            <Typography variant="h5">Website: {coinDetails.links.homepage}</Typography><br />
+            <Typography variant="h5">Website: {coinDetails.links.homepage}</Typography><br /> */}
 
 
 

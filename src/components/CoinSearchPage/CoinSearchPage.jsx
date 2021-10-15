@@ -62,13 +62,7 @@ function CoinSearchPage() {
     dispatch({ type: 'FETCH_CRYPTO_LIST' }); //API call for clean top 200 list
   }, [])
 
-  const mouseEnter = () => {
-    setElevation(12)
-  }
-
-  const mouseLeave = () => {
-    setElevation(5)
-  }
+ 
 
 
 
@@ -101,9 +95,7 @@ function CoinSearchPage() {
           {searchArray.map((card) => (
             <Grid style={{ paddingTop: '40px', width: '90%', marginLeft: 'auto', marginRight: 'auto' }} item key={card}>
               <Card 
-              onMouseEnter={mouseEnter}
-              onMouseLeave={mouseLeave}
-              className={classes.card} elevation={elevation} >
+              className={classes.card} elevation={5} >
                 <CardMedia
                   className={classes.cardMedia}
                   component="img"
