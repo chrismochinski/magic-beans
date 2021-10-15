@@ -93,18 +93,6 @@ function CoinDetails({ card }) {
             }).catch(error => console.log('error getting coin details!', error));
     };
 
-
-    // const shortenBigNumber = (value) => {  //important for market cap on details page!
-    //     const suffixes = ["", "K", "M", "B", "T"];
-    //     let suffixNum = Math.floor(("" + value).length / 3);
-    //     let shortValue = parseFloat((suffixNum !== 0 ? (value / Math.pow(1000, suffixNum)) : value).toPrecision(4));
-    //     if (shortValue % 1 !== 0) {
-    //         shortValue = shortValue.toFixed(2);
-    //     }
-    //     return shortValue + suffixes[suffixNum];
-    // }
-
-
     const handleAddCoins = () => { //todo POST ROUTE
 
         console.log(`
@@ -130,10 +118,13 @@ function CoinDetails({ card }) {
     return (
         <Container className={classes.detailsPage}>
             {/* <Typography className={classes.pageHeader} variant="h3">Coin Details Page</Typography> */}
-            <Typography variant="h4">{coinName}</Typography>
-            <Typography variant="h3">{coinSymbol}</Typography>
+            <Typography variant="h3">{coinName}</Typography>
+            <Typography variant="h2"><b>{coinSymbol}</b></Typography>
             <Typography variant="h3">${coinPrice}</Typography>
-            <Typography variant="h4"> {coinPriceChange < 0 ? (<p className="downRed"><KeyboardArrowDownIcon />{coinPriceChange}%</p>) : (<p className="upGreen"> <KeyboardArrowUpIcon /> {coinPriceChange}%</p>)}</Typography>
+            <Typography variant="h5"> {coinPriceChange < 0 ? (<p className="downRed"><KeyboardArrowDownIcon />{coinPriceChange}% today</p>) : (<p className="upGreen"><KeyboardArrowUpIcon />{coinPriceChange}% today</p>)}</Typography>
+
+            <Typography variant="h6">Market Cap: ${(coinMarketCap * 1).toLocaleString()}</Typography>
+            <Typography variant="h6">Vol: {(coinVolume * 1).toLocaleString()}</Typography>
             <Typography variant="h5" style={{ color: 'blue' }}>@{coinTwitter}</Typography>
             <Typography variant="h5" style={{ color: 'red' }}>{coinWebsite}</Typography>
             <Typography variant="h5" style={{ color: 'purple' }}>{coinForum}</Typography>
