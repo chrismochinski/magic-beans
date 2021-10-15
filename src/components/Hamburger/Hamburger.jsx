@@ -29,8 +29,8 @@ const Hamburger = () => { //idea
 
     return (
         <div>
-            <IconButton>
-                <MenuIcon className="hamburgerIcon" onClick={() => setOpen(true)} />
+            <IconButton onClick={() => setOpen(true)}>
+                <MenuIcon className="hamburgerIcon"  />
             </IconButton>
 
             <SwipeableDrawer
@@ -40,8 +40,8 @@ const Hamburger = () => { //idea
                 onClose={() => setOpen(false)} >
 
                 <div className="closeDrawerButton" style={{textAlign: 'center'}}>
-                    <IconButton  style={{marginBottom: '10px', textAlign: 'center'}}>
-                        <ChevronRightIcon className="hamburgerLink"  onClick={() => setOpen(false)} />
+                    <IconButton  style={{marginBottom: '10px', textAlign: 'center'}} onClick={() => setOpen(false)}>
+                        <ChevronRightIcon className="hamburgerLink"   />
                     </IconButton>
                 </div>
                 <Divider />

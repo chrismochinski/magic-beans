@@ -133,8 +133,18 @@ cardMedia: {
   marginRight: 'auto',
   padding: '0',
 
-}
+},
 
+ //-------------used everywhere-------------//
+
+ backButton: {
+   color: 'white',
+   backgroundColor: '#9333F0',
+   fontSize: '20px',
+   marginTop: '15px',
+   padding: '20px',
+ }
+   
 
   }))
 

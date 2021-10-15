@@ -76,7 +76,6 @@ function CoinSearchPage() {
             <TextField
               id="standard-basic"
               variant="standard"
-              size="large"
               type="text"
               required
               value={newSearch}
