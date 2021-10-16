@@ -3,6 +3,38 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+
+//GET
+//UPDATED - pulls only holdings associated with that user's ID
+router.get('/holdings/', (req, res) => {
+  console.log('User ID is:', req.user.id)
+  const getQuery = `SELECT * FROM positions WHERE user_id = $1 ORDER BY "id" ASC;`;
+  pool.query(getQuery, [req.user.id]) 
+    .then( result => {
+      console.log('HERE IS THE QUERY RESPONSE:', result.rows)
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('ERROR: Get all movies', err);
+      res.sendStatus(500)
+    })
+});
+
+// router.get('/holdings', (req, res) => {
+//   const getQuery = 'SELECT * FROM "positions";';
+//   pool.query(getQuery)
+//   .then(result => {
+//     console.log(result.rows);
+//     res.send(result.rows);
+//   }).catch(error => {
+//     console.log('error in server GET', error);
+//     res.sendStatus(500);
+//   })
+// });
+
+
+
+
       //GET
       //API
 router.get('/', (req, res) => {

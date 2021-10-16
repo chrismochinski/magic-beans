@@ -9,7 +9,7 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
-const cryptoListRouter = require('./routes/crypto.router');
+const cryptoListRouter = require('./routes/crypto.router'); //updated
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -24,7 +24,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/crypto', cryptoListRouter); //updated
+app.use('/api/crypto', cryptoListRouter); //updated for full list
 
 // Serve static files
 app.use(express.static('build'));

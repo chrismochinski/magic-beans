@@ -16,6 +16,7 @@ import Paper from "@material-ui/core/Paper";
 
 import { useHistory } from 'react-router-dom';
 import Coin from '../../Coin/Coin';
+import UserHoldings from '../UserHoldings/UserHoldings';
 import axios from 'axios';
 
 
@@ -47,17 +48,16 @@ function UserPage() {
     }
 
 
-    const renderPage = () => { //FIX THIS
+    const renderPage = () => { 
         if (cryptoList) {
             return <div>Loading Crypto List...</div>
         }
     }
 
 
-    //updated HEADED TO ROOT /SAGA/REDUCER NOW...
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_CRYPTO_LIST' }); //fix unmute this!
+        dispatch({ type: 'FETCH_CRYPTO_LIST' }); //FETCHING MASTER LIST
         console.log('user id is:', user)
     }, [])
 
@@ -74,6 +74,10 @@ function UserPage() {
                     <Grid container spacing={2}>
                         <Grid item className={classes.assetHeadline} xs={12} s={10} md={10} lg={10} xl={10}>
                             <Typography variant="h4" style={{ color: '#F70C8A' }}>No Assets Yet</Typography>
+
+                            <UserHoldings />
+
+
                         </Grid>
                         <Grid item className={classes.addButton} xs={12} s={2} md={2} lg={2} xl={2}>
                             <Button

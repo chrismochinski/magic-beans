@@ -11,6 +11,7 @@ import useStyles from '../styles/styles';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import ForumIcon from '@mui/icons-material/Forum';
 import swal from 'sweetalert';
 
 import ConfirmDialogue from '../ConfirmDialogue/ConfirmDialogue';
@@ -168,16 +169,20 @@ function CoinDetails({ card }) {
 
 
         <Container className={classes.detailsPage} >
+
+
             <Typography variant="h4">{coinName}</Typography>
             <Typography variant="h2"><b>{coinSymbol}</b></Typography>
             <Typography variant="h2">${coinPriceToDisplay}</Typography>
             <Typography variant="h4"> {coinPriceChange < 0 ? (<p className="downRed"><KeyboardArrowDownIcon />{coinPriceChange}% today</p>) : (<p className="upGreen"><KeyboardArrowUpIcon />{coinPriceChange}% today</p>)}</Typography>
 
-            <Typography variant="h6">Market Cap: ${(coinMarketCap * 1).toLocaleString()}</Typography>
-            <Typography variant="h6">Vol: {(coinVolume * 1).toLocaleString()}</Typography>
-            <Typography style={{ color: 'blue' }}><TwitterIcon/>@{coinTwitter}</Typography>
+            <Typography variant="h6"><b>Market Cap:</b> ${(coinMarketCap * 1).toLocaleString()}</Typography>
+            <Typography variant="h6"><b>Vol:</b> {(coinVolume * 1).toLocaleString()}</Typography>
             <Typography style={{ color: 'red' }}>{coinWebsite}</Typography>
-            <Typography style={{ color: 'purple' }}>{coinForum}</Typography><br />
+            <Typography><TwitterIcon style={{ color: '#00ACEE' }} />@{coinTwitter}</Typography>
+            {coinForum === null || coinForum === undefined || coinForum == '' ? <Typography></Typography> : <Typography style={{ color: 'purple' }}><ForumIcon style={{ color: '#006400' }} /> {coinForum}</Typography>}
+            {/* //fix why is this ternary not working? */}
+            <br />
             <Typography style={{ overflowWrap: 'anywhere' }}>{coinDescription}</Typography><br />
 
             {/* {JSON.stringify(coinInfo)}  //deletelater json stringify of all details */}
@@ -189,8 +194,8 @@ function CoinDetails({ card }) {
                     <form onSubmit={handleAddCoins}>
                         <Grid container style={{ justifyContent: 'center' }}>
                             <Grid item>
-                                <TextField spacing={0} 
-                                    inputProps={{ style: { fontSize: 20 }}} 
+                                <TextField spacing={0}
+                                    inputProps={{ style: { fontSize: 20 } }}
                                     InputLabelProps={{ style: { fontSize: 20 } }}
                                     style={{ width: '80%' }}
                                     id="standard-basic"
@@ -219,12 +224,12 @@ function CoinDetails({ card }) {
 
             </Grid>
             <div style={{ textAlign: 'center' }}>
-                <Button className={classes.backButton} style={{marginTop: '25px'}} size="medium" variant="contained" onClick={() => navBack()}>Back</Button>
+                <Button className={classes.backButton} style={{ marginTop: '25px' }} size="medium" variant="contained" onClick={() => navBack()}>Back</Button>
             </div>
-
             <Container>
                 <Typography style={{ paddingTop: "40px" }} variant="h4">{renderPage()}</Typography>
             </Container>
+
         </Container>
     );
 }

@@ -6,6 +6,7 @@ import userSaga from './user.saga';
 import sevenDaySaga from './sevenDay.saga';
 import coinDetailsSaga from './coinDetails.saga';
 import addToPositionSaga from './addToPosition.saga';
+import fetchUserHoldingsSaga from './userHoldings.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     userSaga(),
     fetchCryptoListSaga(), //updated to GET all cryptos for home page
     addToPositionSaga(), //updated to POST user position to database
+    fetchUserHoldingsSaga(), //updated to GET from DB
   ]);
 }
