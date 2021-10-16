@@ -144,10 +144,14 @@ input {
 
 .upGreen {
   color: green;
+  margin: 0;
+  padding: 0;
 }
 
 .downRed {
   color: red;
+  margin: 0;
+  padding: 0;
 }
 
 

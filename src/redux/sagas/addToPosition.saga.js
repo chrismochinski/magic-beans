@@ -11,7 +11,7 @@ function* postPosition(action) {
             url: '/api/crypto/',
             data: action.payload
         });                     //FIX NOT SURE WHAT TO DO HERE YET
-        yield put({ type: 'ADD_POSITION_TO_REDUX' }) //UPDATED get user stuff into redux store
+        yield put({ type: 'FETCH_USER_POSITIONS' }) //UPDATED get user stuff into redux store
     } catch (error) {                             
         console.log('error in sending new position (addToPositionSaga):', error)
     }

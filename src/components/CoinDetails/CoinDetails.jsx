@@ -10,7 +10,10 @@ import Button from '@material-ui/core/Button';
 import useStyles from '../styles/styles';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { Stream } from '@mui/icons-material';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import swal from 'sweetalert';
+
+import ConfirmDialogue from '../ConfirmDialogue/ConfirmDialogue';
 
 function CoinDetails({ card }) {
 
@@ -39,6 +42,7 @@ function CoinDetails({ card }) {
 
     //setting state of coin PRICE information (all numbers)
     const [coinPrice, setCoinPrice] = useState();
+    const [coinPriceToDisplay, setCoinPriceToDisplay] = useState();
     const [totalCost, setTotalCost] = useState();
     const [coinMarketCap, setCoinMarketCap] = useState();
     const [coinVolume, setCoinVolume] = useState();
@@ -47,6 +51,7 @@ function CoinDetails({ card }) {
 
     //STUFF TO SEND!
     const [coinAmount, setCoinAmount] = useState();
+    const [testObject, setTestObject] = useState({});
 
 
     const navBack = () => {
@@ -93,6 +98,8 @@ function CoinDetails({ card }) {
         await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${id}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=true`)
             .then(res => {
                 setCoinPrice(res.data[id].usd.toFixed(2));
+                setCoinPriceToDisplay(res.data[id].usd.toLocaleString(undefined,
+                    { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 }))
                 setCoinMarketCap(res.data[id].usd_market_cap.toFixed(2));
                 setCoinVolume(res.data[id].usd_24h_vol.toFixed(2));
                 setCoinPriceChange(res.data[id].usd_24h_change.toFixed(2));
@@ -103,6 +110,8 @@ function CoinDetails({ card }) {
     };
 
     const handleAddCoins = () => { //todo POST ROUTE
+        setTestObject(coinAmount)
+        console.log('TEST OBJECT IS:', testObject);
         setTotalCost(coinAmount * coinPrice);
         console.log(`
         User wants to add ${coinAmount} 
@@ -127,18 +136,24 @@ function CoinDetails({ card }) {
         console.log('testing object to send:', objectToSend)
     }
 
-            //POST----------------//SUCCESS
-    const readyToDispatch = (newPosition) => { 
-        console.log('SENDING TO DB:', newPosition) 
-        dispatch({ type: 'ADD_POSITION_TO_DB', payload: newPosition}); 
+    //POST-----------//SUCCESS
+    const readyToDispatch = (newPosition) => {
+        console.log('SENDING TO DB:', newPosition)
+        swal({
+            title: "Nice!",
+            text: `You added ${newPosition.coins_held} ${newPosition.name}. That's a total value of $${newPosition.total_cost.toLocaleString(undefined,
+                { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 })}!`,
+            icon: "success",
+        });
+        dispatch({ type: 'ADD_POSITION_TO_DB', payload: newPosition });
+        returnHome(); //updated - send back to home base
+    }
+
+    const returnHome = () => {
+        history.push('/user');
     }
 
 
-
-
-
-
-    // console.log('object to send is:', objectToSend)
 
     const renderPage = () => { //FIX Shows a loading dialogue if loading (CHANGE TO A COOL ANIMATION)
         if (isLoading) {
@@ -148,46 +163,63 @@ function CoinDetails({ card }) {
 
 
     return (
+
+
+
+
         <Container className={classes.detailsPage} >
             <Typography variant="h4">{coinName}</Typography>
-            <Typography variant="h3"><b>{coinSymbol}</b></Typography>
-            <Typography variant="h2">${coinPrice}</Typography>
-            <Typography variant="h5"> {coinPriceChange < 0 ? (<p className="downRed"><KeyboardArrowDownIcon />{coinPriceChange}% today</p>) : (<p className="upGreen"><KeyboardArrowUpIcon />{coinPriceChange}% today</p>)}</Typography>
+            <Typography variant="h2"><b>{coinSymbol}</b></Typography>
+            <Typography variant="h2">${coinPriceToDisplay}</Typography>
+            <Typography variant="h4"> {coinPriceChange < 0 ? (<p className="downRed"><KeyboardArrowDownIcon />{coinPriceChange}% today</p>) : (<p className="upGreen"><KeyboardArrowUpIcon />{coinPriceChange}% today</p>)}</Typography>
 
             <Typography variant="h6">Market Cap: ${(coinMarketCap * 1).toLocaleString()}</Typography>
             <Typography variant="h6">Vol: {(coinVolume * 1).toLocaleString()}</Typography>
-            <Typography variant="h5" style={{ color: 'blue' }}>@{coinTwitter}</Typography>
-            <Typography variant="h5" style={{ color: 'red' }}>{coinWebsite}</Typography>
-            <Typography variant="h5" style={{ color: 'purple' }}>{coinForum}</Typography>
-            <Typography variant="h6" style={{ overflowWrap: 'anywhere' }}>{coinDescription}</Typography><br />
+            <Typography style={{ color: 'blue' }}><TwitterIcon/>@{coinTwitter}</Typography>
+            <Typography style={{ color: 'red' }}>{coinWebsite}</Typography>
+            <Typography style={{ color: 'purple' }}>{coinForum}</Typography><br />
+            <Typography style={{ overflowWrap: 'anywhere' }}>{coinDescription}</Typography><br />
 
             {/* {JSON.stringify(coinInfo)}  //deletelater json stringify of all details */}
             {/* {JSON.stringify(chartData)}  // deletelater json stringify of chart data */}
             <Grid container justifyContent="center" >
 
 
-                <Container maxWidth="sm">
-                    <form onSubmit={handleAddCoins} style={{ textAlign: 'center' }}>
-                        <TextField style={{ marginRight: '5px' }}
-                            id="standard-basic"
-                            variant="standard"
-                            type="number"
-                            required
-                            value={coinAmount}
-                            className="coinInput"
-                            label="Amount To Add"
-                            onChange={(event) => setCoinAmount(event.target.value)} //important setting amount user is adding
-                        />
-
-                        <Button style={{ marginLeft: '5px' }} variant="contained" size="medium" type="submit" className={classes.searchButton}>Add</Button>
-
+                <Container>
+                    <form onSubmit={handleAddCoins}>
+                        <Grid container style={{ justifyContent: 'center' }}>
+                            <Grid item>
+                                <TextField spacing={0} 
+                                    inputProps={{ style: { fontSize: 20 }}} 
+                                    InputLabelProps={{ style: { fontSize: 20 } }}
+                                    style={{ width: '80%' }}
+                                    id="standard-basic"
+                                    variant="standard"
+                                    type="number"
+                                    required
+                                    value={coinAmount}
+                                    className="coinInput"
+                                    label="Amount To Add"
+                                    onChange={(event) => setCoinAmount(event.target.value)} //important setting amount user is adding
+                                />
+                            </Grid>
+                            <Grid item>
+                                <ConfirmDialogue
+                                    handleAddCoins={handleAddCoins}
+                                    coinAmount={coinAmount}
+                                    coinName={coinName}
+                                    coinPriceToDisplay={coinPriceToDisplay}
+                                    id={id} />
+                                {/* <Button style={{ marginLeft: '5px' }} variant="contained" size="medium" type="submit" className={classes.searchButton}>Add</Button> */}
+                            </Grid>
+                        </Grid>
                     </form>
                 </Container>
 
 
             </Grid>
             <div style={{ textAlign: 'center' }}>
-                <Button className={classes.backButton} size="large" variant="contained" onClick={() => navBack()}>Back</Button>
+                <Button className={classes.backButton} style={{marginTop: '25px'}} size="medium" variant="contained" onClick={() => navBack()}>Back</Button>
             </div>
 
             <Container>

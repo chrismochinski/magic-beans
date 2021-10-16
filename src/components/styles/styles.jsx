@@ -135,14 +135,48 @@ cardMedia: {
 
 },
 
+fieldAndButton: {
+  align: 'left',
+},
+
+ //-------------confirm modal-------------//
+
+
+addPositionButton: {
+  marginTop: '15px',
+  fontSize: '20px',
+  fontWeight: 'bolder',
+  backgroundColor: '#5C9827',
+  color: 'white',
+},
+
+dialogueLogo: {
+  width: '150px',
+  justify: 'center',
+  margin: 'auto',
+  paddingTop: '23px'
+},
+
+// dialogueButtons: {
+//   marginTop: '15px',
+//   fontSize: '20px',
+//   fontWeight: 'bolder',
+//   backgroundColor: '#5C9827',
+//   color: 'white',
+// },
+
  //-------------used everywhere-------------//
 
  backButton: {
    color: 'white',
    backgroundColor: '#9333F0',
    fontSize: '20px',
-   marginTop: '15px',
-   padding: '20px',
+   marginTop: '20px',
+   padding: '10px',
+ },
+
+ textField: {
+   fontSize: 50,
  }
    
 
