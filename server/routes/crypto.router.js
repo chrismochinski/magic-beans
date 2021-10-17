@@ -11,13 +11,7 @@ router.get('/holdings/', (req, res) => {
   const getQuery = `SELECT * FROM positions WHERE user_id = $1 ORDER BY "id" ASC;`;
   pool.query(getQuery, [req.user.id]) 
     .then( result => {
-      console.log('HERE IS THE QUERY RESPONSE:', result.rows[0].coins_held)
-      let holdings = result.rows
-      for(let holding of holdings){
-        console.log(holding.coins_held);
-      }
-      
-      res.send(result.rows);
+        res.send(result.rows);
     })
     .catch(err => {
       console.log('ERROR: Get user holdings:', err);
@@ -60,20 +54,26 @@ router.post('/', (req, res) => {
       })
 })
 
+      //DELETE
+router.delete('/holdings/', (req, res) => {
+  console.log('id of position to delete:', req.body.id, req.body.user_id);
 
-// //deletelater
-// router.get('/chart/:id', (req, res) => {
-//   console.log('req.params.search is:', req.params.id);
-//   axios.get(`https://api.coingecko.com/api/v3/coins/${req.params.id}/market_chart?vs_currency=usd&days=7&interval=hourly`)
-//       .then(response => {
-//           console.log('crypto chart response data is:', response.data)
-//           res.send(response.data);
-//       }).catch(error => {
-//         console.log('error in crypto router:', error)
-//           res.sendStatus(500);
-//       });
-// });
-// //deletelater
+  if(req.body.user_id === req.user.id) {
+  const deleteQuery = `DELETE FROM "positions" WHERE "id" = $1;`;
+  pool.query(deleteQuery, [req.body.id])
+  .then(result => {
+    res.sendStatus(201);
+    console.log('success! Deleted one position')
+  }).catch(error => {
+    console.log('error in DELETE at crypto.router.js:', error);
+    res.sendStatus(500);
+    
+  });} else {
+    res.sendStatus(403)
+  }
+});
+
+
 
 module.exports = router;
 

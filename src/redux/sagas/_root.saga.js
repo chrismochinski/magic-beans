@@ -1,12 +1,13 @@
 import { all } from 'redux-saga/effects';
 import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
-import fetchCryptoListSaga from './crypto.saga'; //updated
+import fetchCryptoListSaga from './crypto.saga'; // get route //api
 import userSaga from './user.saga';
-import sevenDaySaga from './sevenDay.saga';
-import coinDetailsSaga from './coinDetails.saga';
-import addToPositionSaga from './addToPosition.saga';
+import sevenDaySaga from './sevenDay.saga'; //deletelater
+import coinDetailsSaga from './coinDetails.saga'; //deletelater
+import addToPositionSaga from './addToPosition.saga'; //post route
 import fetchUserHoldingsSaga from './userHoldings.saga';
+import deleteHoldingSaga from './delete.saga'; //delete route
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -20,8 +21,9 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered 
     registrationSaga(),
     userSaga(),
-    fetchCryptoListSaga(), //updated to GET all cryptos for home page
-    addToPositionSaga(), //updated to POST user position to database
-    fetchUserHoldingsSaga(), //updated to GET from DB
+    fetchCryptoListSaga(), // GET //API
+    addToPositionSaga(), // POST user position to database
+    fetchUserHoldingsSaga(), // GET from DB
+    deleteHoldingSaga(), // DELETE route
   ]);
 }

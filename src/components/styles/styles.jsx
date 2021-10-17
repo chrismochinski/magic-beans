@@ -174,7 +174,15 @@ const useStyles = makeStyles(() => ({
     fontFamily: 'Poppins',
     fontSize: '40px',
 
-  }
+  },
+
+  holdingsDeleteButton: {
+
+  },
+
+  holdingsModifyButton: {
+
+  },
 
 
 }))

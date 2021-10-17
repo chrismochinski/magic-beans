@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import useStyles from '../styles/styles'
 import { useDispatch, useSelector } from 'react-redux'
+import { useHistory } from 'react-router';
+import { Typography, Container, Grid } from '@material-ui/core/';
+import IconButton from '@mui/material/IconButton';
 
-import { Typography, Container, Grid, Button } from '@material-ui/core/';
 import './UserHoldings.css';
+
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import ImportExportIcon from '@mui/icons-material/ImportExport';
+
+import Swal from 'sweetalert2'; //sweetalert 2 import
 
 
 const UserHoldings = () => {
 
+    const history = useHistory()
     const dispatch = useDispatch();
     const store = useSelector(store => store);
     const holdings = useSelector(store => store.holdingsReducer); //everything the user has in his database
@@ -20,6 +28,7 @@ const UserHoldings = () => {
 
     useEffect(() => {
         setIsLoading(true)
+        setUserHoldingsArray(holdings)
         dispatch({ type: 'FETCH_USER_HOLDINGS', payload: store.user.id });
     }, [])
 
@@ -46,6 +55,46 @@ const UserHoldings = () => {
         return value;
     }
 
+    const deleteWarn = (id) => {
+        console.log('using swal to warn before delete');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "This position will be removed.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yep!',
+            cancelButtonText: 'On Second Thought...'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                handleDeletePress(id);
+                Swal.fire(
+                    'Deleted!',
+                    'Position Removed.',
+                    'success'
+                )
+            }
+        })
+    }
+
+    const handleDeletePress = (id) => {
+        console.log('handleDeletePress pushed! id is:', id, 'and User id is:', store.user.id);
+        dispatch({ 
+            type: 'DELETE_HOLDING', 
+            payload: {id: id, user_id: store.user.id} 
+        });
+        // setTimeout(() => {
+        //     dispatch({type: 'FETCH_USER_HOLDINGS'})
+        // }, 2000);
+      
+
+    }
+
+    const handleModifyPress = () => {
+        console.log('handleModifyPress pushed!')
+    }
+
     
 
 
@@ -59,7 +108,9 @@ const UserHoldings = () => {
                         return (
                             
                                 <li key={holding.id}>
-                                    <Typography className='userAssetTypography' >{holding.symbol} - {fixHeldDecimals(holding.coins_held)} - {getCurrentCryptoValue(cryptoList, holding.coin_id, holding.coins_held)}</Typography>
+                                    <Typography style={{fontSize: '20px', fontWeight: 'bold'}} className='userAssetTypography' >{holding.symbol} - {fixHeldDecimals(holding.coins_held)} - ${getCurrentCryptoValue(cryptoList, holding.coin_id, holding.coins_held)}</Typography>
+                                    <IconButton variant="contained" size="small" className={classes.holdingsDeleteButton} onClick={() => deleteWarn(holding.id)}><DeleteForeverIcon style={{color: 'red', transform: 'scale(1.3)'}}/></IconButton>
+                                    <IconButton variant="contained" size="small" className={classes.holdingsModifyButton} onClick={() => handleModifyPress()}><ImportExportIcon style={{color: 'yellow', transform: 'scale(1.3)' }} /></IconButton>
                                 </li>
                          
                         )
