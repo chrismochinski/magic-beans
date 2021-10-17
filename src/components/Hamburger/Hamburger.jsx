@@ -10,6 +10,7 @@ import React, { useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import { SwipeableDrawer, IconButton, Container, Divider } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import InfoIcon from '@mui/icons-material/Info';
 
 import ListItem from '@mui/material/ListItem';
 
@@ -49,6 +50,11 @@ const Hamburger = () => { //idea
                     <ListItem onClick={() => setOpen(false)} >
                         <Link to="/user">
                             <HomeIcon className="hamburgerLink"/>
+                        </Link >
+                    </ListItem>
+                    <ListItem onClick={() => setOpen(false)} >
+                        <Link to="/about">
+                            <InfoIcon className="hamburgerLink"/>
                         </Link >
                     </ListItem>
                     <ListItem onClick={() => setOpen(false)} >

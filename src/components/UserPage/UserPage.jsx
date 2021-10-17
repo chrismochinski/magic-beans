@@ -114,7 +114,8 @@ function UserPage() {
                                         image={coin.image}
                                         name={coin.name}
                                         symbol={coin.symbol}
-                                        price={coin.current_price.toLocaleString()}
+                                        price={coin.current_price.toLocaleString(undefined,
+                                            { 'minimumFractionDigits': 0, 'maximumFractionDigits': 2 })}
                                         marketCap={shortenBigNumber(coin.market_cap)}
                                         priceChange={coin.price_change_percentage_24h}
                                     />

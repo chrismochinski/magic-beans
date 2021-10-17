@@ -22,6 +22,7 @@ const UserHoldings = () => {
     const cryptoList = useSelector(store => store.cryptoListReducer); //full crypto list
 
     const [userHoldingsArray, setUserHoldingsArray] = useState([]);
+    const [valueToDisplay, setValueToDisplay] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const classes = useStyles();
 
@@ -35,32 +36,37 @@ const UserHoldings = () => {
 
     //function to get total value per coin
     const getCurrentCryptoValue = (data, id, count) => {
+        let finalValue;
         let target = data.filter(function (data) {
             return (data['id'] == id);
         });
         if (target.length > 0) {
-            return (count * target[0]['current_price']).toFixed(2);
+            finalValue = (count * target[0]['current_price']).toLocaleString(undefined,
+                { 'minimumFractionDigits': 0, 'maximumFractionDigits': 2 });
         } else {
-            return 'N/A';
+            finalValue = 'N/A';
         }
+        return finalValue;
     }
 
     //function to clean up held coins decimal chaos
     const fixHeldDecimals = (coinAmount) => {
         let value = Number(coinAmount);
         let res = coinAmount.split('.');
-        if(res.lentgh == 1 || res[1].length < 3) {
+        if(res.length == 1 || res[1].length < 3) {
             value = value.toFixed(2)
         }
-        return value;
+        return value.toLocaleString(undefined,
+            { 'minimumFractionDigits': 0, 'maximumFractionDigits': 2 });
     }
 
+    //on delete button press, we go here
     const deleteWarn = (id) => {
         console.log('using swal to warn before delete');
         Swal.fire({
             title: 'Are you sure?',
             text: "This position will be removed.",
-            icon: 'warning',
+            // icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',

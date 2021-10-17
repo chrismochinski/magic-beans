@@ -19,7 +19,9 @@ function Coin({ id, name, image, symbol, price, marketCap, priceChange, shortenB
         history.push(`/coin-details/${id}`) //send to coin-details page with coin ID
     }
 
- 
+    const fixPrice = (value) => {
+        return value;
+    }
 
     return (
 
