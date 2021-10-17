@@ -2,184 +2,181 @@ import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
 
-//-------------Disclaimer.jsx-------------//
+  //-------------Disclaimer.jsx-------------//
 
-    disclaimer: {
-      textAlign: 'center',
-      padding: '40px',
-    },
-    Button: {
-        marginTop: '40px',
-        paddingTop: '40px'
-    },
-    
- //-------------Login / Register-------------//
+  disclaimer: {
+    textAlign: 'center',
+    padding: '40px',
+  },
+  Button: {
+    marginTop: '40px',
+    paddingTop: '40px'
+  },
 
-    logo: {
-        width: '70%',
-        marginBottom: '0',
-    },
-    loginForm: {
-      textAlign: 'center', 
-    },
-    loginButton: {
-      marginTop: '15px',
-      fontSize: '20px',
-      fontWeight: 'bolder',
-      backgroundColor: '#5C9827',
-      color: 'white',
-      
-    },
-    loginTextField: {
-      width: '25ch', 
-      marginBottom: '5px'
-    },
+  //-------------Login / Register-------------//
 
- //-------------imported from spike-------------//
+  logo: {
+    width: '70%',
+    marginBottom: '0',
+  },
+  loginForm: {
+    textAlign: 'center',
+  },
+  loginButton: {
+    marginTop: '15px',
+    fontSize: '20px',
+    fontWeight: 'bolder',
+    backgroundColor: '#5C9827',
+    color: 'white',
 
- tableMain: {
-  margin: '0',
-  padding: '0',
- },
+  },
+  loginTextField: {
+    width: '25ch',
+    marginBottom: '5px'
+  },
 
-    assetHeader: {
-      padding: '30px',
-      margin: '20px',
-      backgroundColor: 'paper',
+  //-------------imported from spike-------------//
+
+  //removes margins for main table and user holdings list
+  tableMain: {
+    margin: '0',
+    padding: '0',
   },
 
   tableRow: {
-      cursor: 'pointer',
-      paddingTop: '50px',
-      textAlign: 'center',
+    cursor: 'pointer',
+    paddingTop: '50px',
+    textAlign: 'center',
   },
 
-  addButton: {
-    textAlign: 'right',
-},
 
-//size of icon in main list table
-coinIcon: { 
-  width: '40px',
-},
+  //size of icon in main list table
+  coinIcon: {
+    width: '40px',
+  },
 
-assetHeader: {
-  padding: '30px',
-  margin: '20px',
-  backgroundColor: 'paper',
-},
-
-tableCell: {
-  textAlign: 'center',
-  padding: '0',
-  fontSize: '16px',
-},
-
-tableHeader: {
-  fontWeight: 'bold',
-  fontSize: '20px',
-  textAlign: 'center',
-  paddingTop: '4px',
-  paddingBottom: '4px',
-  fontFamily: 'Cabin Condensed', 
-},
-
-tableBody: {
-  //fix poking through above head - fix
-},
-
- //-------------SearchPage > CoinSearchPage-------------//
+  assetHeader: {
+    padding: '10px',
+    margin: '20px',
+    backgroundColor: 'paper',
 
 
- pageHeader: {
-  fontFamily: 'Poppins', 
-  padding: '10px',
-  textAlign: 'center',
-},
+  },
 
-mainSearchPage: {
-  padding: '20px',
-  textAlign: 'center',
-  paddingTop: '20px',
-  paddingBottom: '200px',
+  tableCell: {
+    textAlign: 'center',
+    padding: '0',
+    fontSize: '16px',
+  },
 
-  margin: 'auto',
-},
+  tableHeader: {
+    fontWeight: 'bold',
+    fontSize: '20px',
+    textAlign: 'center',
+    paddingTop: '4px',
+    paddingBottom: '4px',
+    fontFamily: 'Cabin Condensed',
+  },
 
+  tableBody: {
+    //fix poking through above head - fix
+  },
 
-floatLeft: {
-  width: '100%',
-  margin: 'auto',
-},
-
-floatRight: {
-  width: '100%',
-  margin: 'auto',
-},
+  //-------------SearchPage > CoinSearchPage-------------//
 
 
-searchButton: {
-  marginTop: '15px',
-  fontSize: '20px',
-  fontWeight: 'bolder',
-  backgroundColor: '#5C9827',
-  color: 'white',
-  
-},
+  pageHeader: {
+    fontFamily: 'Poppins',
+    padding: '10px',
+    marginBottom: '10px',
+    textAlign: 'center',
+  },
 
-cardMedia: {
-  width: '70%',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  padding: '0',
+  mainSearchPage: {
+    padding: '20px',
+    textAlign: 'center',
+    paddingTop: '20px',
+    paddingBottom: '200px',
 
-},
-
-fieldAndButton: {
-  align: 'left',
-},
-
- //-------------confirm modal-------------//
+    margin: 'auto',
+  },
 
 
-addPositionButton: {
-  marginTop: '15px',
-  fontSize: '20px',
-  fontWeight: 'bolder',
-  backgroundColor: '#5C9827',
-  color: 'white',
-},
+  floatLeft: {
+    width: '100%',
+    margin: 'auto',
+  },
 
-dialogueLogo: {
-  width: '150px',
-  justify: 'center',
-  margin: 'auto',
-  paddingTop: '23px'
-},
+  floatRight: {
+    width: '100%',
+    margin: 'auto',
+  },
 
-// dialogueButtons: {
-//   marginTop: '15px',
-//   fontSize: '20px',
-//   fontWeight: 'bolder',
-//   backgroundColor: '#5C9827',
-//   color: 'white',
-// },
 
- //-------------used everywhere-------------//
+  searchButton: {
+    marginTop: '15px',
+    fontSize: '20px',
+    fontWeight: 'bolder',
+    backgroundColor: '#5C9827',
+    color: 'white',
 
- backButton: {
-   color: 'white',
-   backgroundColor: '#9333F0',
-   fontSize: '20px',
-   marginTop: '20px',
-   padding: '10px',
- },
+  },
 
- textField: {
-   fontSize: 50,
- }
-   
+  cardMedia: {
+    width: '70%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    padding: '0',
 
-  }))
+  },
+
+  fieldAndButton: {
+    align: 'left',
+  },
+
+  //-------------confirm modal-------------//
+
+
+  addPositionButton: {
+    marginTop: '15px',
+    fontSize: '20px',
+    fontWeight: 'bolder',
+    backgroundColor: '#5C9827',
+    color: 'white',
+  },
+
+  dialogueLogo: {
+    width: '150px',
+    justify: 'center',
+    margin: 'auto',
+    paddingTop: '23px'
+  },
+
+
+
+  //-------------used everywhere-------------//
+
+  backButton: {
+    color: 'white',
+    backgroundColor: '#9333F0',
+    fontSize: '20px',
+    marginTop: '20px',
+    padding: '10px',
+  },
+
+  textField: {
+    fontSize: 50,
+  },
+
+  //-------------user holdings list-------------//
+
+  assetHeadline: {
+    fontFamily: 'Poppins',
+    fontSize: '40px',
+
+  }
+
+
+}))
 
 export default useStyles;

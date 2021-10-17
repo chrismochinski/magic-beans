@@ -49,7 +49,7 @@ function UserPage() {
 
 
     const renderPage = () => { 
-        if (cryptoList) {
+        if (cryptoList.length === 0) {
             return <div>Loading Crypto List...</div>
         }
     }
@@ -65,15 +65,17 @@ function UserPage() {
 
     return (
 
+    
+
         <div className="userContainer">
             <Typography variant="h4" style={{paddingTop: '0'}} className={classes.pageHeader}>Welcome, {user.username}!</Typography>
             {/* <p>Your ID is: {user.id}</p> */}
 
             <Container className={classes.tableMain}>
-                <Paper className={classes.assetHeader} elevation={10}>
-                    <Grid container spacing={2}>
-                        <Grid item className={classes.assetHeadline} xs={12} s={10} md={10} lg={10} xl={10}>
-                            <Typography variant="h4" style={{ color: '#F70C8A' }}>No Assets Yet</Typography>
+                <Paper className={classes.assetHeader} elevation={4}>
+                    <Grid container className="userPositionBlock">
+                        <Grid item>
+                           
 
                             <UserHoldings />
 
@@ -84,7 +86,7 @@ function UserPage() {
                                 variant="outlined"
                                 size="small"
                                 onClick={handleAddClick}
-                                style={{ backgroundColor: '#3f51b5', color: 'white' }}><b>Add</b></Button>
+                                className={classes.addPositionButton}><b>Add</b></Button>
                         </Grid>
                     </Grid>
                 </Paper>

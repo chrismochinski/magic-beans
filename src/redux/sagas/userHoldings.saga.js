@@ -23,8 +23,8 @@ function* fetchUserHoldings(action) {
             url: '/api/crypto/holdings',
             data: action.payload
         });                  
-        console.log('full user holdings repsonse is:', holdings)
-        yield put({ type: 'SET_USER_HOLDINGS', payload: holdings}); 
+        console.log('full user holdings repsonse is:', holdings.data)
+        yield put({ type: 'SET_USER_HOLDINGS', payload: holdings.data}); 
     } catch (error) {                             
         console.log('error GETTING UER HOLDINGZZZZ:', error)
     }

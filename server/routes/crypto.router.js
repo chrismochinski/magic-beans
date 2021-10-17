@@ -11,34 +11,24 @@ router.get('/holdings/', (req, res) => {
   const getQuery = `SELECT * FROM positions WHERE user_id = $1 ORDER BY "id" ASC;`;
   pool.query(getQuery, [req.user.id]) 
     .then( result => {
-      console.log('HERE IS THE QUERY RESPONSE:', result.rows)
+      console.log('HERE IS THE QUERY RESPONSE:', result.rows[0].coins_held)
+      let holdings = result.rows
+      for(let holding of holdings){
+        console.log(holding.coins_held);
+      }
+      
       res.send(result.rows);
     })
     .catch(err => {
-      console.log('ERROR: Get all movies', err);
+      console.log('ERROR: Get user holdings:', err);
       res.sendStatus(500)
     })
 });
 
-// router.get('/holdings', (req, res) => {
-//   const getQuery = 'SELECT * FROM "positions";';
-//   pool.query(getQuery)
-//   .then(result => {
-//     console.log(result.rows);
-//     res.send(result.rows);
-//   }).catch(error => {
-//     console.log('error in server GET', error);
-//     res.sendStatus(500);
-//   })
-// });
-
-
-
-
       //GET
       //API
 router.get('/', (req, res) => {
-  axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=200&page=1&sparkline=false')
+  axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false')
     .then(response => {
       res.send(response.data);
     }).catch(error => {
@@ -49,7 +39,7 @@ router.get('/', (req, res) => {
 
       //POST
 router.post('/', (req, res) => {
-  console.log('req.body coming into POST end of /crypto router:', req.body)
+  // console.log('req.body coming into POST end of /crypto router:', req.body)
   const queryText = `INSERT INTO "positions" 
   ("user_id", "coin_id", "symbol", "name", 
   "coins_held", "total_cost", "per_coin_val")

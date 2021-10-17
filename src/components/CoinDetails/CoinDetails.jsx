@@ -180,23 +180,19 @@ function CoinDetails({ card }) {
             <Typography variant="h6"><b>Vol:</b> {(coinVolume * 1).toLocaleString()}</Typography>
             <Typography style={{ color: 'red' }}>{coinWebsite}</Typography>
             <Typography><TwitterIcon style={{ color: '#00ACEE' }} />@{coinTwitter}</Typography>
-            {coinForum === null || coinForum === undefined || coinForum == '' ? <Typography></Typography> : <Typography style={{ color: 'purple' }}><ForumIcon style={{ color: '#006400' }} /> {coinForum}</Typography>}
+            {coinForum[0] === '' ? <Typography></Typography> : <Typography style={{ color: 'purple' }}><ForumIcon style={{ color: '#006400' }} /> {coinForum}</Typography>}
             {/* //fix why is this ternary not working? */}
             <br />
             <Typography style={{ overflowWrap: 'anywhere' }}>{coinDescription}</Typography><br />
-
-            {/* {JSON.stringify(coinInfo)}  //deletelater json stringify of all details */}
-            {/* {JSON.stringify(chartData)}  // deletelater json stringify of chart data */}
+           
             <Grid container justifyContent="center" >
-
-
                 <Container>
                     <form onSubmit={handleAddCoins}>
                         <Grid container style={{ justifyContent: 'center' }}>
                             <Grid item>
                                 <TextField spacing={0}
                                     inputProps={{ style: { fontSize: 20 } }}
-                                    InputLabelProps={{ style: { fontSize: 20 } }}
+                                    InputLabelProps={{ style: { fontSize: 22 } }}
                                     style={{ width: '80%' }}
                                     id="standard-basic"
                                     variant="standard"
@@ -215,7 +211,6 @@ function CoinDetails({ card }) {
                                     coinName={coinName}
                                     coinPriceToDisplay={coinPriceToDisplay}
                                     id={id} />
-                                {/* <Button style={{ marginLeft: '5px' }} variant="contained" size="medium" type="submit" className={classes.searchButton}>Add</Button> */}
                             </Grid>
                         </Grid>
                     </form>
