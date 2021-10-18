@@ -64,19 +64,20 @@ function UserPage() {
     
 
         <div className="userContainer">
-            <Typography variant="h4" style={{paddingTop: '0'}} className={classes.pageHeader}>Welcome, {user.username}!</Typography>
+            <Typography variant="h4" style={{paddingTop: '0'}} className={classes.pageHeader}>Hi {user.username}!</Typography>
             {/* <p>Your ID is: {user.id}</p> */}
 
             <Container className={classes.tableMain}>
                 <Paper className={classes.assetHeader} elevation={4}>
+                    <Typography variant="h5" style={{margin: '10px', paddingTop: '5px', fontSize: '30px', fontFamily: 'Poppins', color: '#216091'}}>Your Portfolio</Typography>
                       
                            
                             <UserHoldings /> 
 
                         
                 </Paper>
-            <Typography variant="h3" style={{fontFamily: 'Righteous', margin: '10px', color: '#3175a9' }}><b>Explore:</b></Typography>
-
+            <Typography variant="h3" style={{fontFamily: 'Righteous', marginTop: '10px', color: '#3175a9' }}><b>Explore:</b></Typography>
+            <Typography style={{fontFamily: 'Poppins', marginBottom: '8px', marginTop: '4px', fontSize: '20px' }}><b>the top 250!</b></Typography>
                 <TableContainer sx={{ maxHeight: 470 }}>
                     <Table className="center" stickyHeader aria-label="sticky table">
                         <TableHead >

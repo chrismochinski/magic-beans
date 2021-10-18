@@ -162,8 +162,8 @@ const UserHoldings = () => {
                                                 <TableCell style={{padding: '3px'}} className={classes.holdingSymbol}>{holding.symbol}</TableCell> 
                                                 <TableCell style={{padding: '3px'}} className={classes.holdingAmount}>{fixHeldDecimals(holding.coins_held)}</TableCell> 
                                                 <TableCell style={{padding: '3px'}} className={classes.holdingVal}>${getCurrentCryptoValue(cryptoList, holding.coin_id, holding.coins_held)}</TableCell> 
-                                                <TableCell style={{padding: '3px'}} className={classes.holdingDelete}><IconButton variant="contained" size="small" className={classes.holdingsDeleteButton} onClick={() => deleteWarn(holding.id)}><DeleteForeverIcon style={{ color: 'red', transform: 'scale(1.6)', paddingLeft: '15px' }} /></IconButton></TableCell> 
-                                                <TableCell style={{padding: '3px'}} className={classes.holdingModify}><IconButton variant="contained" size="small" className={classes.holdingsModifyButton} onClick={() => handleModifyPress()}><ImportExportIcon style={{ color: 'yellow', transform: 'scale(1.6)' }} /></IconButton></TableCell> 
+                                                <TableCell style={{padding: '3px'}} className={classes.holdingDelete}><IconButton variant="contained" size="small" className={classes.holdingsDeleteButton} onClick={() => deleteWarn(holding.id)}><DeleteForeverIcon style={{ color: '#9A0D01', transform: 'scale(1.6)', paddingLeft: '15px' }} /></IconButton></TableCell> 
+                                                <TableCell style={{padding: '3px'}} className={classes.holdingModify}><IconButton variant="contained" size="small" className={classes.holdingsModifyButton} onClick={() => handleModifyPress()}><ImportExportIcon style={{ color: '#D4C215', transform: 'scale(1.6)' }} /></IconButton></TableCell> 
                                             </TableRow>
                                         )
                                     })}

@@ -39,7 +39,7 @@ const useStyles = makeStyles(() => ({
 
     
   pageHeader: {
-    fontFamily: 'Poppins',
+    fontFamily: 'Josefin Sans',
     padding: '10px',
     marginBottom: '10px',
     fontSize: '36px',
@@ -189,9 +189,9 @@ const useStyles = makeStyles(() => ({
   },
 
   userTableHeaderCell: {
-    fontFamily: 'Poppins',
+    fontFamily: 'Cabin Condensed',
     textAlign: 'center',
-    fontSize: '18px',
+    fontSize: '20px',
     padding: 0,
     margin: 0,
   },
