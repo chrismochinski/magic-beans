@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Typography, Container, Grid, TextField, GridItem } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
 import { useParams } from 'react-router';
+import { useHistory } from 'react-router-dom';
+import ConfirmDialogue from '../ConfirmDialogue/ConfirmDialogue';
 
-import Button from '@material-ui/core/Button';
-import useStyles from '../styles/styles';
+import { Typography, Container, Grid, TextField, Button } from '@material-ui/core';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import ForumIcon from '@mui/icons-material/Forum';
-import swal from 'sweetalert';
+import HomeIcon from '@mui/icons-material/Home';
+import SearchIcon from '@mui/icons-material/Search';
 
-import ConfirmDialogue from '../ConfirmDialogue/ConfirmDialogue';
+
+import useStyles from '../styles/styles';
+import swal from 'sweetalert';
 
 function CoinDetails({ card }) {
 
@@ -54,8 +55,7 @@ function CoinDetails({ card }) {
     const [coinAmount, setCoinAmount] = useState();
     const [testObject, setTestObject] = useState({});
 
-
-    const navBack = () => {
+    const navSearch = () => {
         history.push('/search')
     }
 
@@ -63,7 +63,8 @@ function CoinDetails({ card }) {
     //API
     //todo needs own page = chartPage
     useEffect(() => {
-        setIsLoading(true) //IMPORTANT BEGIN LOADING
+        // window.scrollTo(0,0) //FIX SCROLL TO 0 - PUT BACK AFTER TESTING
+        setIsLoading(true) // begin loading
         console.log('user ID is:', user)
         dispatch({ type: 'FETCH_COIN_LIST' })
         axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=7&interval=hourly`)
@@ -105,8 +106,7 @@ function CoinDetails({ card }) {
                 setCoinVolume(res.data[id].usd_24h_vol.toFixed(2));
                 setCoinPriceChange(res.data[id].usd_24h_change.toFixed(2));
                 setCoinLastUpdated(res.data[id].last_updated_at);
-                setIsLoading(false); //IMPORTANT END LOADING;
-                // console.log('COIN DATA:', res.data)
+                setIsLoading(false); // end loading
             }).catch(error => console.log('error getting coin details!', error));
     };
 
@@ -137,7 +137,7 @@ function CoinDetails({ card }) {
         console.log('testing object to send:', objectToSend)
     }
 
-    //POST-----------//SUCCESS
+    //POST
     const readyToDispatch = (newPosition) => {
         console.log('SENDING TO DB:', newPosition)
         swal({
@@ -147,44 +147,42 @@ function CoinDetails({ card }) {
             icon: "success",
         });
         dispatch({ type: 'ADD_POSITION_TO_DB', payload: newPosition });
-        returnHome(); //updated - send back to home base
+        returnHome(); //send to function that history.pushes you home
     }
 
+    //send home
     const returnHome = () => {
         history.push('/user');
     }
 
-
-
     const renderPage = () => { //FIX Shows a loading dialogue if loading (CHANGE TO A COOL ANIMATION)
         if (isLoading) {
-            return <div>Loading coin info...</div>
+            return <div ><img className='coinDetailLoading' width='100px' src='./images/bitcoinLogoSpinning.gif' /></div>
         }
     }
 
 
     return (
 
-
-
-
         <Container className={classes.detailsPage} >
-
-
             <Typography variant="h4">{coinName}</Typography>
-            <Typography variant="h2"><b>{coinSymbol}</b></Typography>
-            <Typography variant="h2">${coinPriceToDisplay}</Typography>
-            <Typography variant="h4"> {coinPriceChange < 0 ? (<p className="downRed"><KeyboardArrowDownIcon />{coinPriceChange}% today</p>) : (<p className="upGreen"><KeyboardArrowUpIcon />{coinPriceChange}% today</p>)}</Typography>
+            <Typography variant="h3"><b>{coinSymbol}</b></Typography>
+            <Typography variant="h3">${coinPriceToDisplay}</Typography>
+            <Typography variant="h5"> {coinPriceChange < 0 ? (<p className="downRed"><KeyboardArrowDownIcon />{coinPriceChange}% today</p>) : (<p className="upGreen"><KeyboardArrowUpIcon />{coinPriceChange}% today</p>)}</Typography>
 
             <Typography variant="h6"><b>Market Cap:</b> ${(coinMarketCap * 1).toLocaleString()}</Typography>
             <Typography variant="h6"><b>Vol:</b> {(coinVolume * 1).toLocaleString()}</Typography>
             <Typography style={{ color: 'red' }}>{coinWebsite}</Typography>
             <Typography><TwitterIcon style={{ color: '#00ACEE' }} />@{coinTwitter}</Typography>
             {coinForum[0] === '' ? <Typography></Typography> : <Typography style={{ color: 'purple' }}><ForumIcon style={{ color: '#006400' }} /> {coinForum}</Typography>}
-            {/* //fix why is this ternary not working? */}
+          
             <br />
-            <Typography style={{ overflowWrap: 'anywhere' }}>{coinDescription}</Typography><br />
-           
+            <Typography style={{ overflowWrap: 'anywhere' }}>{coinDescription}</Typography>
+
+            <Container>
+                <Typography style={{ paddingTop: "40px" }} variant="h4">{renderPage()}</Typography>
+            </Container>
+
             <Grid container justifyContent="center" >
                 <Container>
                     <form onSubmit={handleAddCoins}>
@@ -193,7 +191,7 @@ function CoinDetails({ card }) {
                                 <TextField spacing={0}
                                     inputProps={{ style: { fontSize: 20 } }}
                                     InputLabelProps={{ style: { fontSize: 22 } }}
-                                    style={{ width: '80%' }}
+                                    style={{ width: '90%' }}
                                     id="standard-basic"
                                     variant="standard"
                                     type="number"
@@ -219,11 +217,12 @@ function CoinDetails({ card }) {
 
             </Grid>
             <div style={{ textAlign: 'center' }}>
-                <Button className={classes.backButton} style={{ marginTop: '25px' }} size="medium" variant="contained" onClick={() => navBack()}>Back</Button>
+                <Button className={classes.detailToSearchButton} size="medium" variant="contained" onClick={() => navSearch()}><SearchIcon style={{fontSize: '35px'}}/></Button>
+                <Button variant="contained" size="medium" className={classes.goHomeButton} onClick={() => goHome()}><HomeIcon style={{fontSize: '35px'}}/></Button>
+
+
             </div>
-            <Container>
-                <Typography style={{ paddingTop: "40px" }} variant="h4">{renderPage()}</Typography>
-            </Container>
+
 
         </Container>
     );

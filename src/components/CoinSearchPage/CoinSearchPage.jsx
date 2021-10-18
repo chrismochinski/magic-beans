@@ -6,8 +6,10 @@ import Button from '@material-ui/core/Button';
 import TextField from '@mui/material/TextField';
 import Paper from "@material-ui/core/Paper";
 import { useHistory } from 'react-router-dom';
-import './CoinSearchPage.css';
 import SearchIcon from '@mui/icons-material/Search';
+import HomeIcon from '@mui/icons-material/Home';
+
+
 
 
 import useStyles from '../styles/styles';
@@ -15,7 +17,6 @@ import useStyles from '../styles/styles';
 
 function CoinSearchPage() {
 
-  const [elevation, setElevation] = useState('4')
 
   const classes = useStyles();
   const history = useHistory();
@@ -26,6 +27,10 @@ function CoinSearchPage() {
 
   const [newSearch, setNewSearch] = useState('');
   const [searchArray, setSearchArray] = useState([]);
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_CRYPTO_LIST' }); //API call for top 250 list (number subject to change)
+  }, [])
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -40,36 +45,22 @@ function CoinSearchPage() {
       } else {
         console.log('no results')
       }
-
-
     }
     console.log(searchArray)
     setNewSearch('');
   }
-  // id, name, image, symbol, price, marketCap, priceChange 
-  // const getDetails = (card) => {
-  //   console.log('card.id from search page:', card)
-  //   dispatch({ type: 'TEMP_COIN_DETAILS', payload: card }); 
-  //   navToDetailsPage(card)
-  // }
-
+ 
   const getDetails = (card) => {
     history.push(`/coin-details/${card.id}`)
-
   }
 
-  useEffect(() => {
-    dispatch({ type: 'FETCH_CRYPTO_LIST' }); //API call for clean top 200 list
-  }, [])
-
-
-
-
+  const goHome = () => {
+    history.push('/user')
+  }
 
   return (
 
     <div>
-      {/* <Paper elevation={1} className={classes.searchPaper}> */}
       <Container maxWidth="sm" className={classes.mainSearchPage}>
         <Typography className={classes.pageHeader} variant="h4" >Crypto Search!</Typography>
         <form onSubmit={handleChange} style={{ textAlign: 'center' }}>
@@ -87,11 +78,13 @@ function CoinSearchPage() {
           />
           <div>
             <Button variant="contained" size="medium" type="submit" className={classes.searchButton}>Search</Button>
+            <Button variant="contained" size="medium" className={classes.goHomeButton} onClick={() => goHome()}><HomeIcon style={{fontSize: '35px'}}/></Button>
+
           </div>
         </form>
 
-
-
+        
+        
 
         {searchArray.map((card) => (
           <Grid style={{ paddingTop: '40px', width: '90%', marginLeft: 'auto', marginRight: 'auto' }} item key={card}>
@@ -109,7 +102,7 @@ function CoinSearchPage() {
                 <Grid>
                   <Grid item className={classes.floatLeft} xs={12} s={10} md={10} lg={10} xl={10}>
                     <Typography variant="h6">
-                      {card.name} || ${card.symbol.toUpperCase()} || ${card.current_price.toFixed(2)}
+                      {card.name} || ${card.symbol.toUpperCase()} || ${card.current_price.toLocaleString(undefined, { 'minimumFractionDigits': 0, 'maximumFractionDigits': 2 })}
                     </Typography>
                   </Grid>
                   <Grid item className={classes.floatRight} xs={12} s={2} md={2} lg={2} xl={2}>
@@ -121,11 +114,7 @@ function CoinSearchPage() {
             </Card>
           </Grid>
         ))}
-        {/* <h1>{search}</h1> */}
-        {/* <h1>{newCoinName}</h1> */}
-        {/* <img src={newCoinImageSource} //deletelater /> */}
-
-
+       
       </Container>
       {/* </Paper> */}
     </div>

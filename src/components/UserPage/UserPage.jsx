@@ -4,21 +4,14 @@ import { Typography, Grid, Container } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 
 import useStyles from '../styles/styles';
-import Button from '@material-ui/core/Button';
 
-import Table from "@material-ui/core/Table";
+import { Table, TableBody, TableCell, TableHead, TableRow, Paper } from "@material-ui/core"
+
 import TableContainer from '@mui/material/TableContainer';
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
 
 import { useHistory } from 'react-router-dom';
 import Coin from '../../Coin/Coin';
 import UserHoldings from '../UserHoldings/UserHoldings';
-import axios from 'axios';
-
 
 function UserPage() {
 
@@ -26,11 +19,7 @@ function UserPage() {
     const user = useSelector((store) => store.user);
     const dispatch = useDispatch();
     const classes = useStyles();
-
-    // const [coins, setCoins] = useState([])
     const history = useHistory();
-    // const [isLoading, setIsLoading] = useState(false);
-
 
     const shortenBigNumber = (value) => {  //important for market cap on details page!
         const suffixes = ["", "K", "M", "B", "T"];
@@ -42,42 +31,32 @@ function UserPage() {
         return shortValue + suffixes[suffixNum];
     }
 
-
-
-    const renderPage = () => { 
+    const renderPage = () => {
         if (cryptoList.length === 0) {
-            return <div>Loading Crypto List...</div>
+            return <div><img width="150px" src="./images/bitcoinLogoSpinning.gif" /></div>
         }
     }
-
-
 
     useEffect(() => {
         dispatch({ type: 'FETCH_CRYPTO_LIST' }); //FETCHING MASTER LIST
         console.log('user id is:', user)
     }, [])
 
-
-
     return (
 
-    
-
         <div className="userContainer">
-            <Typography variant="h4" style={{paddingTop: '0'}} className={classes.pageHeader}>Hi {user.username}!</Typography>
+            <Typography variant="h4" style={{ paddingTop: '0' }} className={classes.pageMainHeader}>Hi {user.username}!</Typography>
             {/* <p>Your ID is: {user.id}</p> */}
 
             <Container className={classes.tableMain}>
-                <Paper className={classes.assetHeader} elevation={4}>
-                    <Typography variant="h5" style={{margin: '10px', paddingTop: '5px', fontSize: '30px', fontFamily: 'Poppins', color: '#216091'}}>Your Portfolio</Typography>
-                      
-                           
-                            <UserHoldings /> 
+                <Paper className={classes.assetHeader} elevation={6}>
+                    <Typography variant="h5" style={{ margin: '10px', paddingTop: '5px', fontSize: '25px', fontFamily: 'Poppins', color: '#216091' }}>Your Stuff:</Typography>
 
-                        
+                    <UserHoldings />
+
                 </Paper>
-            <Typography variant="h3" style={{fontFamily: 'Righteous', marginTop: '10px', color: '#3175a9' }}><b>Explore:</b></Typography>
-            <Typography style={{fontFamily: 'Poppins', marginBottom: '8px', marginTop: '4px', fontSize: '20px' }}><b>the top 250!</b></Typography>
+                <Typography variant="h3" style={{ fontFamily: 'Righteous', marginTop: '10px', color: '#3175a9' }}><b>Explore!</b></Typography>
+                <Typography style={{ fontFamily: 'Poppins', marginBottom: '10px', marginTop: '4px', fontSize: '20px' }}><b>Top 250 Cryptocurrencies</b></Typography>
                 <TableContainer sx={{ maxHeight: 470 }}>
                     <Table className="center" stickyHeader aria-label="sticky table">
                         <TableHead >

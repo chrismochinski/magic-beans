@@ -1,6 +1,5 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import TableCell from "@material-ui/core/TableCell";
@@ -9,7 +8,7 @@ import useStyles from '../components/styles/styles';
 
 
 
-function Coin({ id, name, image, symbol, price, marketCap, priceChange, shortenBigNumber }) { //deletelater unnecessary variables
+function Coin({ id, name, image, symbol, price, marketCap, priceChange }) { //deletelater unnecessary variables
 
     const history = useHistory();
     const classes = useStyles();
@@ -17,10 +16,6 @@ function Coin({ id, name, image, symbol, price, marketCap, priceChange, shortenB
     const getDetails = (id, name, image, symbol, price, marketCap, priceChange) => {
         console.log('coin id:', id)
         history.push(`/coin-details/${id}`) //send to coin-details page with coin ID
-    }
-
-    const fixPrice = (value) => {
-        return value;
     }
 
     return (

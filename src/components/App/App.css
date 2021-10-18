@@ -164,3 +164,8 @@ input {
 .squish {
   maxHight: 9px;
 }
+
+.coinDetailLoading {
+display:block;
+margin:auto;
+}

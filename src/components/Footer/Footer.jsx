@@ -7,7 +7,7 @@ import './Footer.css';
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 function Footer() {
-  return <footer className="footerText">Copyright &copy; Magic Beans Cryptofolio</footer>;
+  return <footer className="footerText">Copyright &copy; <a href="https://github.com/chrismochinski/magic-beans" target="_blank">Magic Beans Cryptofolio</a></footer>
 }
 
 export default Footer;

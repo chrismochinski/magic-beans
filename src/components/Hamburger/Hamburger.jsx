@@ -32,7 +32,7 @@ const Hamburger = () => { //idea
         <div>
             <IconButton onClick={() => setOpen(true)}>
                 {/* <MenuIcon className="hamburgerIcon"  /> */}
-                <img src='./images/icons8-hamburger-58.png' width="55px"/>
+                <img src='./images/icons8-hamburger-58.png' width="50px" style={{marginRight: '5px'}}/>
             </IconButton>
 
             <SwipeableDrawer

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import Hamburger from '../Hamburger/Hamburger';
 import './Nav.css';
 import { useSelector, useDispatch } from 'react-redux';
