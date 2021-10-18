@@ -14,7 +14,7 @@
 }
 
 .nav-title {
-  font-size: 30px;
+  font-size: 31px;
   font-weight: 400;
   color: #f2f2f2;
   font-family: 'Comfortaa', cursive;  
@@ -25,13 +25,13 @@
 
 .cryptofolio {
   margin: 0;
-  font-size: 20px;
+  font-size: 19px;
   font-family: 'Comfortaa', cursive;
 }
 
 
 .nav-title:focus {
-  /* figure this out */
+/* important figure this out  */
 }
 
 .nav-title:hover {

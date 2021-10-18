@@ -85,14 +85,15 @@ const UserHoldings = () => {
         });
     }
 
-    const handleModifyPress = (name) => {
-        console.log('handleModifyPress pushed for:', name)
+    const handleModifyPress = (name, id, held ) => {
+        console.log('handleModifyPress for order', id, 'pushed for', held, 'of', name)
+        history.push(`/modify/${id}/${name}/${held}`); //send to modify page with coin ID
     }
 
 
     const handleAddClick = () => {
         console.log('add button clicked')
-        history.push('/search') //important add this page for search, SHARE WITH HOURGLASS HAMBURGER LINK
+        history.push('/search'); //important add this page for search, SHARE WITH HOURGLASS HAMBURGER LINK
     }
 
 
@@ -134,6 +135,7 @@ const UserHoldings = () => {
         <div>
 
 
+
             {holdings.length === 0 ? <Typography className={classes.assetHeadline} variant="h4" style={{ color: '#F70C8A' }}>No Assets Yet</Typography> :
 
                 <TableContainer >
@@ -157,7 +159,7 @@ const UserHoldings = () => {
                                         <TableCell style={{ padding: '3px' }} className={classes.holdingAmount}>{fixHeldDecimals(holding.coins_held)}</TableCell>
                                         <TableCell style={{ padding: '3px' }} className={classes.holdingVal}>${getCurrentCryptoValue(cryptoList, holding.coin_id, holding.coins_held)}</TableCell>
                                         <TableCell style={{ padding: '3px' }} className={classes.holdingDelete}><IconButton variant="contained" size="small" className={classes.holdingsDeleteButton} onClick={() => deleteWarn(holding.id, holding.name)}><DeleteForeverIcon style={{ color: '#9A0D01', transform: 'scale(1.6)', paddingLeft: '12px'}} /></IconButton></TableCell>
-                                        <TableCell style={{ padding: '3px' }} className={classes.holdingModify}><IconButton variant="contained" size="small" className={classes.holdingsModifyButton} onClick={() => handleModifyPress(holding.name)}><ImportExportIcon style={{ color: '#D4C215', transform: 'scale(1.6)', paddingRight: '7px' }} /></IconButton></TableCell>
+                                        <TableCell style={{ padding: '3px' }} className={classes.holdingModify}><IconButton variant="contained" size="small" className={classes.holdingsModifyButton} onClick={() => handleModifyPress(holding.name, holding.id, holding.coins_held)}><ImportExportIcon style={{ color: '#D4C215', transform: 'scale(1.6)', paddingRight: '7px' }} /></IconButton></TableCell>
                                     </TableRow>
                                 )
                             })}

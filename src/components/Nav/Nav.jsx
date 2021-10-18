@@ -12,9 +12,6 @@ import { IconButton } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
 import LoginIcon from '@mui/icons-material/Login';
 
-
-
-
 function Nav() {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);

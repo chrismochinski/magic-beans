@@ -13,7 +13,6 @@ import ForumIcon from '@mui/icons-material/Forum';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 
-
 import useStyles from '../styles/styles';
 import swal from 'sweetalert';
 
@@ -195,6 +194,7 @@ function CoinDetails({ card }) {
                                     id="standard-basic"
                                     variant="standard"
                                     type="number"
+                                    autoComplete="off"
                                     required
                                     value={coinAmount}
                                     className="coinInput"
@@ -218,7 +218,7 @@ function CoinDetails({ card }) {
             </Grid>
             <div style={{ textAlign: 'center' }}>
                 <Button className={classes.detailToSearchButton} size="medium" variant="contained" onClick={() => navSearch()}><SearchIcon style={{fontSize: '35px'}}/></Button>
-                <Button variant="contained" size="medium" className={classes.goHomeButton} onClick={() => goHome()}><HomeIcon style={{fontSize: '35px'}}/></Button>
+                <Button variant="contained" size="medium" className={classes.goHomeButton} onClick={() => returnHome()}><HomeIcon style={{fontSize: '35px'}}/></Button>
 
 
             </div>

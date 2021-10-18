@@ -48,7 +48,7 @@ const useStyles = makeStyles(() => ({
   pageHeader: {
     fontFamily: 'Poppins',
     padding: '10px',
-    marginBottom: '`10px',
+    marginBottom: '10px',
     fontSize: '36px',
     textAlign: 'center',
   },
@@ -89,7 +89,7 @@ const useStyles = makeStyles(() => ({
 
   tableHeader: {
     fontWeight: 'bold',
-    fontSize: '20px',
+    fontSize: '21px',
     textAlign: 'center',
     paddingTop: '4px',
     paddingBottom: '4px',
@@ -301,6 +301,42 @@ const useStyles = makeStyles(() => ({
 
   addIcon: {
     transform: 'scale(2.5)',
+  },
+
+  //-------------Modify Page-------------//
+
+
+  modHeader: {
+    fontFamily: 'Comfortaa',
+    padding: '10px',
+    marginBottom: '10px',
+    marginLeft: '20px',
+    marginRight: '20px',
+    fontSize: '18px',
+    textAlign: 'center',
+  },
+
+  modPreInput: {
+    fontFamily: 'Comfortaa',
+    padding: '10px',
+    marginBottom: '10px',
+    fontSize: '28px',
+    textAlign: 'center',
+  },
+
+  modifyButton: {
+    margin: '15px',
+    fontSize: '26px',
+    fontWeight: 'bolder',
+    backgroundColor: '#5C9827',
+    color: 'white',
+  },
+
+ cancelButton: { 
+    fontSize: '16px',
+    fontWeight: 'bold',
+    color: 'white',
+    backgroundColor: '#9333F0',
   },
 
 }))

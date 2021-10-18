@@ -13,7 +13,7 @@ function Coin({ id, name, image, symbol, price, marketCap, priceChange }) { //de
     const history = useHistory();
     const classes = useStyles();
 
-    const getDetails = (id, name, image, symbol, price, marketCap, priceChange) => {
+    const getDetails = (id) => {
         console.log('coin id:', id)
         history.push(`/coin-details/${id}`) //send to coin-details page with coin ID
     }

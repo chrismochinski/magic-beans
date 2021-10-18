@@ -9,9 +9,6 @@ import { useHistory } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
 
-
-
-
 import useStyles from '../styles/styles';
 
 
@@ -35,7 +32,7 @@ function CoinSearchPage() {
   const handleChange = (event) => {
     event.preventDefault();
     console.log('new search is:', newSearch)
-    for (let i = 0; i < cryptoList.length; i++) {
+    for (let i = 0; i < cryptoList.length; i++) { //search for crypto by id/name/symbol
       if (
         cryptoList[i].id === newSearch ||
         cryptoList[i].symbol === newSearch ||
@@ -69,6 +66,7 @@ function CoinSearchPage() {
             InputLabelProps={{ style: { fontSize: 20 } }}
             id="standard-basic"
             variant="standard"
+            autoComplete="off"
             type="text"
             required
             value={newSearch}

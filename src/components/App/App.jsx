@@ -22,12 +22,10 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import OopsPage from '../OopsPage/OopsPage';
 import Hamburger from '../Hamburger/Hamburger';
 import CoinDetails from '../CoinDetails/CoinDetails';
-
+import ModifyPage from '../ModifyPage/ModifyPage';
 import Disclaimer from '../Disclaimer/Disclaimer';
-
 import './App.css';
 
-import { makeStyles } from '@material-ui/core/styles';
 
 
 function App() {
@@ -90,6 +88,14 @@ function App() {
           exact path="/coin-details/:id"
           >
             <CoinDetails />
+
+          </ProtectedRoute>
+
+          <ProtectedRoute 
+          //let's try one from scratch...
+          exact path="/modify/:id/:name/:held"
+          >
+            <ModifyPage />
 
           </ProtectedRoute>
 

@@ -8,6 +8,7 @@ import coinDetailsSaga from './coinDetails.saga'; //deletelater
 import addToPositionSaga from './addToPosition.saga'; //post route
 import fetchUserHoldingsSaga from './userHoldings.saga';
 import deleteHoldingSaga from './delete.saga'; //delete route
+import modifyPositionSaga from './modify.saga'; //put route
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -25,5 +26,6 @@ export default function* rootSaga() {
     addToPositionSaga(), // POST user position to database
     fetchUserHoldingsSaga(), // GET from DB
     deleteHoldingSaga(), // DELETE route
+    modifyPositionSaga(), // PUT route
   ]);
 }

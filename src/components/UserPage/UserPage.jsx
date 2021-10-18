@@ -50,7 +50,7 @@ function UserPage() {
 
             <Container className={classes.tableMain}>
                 <Paper className={classes.assetHeader} elevation={6}>
-                    <Typography variant="h5" style={{ margin: '10px', paddingTop: '5px', fontSize: '25px', fontFamily: 'Poppins', color: '#216091' }}>Your Stuff:</Typography>
+                    <Typography variant="h5" style={{ margin: '10px', paddingTop: '5px', fontSize: '25px', fontFamily: 'Poppins', color: '#216091' }}>Your Positions:</Typography>
 
                     <UserHoldings />
 
