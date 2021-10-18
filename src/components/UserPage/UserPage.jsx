@@ -75,7 +75,7 @@ function UserPage() {
 
                         
                 </Paper>
-            <Typography variant="h3" style={{fontFamily: 'Poppins', margin: '10px', color: '#133878' }}><b>Explore:</b></Typography>
+            <Typography variant="h3" style={{fontFamily: 'Righteous', margin: '10px', color: '#3175a9' }}><b>Explore:</b></Typography>
 
                 <TableContainer sx={{ maxHeight: 470 }}>
                     <Table className="center" stickyHeader aria-label="sticky table">

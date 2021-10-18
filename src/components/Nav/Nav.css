@@ -5,7 +5,7 @@
 
   margin: 0;
   margin-bottom: 15px;
-  background-color: #133878;
+  background-color: #3175a9;
   overflow: hidden;
 }
 
@@ -14,14 +14,21 @@
 }
 
 .nav-title {
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 400;
   color: #f2f2f2;
-  font-family: 'Josefin Sans', sans-serif; 
+  font-family: 'Righteous', cursive;  
   padding-left: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   margin-top: 14px;
 }
+
+.cryptofolio {
+  margin: 0;
+  font-size: 30px;
+  font-family: 'Itim', cursive;
+}
+
 
 .nav-title:focus {
   /* figure this out */
@@ -107,7 +114,3 @@
   color: rgb(225, 225, 225);
 }
 
-.cryptofolio {
-  margin: 0;
-  font-size: 17px;
-}

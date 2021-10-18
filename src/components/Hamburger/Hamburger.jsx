@@ -31,7 +31,8 @@ const Hamburger = () => { //idea
     return (
         <div>
             <IconButton onClick={() => setOpen(true)}>
-                <MenuIcon className="hamburgerIcon"  />
+                {/* <MenuIcon className="hamburgerIcon"  /> */}
+                <img src='./images/icons8-hamburger-58.png' width="55px"/>
             </IconButton>
 
             <SwipeableDrawer

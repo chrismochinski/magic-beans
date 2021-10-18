@@ -249,7 +249,8 @@ const useStyles = makeStyles(() => ({
     marginLeft: '5px',
     marginRight: '5px',
     marginBottom: '18px',
-    backgroundColor: 'paper',
+    backgroundImage: `url(${'./images/mb-paper-background.png'})`
+    
 
 
 
