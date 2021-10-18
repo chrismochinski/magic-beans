@@ -28,8 +28,8 @@ function Coin({ id, name, image, symbol, price, marketCap, priceChange, shortenB
         <TableRow className={classes.tableRow} onClick={() => getDetails(id, name, image, symbol, price, marketCap, priceChange)} key={id}>
             <TableCell className={classes.tableCell}><img className={classes.coinIcon} src={image} alt="icon" /></TableCell>
             {/* <TableCell className={classes.tableCell}><h4>{name}</h4></TableCell> */}
-            <TableCell className={classes.tableCell}><p className="coinSymbol">{symbol.toUpperCase()}</p></TableCell>
-            <TableCell className={classes.tableCell}> <p className="coinPrice">${price}</p></TableCell>
+            <TableCell className={classes.tableTickerCell}>{symbol.toUpperCase()}</TableCell>
+            <TableCell className={classes.tableCell}>${price}</TableCell>
             {/* <TableCell className={classes.tableCell}> <p className="coinMarketCap">${marketCap}</p></TableCell> */}
            
             <TableCell className={classes.tableCell}> {priceChange < 0 

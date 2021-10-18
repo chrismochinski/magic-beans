@@ -42,10 +42,6 @@ function UserPage() {
         return shortValue + suffixes[suffixNum];
     }
 
-    const handleAddClick = () => {
-        console.log('add button clicked')
-        history.push('/search') //important add this page for search, SHARE WITH HOURGLASS HAMBURGER LINK
-    }
 
 
     const renderPage = () => { 
@@ -73,24 +69,13 @@ function UserPage() {
 
             <Container className={classes.tableMain}>
                 <Paper className={classes.assetHeader} elevation={4}>
-                    <Grid container className="userPositionBlock">
-                        <Grid item>
+                      
                            
+                            <UserHoldings /> 
 
-                            <UserHoldings />
-
-
-                        </Grid>
-                        <Grid item className={classes.addButton} xs={12} s={2} md={2} lg={2} xl={2}>
-                            <Button
-                                variant="outlined"
-                                size="small"
-                                onClick={handleAddClick}
-                                className={classes.addPositionButton}><b>Add</b></Button>
-                        </Grid>
-                    </Grid>
+                        
                 </Paper>
-
+            <Typography variant="h3" style={{fontFamily: 'Poppins', margin: '10px', color: '#133878' }}><b>Explore:</b></Typography>
 
                 <TableContainer sx={{ maxHeight: 470 }}>
                     <Table className="center" stickyHeader aria-label="sticky table">
@@ -101,7 +86,7 @@ function UserPage() {
                                 <TableCell className={classes.tableHeader}>Ticker</TableCell>
                                 <TableCell className={classes.tableHeader}>Current Price</TableCell>
                                 {/* <TableCell className={classes.tableCell}>Market Cap</TableCell> */}
-                                <TableCell className={classes.tableHeader}>24h Price Change</TableCell>
+                                <TableCell className={classes.tableHeader}>24h Change</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody className={classes.tableBody}>

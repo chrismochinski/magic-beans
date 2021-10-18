@@ -35,13 +35,36 @@ const useStyles = makeStyles(() => ({
     marginBottom: '5px'
   },
 
+    //-------------Main userPage-------------//
+
+    
+  pageHeader: {
+    fontFamily: 'Poppins',
+    padding: '10px',
+    marginBottom: '10px',
+    fontSize: '36px',
+    textAlign: 'center',
+  },
+
+
+  //-------------Main userPage TABLE-------------//
+
+
+  tableTickerCell: {
+    textAlign: 'center',
+    padding: '0',
+    fontSize: '20px',
+  },
+
+
+  tableCell: {
+    textAlign: 'center',
+    padding: '0',
+    fontSize: '20px',
+  },
+
   //-------------imported from spike-------------//
 
-  //removes margins for main table and user holdings list
-  tableMain: {
-    margin: '0',
-    padding: '0',
-  },
 
   tableRow: {
     cursor: 'pointer',
@@ -52,26 +75,14 @@ const useStyles = makeStyles(() => ({
 
   //size of icon in main list table
   coinIcon: {
-    width: '40px',
+    width: '44px',
   },
 
-  assetHeader: {
-    padding: '10px',
-    margin: '20px',
-    backgroundColor: 'paper',
 
-
-  },
-
-  tableCell: {
-    textAlign: 'center',
-    padding: '0',
-    fontSize: '16px',
-  },
 
   tableHeader: {
     fontWeight: 'bold',
-    fontSize: '20px',
+    fontSize: '22px',
     textAlign: 'center',
     paddingTop: '4px',
     paddingBottom: '4px',
@@ -85,19 +96,11 @@ const useStyles = makeStyles(() => ({
   //-------------SearchPage > CoinSearchPage-------------//
 
 
-  pageHeader: {
-    fontFamily: 'Poppins',
-    padding: '10px',
-    marginBottom: '10px',
-    textAlign: 'center',
-  },
-
   mainSearchPage: {
     padding: '20px',
     textAlign: 'center',
     paddingTop: '20px',
     paddingBottom: '200px',
-
     margin: 'auto',
   },
 
@@ -137,13 +140,7 @@ const useStyles = makeStyles(() => ({
   //-------------confirm modal-------------//
 
 
-  addPositionButton: {
-    marginTop: '15px',
-    fontSize: '20px',
-    fontWeight: 'bolder',
-    backgroundColor: '#5C9827',
-    color: 'white',
-  },
+
 
   dialogueLogo: {
     width: '150px',
@@ -184,6 +181,87 @@ const useStyles = makeStyles(() => ({
 
   },
 
+  //-------------user holdings TABLE-------------//
+
+  tableMain: {
+    width: '100',
+
+  },
+
+  userTableHeaderCell: {
+    fontFamily: 'Poppins',
+    textAlign: 'center',
+    fontSize: '18px',
+    padding: 0,
+    margin: 0,
+  },
+
+  //====user holding table BODY CELL====//  
+
+  holdingSymbol: {
+    fontFamily: 'Poppins',
+    fontSize: '20px',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    padding: 0,
+    margin: 0,
+
+  },
+
+  holdingAmount: {
+    fontFamily: 'Poppins',
+
+    textAlign: 'center',
+    fontSize: '18px',
+    fontWeight: 'bold',
+    padding: 0,
+    margin: 0,
+
+
+  },
+
+  holdingVal: {
+    fontFamily: 'Poppins',
+
+    textAlign: 'center',
+    fontSize: '18px',
+    fontWeight: 'bold',
+    padding: 0,
+    margin: 0,
+
+
+  },
+
+  //delete button
+  holdingDelete: {
+    padding: 0,
+    textAlign: 'right',
+  },
+
+  //put button
+  holdingModify: {
+    padding: 0,
+    textAlign: 'right',
+
+  },
+
+  assetHeader: {
+    marginLeft: '5px',
+    marginRight: '5px',
+    marginBottom: '18px',
+    backgroundColor: 'paper',
+
+
+
+  },
+
+  addPositionButton: {
+    margin: '20px',
+    fontSize: '25px',
+    fontWeight: 'bolder',
+    backgroundColor: '#5C9827',
+    color: 'white',
+  },
 
 }))
 

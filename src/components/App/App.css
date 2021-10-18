@@ -134,7 +134,7 @@ input {
 }
 
 .userContainer {
-  padding-top: 10px;
+  padding-top: 2px;
   text-align: center;
   align-items: center;
 }
@@ -157,3 +157,10 @@ input {
 
 
 /* ----------------------SearchForm / CoinSearchPage------------------------ */
+
+
+/* ----------------------user holding table------------------------ */
+
+.squish {
+  maxHight: 9px;
+}
