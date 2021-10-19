@@ -3,7 +3,7 @@ import { useParams, useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Typography, TextField, Container, Button } from '@material-ui/core';
 import useStyles from '../styles/styles';
-import HomeIcon from '@mui/icons-material/Home';
+import swal from 'sweetalert';
 
 const ModifyPage = () => {
 
@@ -16,15 +16,15 @@ const ModifyPage = () => {
     const [heldNumber, setHeldNumber] = useState();
     const [isLoading, setIsLoading] = useState(false);
 
-    // useEffect(() => {
-    //     setIsLoading(true)
-    //     setHeldNumber(held)
-    //     setIsLoading(false)
-    //     console.log('held number is', heldNumber) //TODO a loading mechanism?? or just leave it be?
-    // }, [])
+
 
     const handleModifyCoins = () => {
         console.log('handleModifyCoins function')
+        swal({
+            title: "Rad!",
+            text: `You now hold ${coinModNumber} ${name} tokens.`,
+            icon: "success",
+        });
         dispatch({
             type: 'MODIFY_POSITION',
             payload: {
@@ -60,7 +60,7 @@ const ModifyPage = () => {
                         variant="standard"
                         type="number"
                         required
-                        // value={coinAmount}
+                        value={coinModNumber}
                         className="coinInput"
                         label="New Amount"
                         onChange={(event) => setCoinModNumber(event.target.value)} //important setting amount user is modifying to

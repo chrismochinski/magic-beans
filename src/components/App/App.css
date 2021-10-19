@@ -176,3 +176,8 @@ margin:auto;
   display:block;
   margin:auto;
 }
+
+.swal-modal .swal-text {
+  text-align: center;
+  font-size: 24px;
+}
