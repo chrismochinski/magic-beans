@@ -78,7 +78,7 @@ router.put('/holdings/', (req, res) => {
   console.log('id of position to UPDATE:', req.body.id, req.body.mod, req.body.user_id);
 
   if (req.body.user_id === req.user.id) {
-    const updateQuery = `UPDATE "positions" SET "coins_held" = $2 WHERE "id" = $1;`;
+    const updateQuery = `UPDATE "positions" SET "coins_held" = $1 WHERE "id" = $2;`;
     pool.query(updateQuery, [req.body.mod, req.body.id])
       .then(result => {
         res.sendStatus(201);
