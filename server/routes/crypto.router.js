@@ -26,10 +26,10 @@ router.get('/holdings/', (req, res) => {
 /**
  * @api {get}
  * /crypto/
- * get top 100 crypto list (top 100 subject to increase)
+ * get top 250 crypto list (top 250 subject to change)
  */
 router.get('/', (req, res) => {
-  axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false')
+  axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=250&page=1&sparkline=false')
     .then(response => {
       res.send(response.data);
     }).catch(error => {
