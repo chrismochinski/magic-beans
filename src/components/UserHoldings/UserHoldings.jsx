@@ -143,7 +143,7 @@ const UserHoldings = () => {
                     <Table>
                         <TableHead>
                             <TableRow className={classes.userTableHeader}>
-                                <TableCell style={{ padding: '3px' }} className={classes.userTableHeaderCell} >Coin</TableCell>
+                                <TableCell style={{ padding: '3px' }} className={classes.userTableHeaderCell}>Coin</TableCell>
                                 <TableCell style={{ padding: '3px' }} className={classes.userTableHeaderCell}>Held</TableCell>
                                 <TableCell style={{ padding: '3px' }} className={classes.userTableHeaderCell}>Value</TableCell>
                                 {/* <TableCell className={classes.userTableHeaderCell}></TableCell>

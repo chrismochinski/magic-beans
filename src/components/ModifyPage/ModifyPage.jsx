@@ -16,8 +16,6 @@ const ModifyPage = () => {
     const [heldNumber, setHeldNumber] = useState();
     const [isLoading, setIsLoading] = useState(false);
 
-
-
     const handleModifyCoins = () => {
         console.log('handleModifyCoins function')
         swal({

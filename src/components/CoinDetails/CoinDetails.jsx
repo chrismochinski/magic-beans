@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { useHistory } from 'react-router-dom';
 import ConfirmDialogue from '../ConfirmDialogue/ConfirmDialogue';
+import Chart from '../Chart/Chart';
 
 import { Typography, Container, Grid, TextField, Button } from '@material-ui/core';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -25,7 +26,6 @@ function CoinDetails({ card }) {
     const user = useSelector(store => store.user)
 
     //set state of search / chart info results
-    const [chartData, setChartData] = useState([]);
 
     //setting up loading dialogue
     const [isLoading, setIsLoading] = useState(false); //initial value false on page loading
@@ -58,27 +58,14 @@ function CoinDetails({ card }) {
         history.push('/search')
     }
 
-    /*GET*/
-    //API
-    //todo needs own page = chartPage
+    /**
+     * //GET
+     * on load function makes first API call to acquire and set states for 
+     * name, description, symbol and socials
+     */
     useEffect(() => {
-        // window.scrollTo(0,0) //FIX SCROLL TO 0 - PUT BACK AFTER TESTING
-        setIsLoading(true) // begin loading
-        console.log('user ID is:', user)
-        dispatch({ type: 'FETCH_COIN_LIST' })
-        axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=7&interval=hourly`)
-            .then(res => {
-                setChartData(res.data.prices);
-                console.log('Response of seven day chart data is:', res.data.prices);
-            }).catch(error => console.log('error getting cryptos:', error))
-        fetchCoinInfo()
-    }, [])
-
-    /*GET*/
-    //API
-    //todo needs own page = infoPage
-    const fetchCoinInfo = async () => { //important updates coin INFO such as description
-        await axios.get(`https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
+        window.scrollTo(0, 0)
+        axios.get(`https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`)
             .then(res => {
                 setCoinInfo(res.data);
                 console.log('res.data in fetchCoinInfo is:', res.data)
@@ -90,7 +77,8 @@ function CoinDetails({ card }) {
                 setCoinDescription(res.data.description.en)
             }).catch(error => console.log('error getting coin details!', error));
         fetchCoinPriceInfo();
-    };
+
+    }, [])
 
     /*GET*/
     //API
@@ -160,7 +148,6 @@ function CoinDetails({ card }) {
         }
     }
 
-
     return (
 
         <Container className={classes.detailsPage} >
@@ -174,7 +161,13 @@ function CoinDetails({ card }) {
             <Typography style={{ color: 'red' }}>{coinWebsite}</Typography>
             <Typography><TwitterIcon style={{ color: '#00ACEE' }} />@{coinTwitter}</Typography>
             {coinForum[0] === '' ? <Typography></Typography> : <Typography style={{ color: 'purple' }}><ForumIcon style={{ color: '#006400' }} /> {coinForum}</Typography>}
-          
+
+
+
+            <Chart id={id} coinName={coinName} />
+
+
+
             <br />
             <Typography style={{ overflowWrap: 'anywhere' }}>{coinDescription}</Typography>
 
@@ -217,8 +210,8 @@ function CoinDetails({ card }) {
 
             </Grid>
             <div style={{ textAlign: 'center' }}>
-                <Button className={classes.detailToSearchButton} size="medium" variant="contained" onClick={() => navSearch()}><SearchIcon style={{fontSize: '35px'}}/></Button>
-                <Button variant="contained" size="medium" className={classes.goHomeButton} onClick={() => returnHome()}><HomeIcon style={{fontSize: '35px'}}/></Button>
+                <Button className={classes.detailToSearchButton} size="medium" variant="contained" onClick={() => navSearch()}><SearchIcon style={{ fontSize: '35px' }} /></Button>
+                <Button variant="contained" size="medium" className={classes.goHomeButton} onClick={() => returnHome()}><HomeIcon style={{ fontSize: '35px' }} /></Button>
 
 
             </div>
