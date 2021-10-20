@@ -4,8 +4,12 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 
-//GET
-//UPDATED - pulls only holdings associated with that user's ID
+/**
+ * @api {get}
+ * /crypto/holdings/
+ * @apiParams {Number} id user's unique id
+ * get all user's portfolio positions
+ */
 router.get('/holdings/', (req, res) => {
   console.log('User ID is:', req.user.id)
   const getQuery = `SELECT * FROM positions WHERE user_id = $1 ORDER BY "id" ASC;`;
@@ -19,10 +23,13 @@ router.get('/holdings/', (req, res) => {
     })
 });
 
-//GET
-//API
+/**
+ * @api {get}
+ * /crypto/
+ * get top 100 crypto list (top 100 subject to increase)
+ */
 router.get('/', (req, res) => {
-  axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=250&page=1&sparkline=false')
+  axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=100&page=1&sparkline=false')
     .then(response => {
       res.send(response.data);
     }).catch(error => {
@@ -31,11 +38,20 @@ router.get('/', (req, res) => {
     });
 });
 
-//POST
+/**
+ * @api {post}
+ * /crypto/
+ * @apiParam {Number} user_id user's unique ID
+ * @apiParam {String} coin_id coin's unique ID
+ * @apiParam {String} symbol coin's unique ticker symbol
+ * @apiParam {String} name coin's unique full name
+ * @apiParam {Number} coins_held number of coins user has added
+ * @apiParam {Number} total_cost total USD amount user "spent" on addition
+ * @apiParam {Number} per_coin_val value of coin at precise time of addition
+ */
 router.post('/', (req, res) => {
-  // console.log('req.body coming into POST end of /crypto router:', req.body)
-  const queryText = `INSERT INTO "positions" 
-  ("user_id", "coin_id", "symbol", "name", 
+  const queryText = `INSERT INTO "positions"
+  ("user_id", "coin_id", "symbol", "name",
   "coins_held", "total_cost", "per_coin_val")
   VALUES ($1, $2, $3, $4, $5, $6, $7);`;
   pool.query(queryText, [
@@ -54,7 +70,12 @@ router.post('/', (req, res) => {
   })
 })
 
-//DELETE
+/**
+ * @api {delete} /crypto/holdings
+ * /crypto/holdings/
+ * @apiParams {String} id unique id of coin
+ * @apiParams {Number} user_id unique id of user
+ */
 router.delete('/holdings/', (req, res) => {
   console.log('id of position to delete:', req.body.id, req.body.user_id);
 
@@ -73,7 +94,13 @@ router.delete('/holdings/', (req, res) => {
   }
 });
 
-//PUT
+/**
+ * @api {put}
+ * /crypto/holdings/
+ * @apiParams {String} id unique coin id
+ * @apiParams {Number} mod updated number of coins held
+ * @apiParams {Number} user_id unique user id
+ */
 router.put('/holdings/', (req, res) => {
   console.log('id of position to UPDATE:', req.body.id, req.body.mod, req.body.user_id);
 
