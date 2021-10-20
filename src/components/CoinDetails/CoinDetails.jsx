@@ -13,6 +13,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import ForumIcon from '@mui/icons-material/Forum';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
+import LanguageIcon from '@mui/icons-material/Language';
 
 import useStyles from '../styles/styles';
 import swal from 'sweetalert';
@@ -158,9 +159,9 @@ function CoinDetails({ card }) {
 
             <Typography variant="h6"><b>Market Cap:</b> ${(coinMarketCap * 1).toLocaleString()}</Typography>
             <Typography variant="h6"><b>Vol:</b> {(coinVolume * 1).toLocaleString()}</Typography>
-            <Typography style={{ color: 'red' }}>{coinWebsite}</Typography>
-            <Typography><TwitterIcon style={{ color: '#00ACEE' }} />@{coinTwitter}</Typography>
-            {coinForum[0] === '' ? <Typography></Typography> : <Typography style={{ color: 'purple' }}><ForumIcon style={{ color: '#006400' }} /> {coinForum}</Typography>}
+            <Typography style={{ color: '#8F8F8F' }}><LanguageIcon style={{ color: '#7D00DE' }} /> {coinWebsite}</Typography>
+            <Typography style={{ color: '#8F8F8F' }}><TwitterIcon style={{ color: '#00ACEE' }} /> @{coinTwitter}</Typography>
+            {coinForum[0] === '' ? <Typography></Typography> : <Typography style={{ color: '#8F8F8F' }}><ForumIcon style={{ color: '#FF730C' }} /> {coinForum}</Typography>}
 
 
 
