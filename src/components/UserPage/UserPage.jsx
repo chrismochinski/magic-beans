@@ -9,6 +9,8 @@ import { Table, TableBody, TableCell, TableHead, TableRow, Paper } from "@materi
 
 import TableContainer from '@mui/material/TableContainer';
 
+import moment from 'moment';
+
 import { useHistory } from 'react-router-dom';
 import Coin from '../../Coin/Coin';
 import UserHoldings from '../UserHoldings/UserHoldings';
@@ -37,6 +39,20 @@ function UserPage() {
         }
     }
 
+    const getTime = () => {
+        let currentHour = moment().format("HH");
+        if (currentHour >= 1 && currentHour < 12) {
+            return "Good Morning";
+        } else if (currentHour >= 12 && currentHour < 15) {
+            return "Good Afternoon";
+        } else if (currentHour >= 15 && currentHour < 20) {
+            return "Good Evening";
+        } else {
+            return "Hi"
+        }
+    }
+
+
     useEffect(() => {
         dispatch({ type: 'FETCH_CRYPTO_LIST' }); //FETCHING MASTER LIST
         console.log('user id is:', user)
@@ -45,12 +61,12 @@ function UserPage() {
     return (
 
         <div className="userContainer">
-            <Typography variant="h4" style={{ paddingTop: '0' }} className={classes.pageMainHeader}>Hi {user.username}!</Typography>
+            <Typography variant="h4" style={{ paddingTop: '0' }} className={classes.pageMainHeader}>{getTime()}, {user.username}!</Typography>
             {/* <p>Your ID is: {user.id}</p> */}
 
             <Container className={classes.tableMain}>
                 <Paper className={classes.assetHeader} elevation={6}>
-                    <Typography variant="h5" style={{ margin: '10px', paddingTop: '5px', fontSize: '25px', fontFamily: 'Poppins', color: '#216091' }}>Your Positions:</Typography>
+                    <Typography variant="h5" style={{ margin: '10px', paddingTop: '5px', fontSize: '17px', fontFamily: 'Poppins', color: '#216091' }}>As of {moment().format('lll')}:</Typography>
 
                     <UserHoldings />
 

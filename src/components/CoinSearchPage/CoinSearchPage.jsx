@@ -8,6 +8,7 @@ import Paper from "@material-ui/core/Paper";
 import { useHistory } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
+import LayersClearIcon from '@mui/icons-material/LayersClear';
 
 import useStyles from '../styles/styles';
 
@@ -37,7 +38,17 @@ function CoinSearchPage() {
         cryptoList[i].id === newSearch ||
         cryptoList[i].symbol === newSearch ||
         cryptoList[i].name === newSearch ||
-        cryptoList[i].image === newSearch) {
+        cryptoList[i].image === newSearch ||
+        cryptoList[i].id === newSearch.toUpperCase() ||
+        cryptoList[i].symbol === newSearch.toUpperCase() ||
+        cryptoList[i].name === newSearch.toUpperCase() ||
+        cryptoList[i].image === newSearch.toUpperCase() ||
+        cryptoList[i].id === newSearch.toLowerCase() ||
+        cryptoList[i].symbol === newSearch.toLowerCase() ||
+        cryptoList[i].name === newSearch.toLowerCase() ||
+        cryptoList[i].image === newSearch.toLowerCase() ||
+        cryptoList[i].id[0] === newSearch.toLowerCase()  // search first letter only (experimental)
+        ) {
         searchArray.unshift(cryptoList[i])
       } else {
         console.log('no results')
@@ -45,6 +56,10 @@ function CoinSearchPage() {
     }
     console.log(searchArray)
     setNewSearch('');
+  }
+
+  const clearSearchArray = () => {
+    setSearchArray([])
   }
  
   const getDetails = (card) => {
@@ -77,7 +92,12 @@ function CoinSearchPage() {
           <div>
             <Button variant="contained" size="medium" type="submit" className={classes.searchButton}>Search</Button>
             <Button variant="contained" size="medium" className={classes.goHomeButton} onClick={() => goHome()}><HomeIcon style={{fontSize: '35px'}}/></Button>
-
+            {searchArray.length > 0 
+            ? 
+            (<Button variant="contained" size="medium" className={classes.clearSearchButton} onClick={() => clearSearchArray()}><LayersClearIcon style={{fontSize: '35px'}}/></Button>)
+            :
+            (<Typography></Typography>)
+          }
           </div>
         </form>
 
@@ -85,7 +105,7 @@ function CoinSearchPage() {
         
 
         {searchArray.map((card) => (
-          <Grid style={{ paddingTop: '40px', width: '90%', marginLeft: 'auto', marginRight: 'auto' }} item key={card}>
+          <Grid style={{ paddingTop: '40px', width: '90%', marginLeft: 'auto', marginRight: 'auto' }} item key={card.id}>
             <Card
               className={classes.card} elevation={5} >
               <CardMedia

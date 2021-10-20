@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Container, Grid, Typography } from '@mui/material'
 
-import { Bar, Line, Pie, Doughnut, defaults } from 'react-chartjs-2'
-import { chartConfig  } from './ChartConfig'
+import { Line } from 'react-chartjs-2'
+import 'chartjs-adapter-date-fns';
+
+import { chartConfig } from './ChartConfig'
 import { ColorLensOutlined, ConstructionOutlined } from '@mui/icons-material'
 // import { Chart } from 'chart.js'
 
@@ -15,6 +17,7 @@ function Chart({ id, coinName }) {
     const [isLoading, setIsLoading] = useState(false);
     const user = useSelector(store => store.user)
     const [chartData, setChartData] = useState([]);
+    const [time, setTime] = useState();
 
 
     /*GET*/
@@ -24,20 +27,31 @@ function Chart({ id, coinName }) {
         setIsLoading(true) // begin loading
         dispatch({ type: 'FETCH_COIN_LIST' })
         axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=1&interval=hourly`)
-            .then(res => {       
-                changeToObjects(res.data.prices)         
+            .then(res => {
+                changeToObjects(res.data.prices)
             }).catch(error => console.log('error getting cryptos:', error))
     }, [])
 
-let finalArray = [];
+    let finalArray = [];
 
     const changeToObjects = (data) => {
         console.log('data is:', data)
-        for(let eachArray of data){
-            finalArray.push({x: eachArray[0], y: eachArray[1]})
+        for (let eachArray of data) {
+            finalArray.push({ x: eachArray[0], y: eachArray[1] })
         }
         console.log('final array is:', finalArray)
         setChartData(finalArray)
+
+    
+            //deletelater time crap
+        // let today = new Date();
+        // let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        // let currentTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        // setTime(currentTime);
+        // console.log('time is', time)
+
+
+
         setIsLoading(false)
     }
 
@@ -46,31 +60,25 @@ let finalArray = [];
     }
 
     const lineColor = () => {
-        console.log('chart crap:', chartData[0].y, chartData[24].y)
-        if (chartData[0].y > chartData[24].y){
+        if (chartData[0].y > chartData[24].y) {
             return 'red'
-        } else { 
+        } else {
             return 'green'
         }
     }
- 
+
     return (
         <div>
-            {chartData.length === 0 ? <img className='coinDetailLoading' width='100px' src='./images/bitcoinLogoSpinning.gif' /> :
+            {chartData.length <= 24 ? <img className='coinDetailLoading' width='100px' src='./images/bitcoinLogoSpinning.gif' /> :
 
-
-                // <canvas ref={chartRef} id="myChart" width={250} height={250}>
-
-                <div style={{backgroundColor: 'paper'}}>
+                <div>
 
                     <Line
                         data={{
-                            labels: ['','','','','','','','','','','','','','','','','','','','','','','','','',],
+                            // labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',],
                             datasets: [{
                                 label: `24h ${coinName} Price`,
-                                // animations: false,
- 
-                                
+                                // fill: true, //fills bottom of chart with color
                                 data: renderData(),
                                 backgroundColor: lineColor(),
                                 borderColor: lineColor(),
@@ -78,37 +86,34 @@ let finalArray = [];
                                 pointRadius: 0,
 
                             },
-                                // {
-                                //     label: 'Quantity',
-                                //     data: [55, 104, 67, 93, , 50],
-                                //     backgroundColor: 'orange',
-                                //     borderColor: 'blue',
-                                // },
-
                             ],
                         }}
                         height={400}
                         width={600}
                         options={{
+                            animations: {
+                                tension: {
+                                    duration: 1000,
+                                    easing: 'linear',
+                                    from: 1,
+                                    to: 0,
+                                    loop: true
+                                }
+                            },
                             // maintainAspectRatio: false,
                             scales: {
-                                yAxes: [
-                                    {
-                                        time: 'time',
-                                        distribution: 'linear'
-                                    },
-                                ],
+                                x: {
+                                    type: 'time',
+                                },
+                                y: {
+                                    beginAtZero: false,
+                                },
                             },
                         }}
                     />
 
                 </div>
-
-
-                // </canvas>
-
             }
-
         </div>
     )
 }

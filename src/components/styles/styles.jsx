@@ -145,6 +145,16 @@ const useStyles = makeStyles(() => ({
     backgroundColor: '#9333F0',
   },
 
+  clearSearchButton: { 
+    marginTop: '20px',
+    padding: '10px',
+    fontSize: '20px',
+    marginLeft: '10px',
+    fontWeight: 'bold',
+    color: 'white',
+    backgroundColor: '#D54D00',
+  },
+
   detailToSearchButton: {
    marginTop: '20px',
     padding: '10px',
