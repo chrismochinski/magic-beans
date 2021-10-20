@@ -135,7 +135,7 @@ const useStyles = makeStyles(() => ({
 
   },
 
-  goHomeButton: { 
+  goHomeButton: {
     marginTop: '20px',
     padding: '10px',
     fontSize: '20px',
@@ -145,7 +145,7 @@ const useStyles = makeStyles(() => ({
     backgroundColor: '#9333F0',
   },
 
-  clearSearchButton: { 
+  clearSearchButton: {
     marginTop: '20px',
     padding: '10px',
     fontSize: '20px',
@@ -236,6 +236,7 @@ const useStyles = makeStyles(() => ({
     width: '100%',
 
   },
+  
 
   userTableHeaderCell: {
     fontFamily: 'Cabin Condensed',
@@ -245,7 +246,20 @@ const useStyles = makeStyles(() => ({
     margin: 0,
   },
 
-  //====user holding table BODY CELL====//  
+
+    //-------------DETAILS page-------------//
+
+  detailsPage: {
+    //FIX nothing here yet - background img perhaps
+    // backgroundImage: `url(${'./images/mb-logo-opaque.png'})`,
+    // backgroundSize: '98%',
+    // backgroundPosition: 'center',
+  },
+
+
+
+
+  //====user holding table BODY CELL====//
 
   holdingSymbol: {
     fontFamily: 'Poppins',
@@ -342,7 +356,7 @@ const useStyles = makeStyles(() => ({
     color: 'white',
   },
 
- cancelButton: { 
+ cancelButton: {
     fontSize: '16px',
     fontWeight: 'bold',
     color: 'white',

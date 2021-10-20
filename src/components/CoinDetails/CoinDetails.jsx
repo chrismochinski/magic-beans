@@ -152,16 +152,16 @@ function CoinDetails({ card }) {
     return (
 
         <Container className={classes.detailsPage} >
-            <Typography variant="h4">{coinName}</Typography>
-            <Typography variant="h3"><b>{coinSymbol}</b></Typography>
-            <Typography variant="h3">${coinPriceToDisplay}</Typography>
-            <Typography variant="h5"> {coinPriceChange < 0 ? (<p className="downRed"><KeyboardArrowDownIcon />{coinPriceChange}% today</p>) : (<p className="upGreen"><KeyboardArrowUpIcon />{coinPriceChange}% today</p>)}</Typography>
+            <Typography style={{fontFamily: 'Poppins'}} variant="h4">{coinName}</Typography>
+            <Typography style={{fontFamily: 'Righteous'}} variant="h3"><b>{coinSymbol}</b></Typography>
+            <Typography style={{fontFamily: 'Poppins'}} variant="h3">${coinPriceToDisplay}</Typography>
+            <Typography style={{fontFamily: 'Poppins'}} variant="h5"> {coinPriceChange < 0 ? (<p className="downRed"><KeyboardArrowDownIcon />{coinPriceChange}% today</p>) : (<p className="upGreen"><KeyboardArrowUpIcon />{coinPriceChange}% today</p>)}</Typography>
 
-            <Typography variant="h6"><b>Market Cap:</b> ${(coinMarketCap * 1).toLocaleString()}</Typography>
-            <Typography variant="h6"><b>Vol:</b> {(coinVolume * 1).toLocaleString()}</Typography>
-            <Typography style={{ color: '#8F8F8F' }}><LanguageIcon style={{ color: '#7D00DE' }} /> {coinWebsite}</Typography>
-            <Typography style={{ color: '#8F8F8F' }}><TwitterIcon style={{ color: '#00ACEE' }} /> @{coinTwitter}</Typography>
-            {coinForum[0] === '' ? <Typography></Typography> : <Typography style={{ color: '#8F8F8F' }}><ForumIcon style={{ color: '#FF730C' }} /> {coinForum}</Typography>}
+            <Typography style={{fontFamily: 'Poppins'}} variant="h6"><b>Market Cap:</b> ${(coinMarketCap * 1).toLocaleString()}</Typography>
+            <Typography style={{fontFamily: 'Poppins'}} variant="h6"><b>Vol:</b> {(coinVolume * 1).toLocaleString()}</Typography>
+            <Typography style={{ color: '#8F8F8F', fontFamily: 'Poppins', overflowWrap: 'anywhere', fontSize: '14px' }}><LanguageIcon style={{ color: '#7D00DE', overflowWrap: 'anywhere' }} /> {coinWebsite}</Typography>
+            <Typography style={{ color: '#8F8F8F', fontFamily: 'Poppins', overflowWrap: 'anywhere'  }}><TwitterIcon style={{ color: '#00ACEE' }} /> @{coinTwitter}</Typography>
+            {coinForum[0] === '' ? <Typography></Typography> : <Typography style={{ color: '#8F8F8F', fontFamily: 'Poppins', overflowWrap: 'anywhere' }}><ForumIcon style={{ color: '#FF730C' }} /> {coinForum}</Typography>}
 
 
 
@@ -170,7 +170,7 @@ function CoinDetails({ card }) {
 
 
             <br />
-            <Typography style={{ overflowWrap: 'anywhere' }}>{coinDescription}</Typography>
+            <Typography style={{ overflowWrap: 'anywhere', fontFamily: 'Poppins' }}>{coinDescription}</Typography>
 
             <Container>
                 <Typography style={{ paddingTop: "40px" }} variant="h4">{renderPage()}</Typography>

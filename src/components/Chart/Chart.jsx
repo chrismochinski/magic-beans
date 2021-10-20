@@ -69,7 +69,7 @@ function Chart({ id, coinName }) {
 
     return (
         <div>
-            {chartData.length <= 24 ? <img className='coinDetailLoading' width='100px' src='./images/bitcoinLogoSpinning.gif' /> :
+            {chartData.length < 24 ? <img className='coinDetailLoading' width='100px' src='./images/bitcoinLogoSpinning.gif' /> :
 
                 <div>
 

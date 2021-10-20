@@ -92,17 +92,14 @@ function CoinSearchPage() {
           <div>
             <Button variant="contained" size="medium" type="submit" className={classes.searchButton}>Search</Button>
             <Button variant="contained" size="medium" className={classes.goHomeButton} onClick={() => goHome()}><HomeIcon style={{fontSize: '35px'}}/></Button>
-            {searchArray.length > 0 
-            ? 
+            {searchArray.length > 0
+            ?
             (<Button variant="contained" size="medium" className={classes.clearSearchButton} onClick={() => clearSearchArray()}><LayersClearIcon style={{fontSize: '35px'}}/></Button>)
             :
             (<Typography></Typography>)
           }
           </div>
         </form>
-
-        
-        
 
         {searchArray.map((card) => (
           <Grid style={{ paddingTop: '40px', width: '90%', marginLeft: 'auto', marginRight: 'auto' }} item key={card.id}>
@@ -132,7 +129,7 @@ function CoinSearchPage() {
             </Card>
           </Grid>
         ))}
-       
+
       </Container>
       {/* </Paper> */}
     </div>
