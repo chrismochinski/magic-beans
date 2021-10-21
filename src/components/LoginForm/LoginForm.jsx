@@ -67,7 +67,7 @@ function LoginForm() {
         <div>
           <label htmlFor="password">
             {/* <Typography>Password:</Typography> */}
-            <TextField 
+            <TextField className={classes.loginTextField}
               variant="outlined"
               label="password"
               type="password"

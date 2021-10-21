@@ -21,7 +21,9 @@ const useStyles = makeStyles(() => ({
   },
   loginForm: {
     textAlign: 'center',
+    
   },
+  
   loginButton: {
     marginTop: '15px',
     fontSize: '20px',
@@ -310,9 +312,9 @@ const useStyles = makeStyles(() => ({
   assetHeader: {
 
     marginBottom: '18px',
-    backgroundImage: `url(${'./images/mb-logo-opaque.png'})`,
+    backgroundImage: `url(${'./images/accountant-bean.png'})`,
     backgroundSize: '98%',
-    backgroundPosition: 'center',
+    backgroundPosition: 'top',
   },
 
   addPositionButton: {

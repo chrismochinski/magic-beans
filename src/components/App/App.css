@@ -14,6 +14,7 @@ img {
   max-width: 100%;
 }
 
+
 /* --------------------------------------------------------------------------------
 Container
 -------------------------------------------------------------------------------- */
@@ -37,7 +38,7 @@ Button
   border-radius: 4px;
   background-color: #00acb0;
   color: #f8f8f8;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   outline: 0;
   cursor: pointer;
 }
@@ -135,9 +136,9 @@ input {
 }
 
 .userContainer {
-  padding-top: 2px;
   text-align: center;
   align-items: center;
+  /* background-color: ??  */
 }
 
 
