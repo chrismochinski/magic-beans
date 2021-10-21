@@ -1,121 +1,131 @@
+# <b><text align="center"><font size=9 >Magic Beans</b></font> <br/><font size=5>Cryptofolio 🪙</font> <img src="./README-visuals/magic-beans-logo.png" width="35%" style="float: right">
 
-# EDA Project
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
-
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
-
-## Use the Template for This Repository (Don't Clone)
-
-- Don't Fork or Clone. Instead, click the `Use this Template` button, and make a copy to your personal account.
+# <span style="color: #B00E0E">** **PRE-RELEASE W.I.P.** **</span> <br/> <font size=4>Application is set for initial launch 10/25/21</font>
 
 
-## Prerequisites
+### <b><span style="color:#F0ED86">A cryptocurrency market data and portfolio tracker for everyone!</b>
 
-Before you get started, make sure you have the following software installed on your computer:
+---
 
-- [Node.js](https://nodejs.org/en/)
-- [PostrgeSQL](https://www.postgresql.org/)
-- [Nodemon](https://nodemon.io/)
+### <span style="color: #9ED2F0">_Duration: Two-Week Sprint_</span><br />
 
-## Create database and table
+<p> This playful and feature-rich application, named without hesitation by the developer's eight-year-old stepson, was styled for mobile and built to aid in the demystification the role of cryptocurrency in the advanced financial world of today.</p>
+<p> A user is able to see an expanse of realtime market data as well as add assets to and tracktheir own virtual portfolio.</p>
 
-Create a new database called `prime_app` and create a `user` table:
+<text align="right">
 
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
+##### <i><span style="color: #2F60F7">**Please note that Magic Beans **does not** require, encourage or even allow a user to spend real money. Any actual cryptocurrency purchases must be made on qualifying exchanges which follow national and international regulations and adhere to KYC standards. The developer behind the app is not now nor will he ever be a qualified financial planner, accountant, CPA, astronaut, cowboy or ninja.</i>
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+<text align="left">
 
-## Development Setup Instructions
+---
+##### <img src="./README-visuals/mb-original-wireframe.jpeg" width="80%" style="float: left; margin-right: 10px"> <br /><br />_(this image represents the detailed, original, conceptual application flowchart. Several days were spent meticulously peeling back layers of API data and planning data paths as well as designing routes. The final product featured the majority of stretch functionality and implemented a few extra features to boot)_
 
-- Run `npm install`
-- Create a `.env` file at the root of the project and paste this line into the file:
-  ```
-  SERVER_SESSION_SECRET=superDuperSecret
-  ```
-  While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm run server`
-- Run `npm run client`
-- Navigate to `localhost:3000`
+<br />
 
-## Debugging
+<br />
 
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run client`. Start the debugging server by selecting the Debug button.
 
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
+<img src="./README-visuals/mb-gif-1.gif" />
+---
+---
 
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
 
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
+<img align="right" src="./README-visuals/mb-use-2.gif" height="500px" style="margin-left: 30px"/>
 
-## Testing Routes with Postman
 
-To use Postman with this repo, you will need to set up requests in Postman to register a user and login a user at a minimum.
 
-Keep in mind that once you using the login route, Postman will manage your session cookie for you just like a browser, ensuring it is sent with each subsequent request. If you delete the `localhost` cookie in Postman, it will effectively log you out.
+<text align="right">
 
-1. Start the server - `npm run server`
-2. Import the sample routes JSON file [v2](./PostmanPrimeSoloRoutesv2.json) by clicking `Import` in Postman. Select the file.
-3. Click `Collections` and `Send` the following three calls in order:
-   1. `POST /api/user/register` registers a new user, see body to change username/password
-   2. `POST /api/user/login` will login a user, see body to change username/password
-   3. `GET /api/user` will get user information, by default it's not very much
+# Prerequisites
 
-After running the login route above, you can try any other route you've created that requires a logged in user!
+---
 
-## Production Build
+Internet browser (e.g. Chrome, Firefox, Safari)<br />
+Node.js<br />
+PostgreSQL<br />
+<br />
+</font>
 
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
+<text align='left'>
 
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm start`
-- Navigate to `localhost:5000`
+# Installation
+---
+- Create a database using the provided .sql file (title the DB <b>"magic_beans"</b>)
+- Run `npm install` from the project root directory
+- Run `npm run server` to run the node server
+- In a separate terminal tab, run `npm run client` to launch the React app
+<br />
+<br />
 
-## Lay of the Land
 
-There are a few videos linked below that show a walkthrough the client and sever setup to help acclimatize to the boilerplate. Please take some time to watch the videos in order to get a better understanding of what the boilerplate is like.
 
-- [Initial Set](https://vimeo.com/453297271)
-- [Server Walkthrough](https://vimeo.com/453297212)
-- [Client Walkthrough](https://vimeo.com/453297124)
+# Application Use
+---
 
-Directory Structure:
+- In order to proceed to the app content, you will need to <img src="./README-visuals/agreeButton.png" alt="agree button" style="width:50px;"> to the `disclaimer` landing page.
+- `Create an account` or `login` with your username and password to advance.
+- If you see a  <img src="./README-visuals/bitcoinLogoSpinning.gif" alt="agree button" style="width:25px;"> logo, this means that the real-time market data - as well as your stored portfolio and position information - is loading/calculating. Depending on the status of the market, this could take a few seconds (you can view `CoinGecko's API` status [HERE](https://status.coingecko.com/)).
+- At any time, tap the <img src="./README-visuals/icons8-hamburger-58.png" alt="hamburger menu" style="width:20px;"> menu to open a drawer of navigation options. 
+- This `actual hamburger menu` features a <img src="./README-visuals/aboutButton.png" alt="previous button" style="width:25px;"> which will navigate to the `about page` _(COMING SOON)_.
+- If you have not added any crypto holdings yet, you'll be greeted by an empty `positions table`. You can scroll down to browse the top 250 cryptocurrencies (ordered descending by market capitalization) at that particular time. Tapping on any `row` will bring you to a `details page` with a wealth of current market data as well as a 24-hour price chart. The line will be <font color="red"><b>red</b></font> if the price is lower than it was 24 hours prior and <font color="green"><b>green</b></font> if it's higher.
+- On this `details page`, you can enter any amount of that particular cryptocurrency that you'd like to add to <img src="./README-visuals/addButton.png" alt="next button" style="width:36px;"> to `your portfolio`. The following dialogue will allow you to <img src="./README-visuals/confirmButton.png" alt="next button" style="width:48px"> or <img src="./README-visuals/cancelButton.png" alt="next button" style="width:48px"> (don't sweat it too much - you can always change this later).
+- If you do <img src="./README-visuals/confirmButton.png" alt="next button" style="width:48px"> the addition of an asset holding, you'll see a friendly `success` dialogue that indicates that you now own a little more of the future of global currency! It even crunches the numbers for you 😃
+- From this page, you can always press the <img src="./README-visuals/searchButton.png" alt="next button" style="width:26px"> button to navigate to the `search page` or the <img src="./README-visuals/homeButton.png" alt="next button" style="width:26px"> button to navigate back to the `home page` where you can see your current portfolio and market data.
+- On the `search page`, you can enter any coin by `name`, `ticker` or by a `single letter`. The single letter option will return every currency in the current top 250 that BEGINS WITH THAT LETTER. Pressing the <img src="./README-visuals/searchGreenButton.png" alt="previous button" style="width:50px;"> button will launch the search. Please note that it is possible to return multiple results and continuing to search will stack results on the page. 
+- At any time, once results are populated, you can click the <img src="./README-visuals/detailsButton.png" alt="details button" style="width:45px;"> button to navigate to the `coin details page`.
+- Alternatively, you can clear the entire search queue by pressing the <img src="./README-visuals/clearButton.png" alt="clear button" style="width:30px;"> button.
 
-- `src/` contains the React application
-- `public/` contains static assets for the client-side
-- `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-- `server/` contains the Express App
 
-This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
 
-- src/components
-  - App/App
-  - Footer/Footer
-  - Nav/Nav
-  - AboutPage/AboutPage
-  - CoinSearchPage/CoinSearchPage
-  - UserPage/UserPage
-  - LoginPage/LoginPage
-  - RegisterPage/RegisterPage
-  - LogOutButton/LogOutButton
-  - ProtectedRoute/ProtectedRoute
+- From the `home page`, you can `remove` a position by tapping the <img src="./README-visuals/deleteButton.png" alt="delete menu" style="width:20px;"> button.
+- You can also `modify` a position by tapping the <img src="./README-visuals/modifyButton.png" alt="confirm button" style="width:20px"> button. This will bring to a page that allows you to enter a new position amount entirely if you made a mistake, would like to add more or would like to remove some, but not all, from your position.
+<br />
 
-## Deployment
 
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
 
-## Update Documentation
+- At any time, inside the <img src="./README-visuals/icons8-hamburger-58.png" alt="hamburger menu" style="width:20px;"> menu, you can tap the <img src="./README-visuals/logoutButton.png" alt="logout button" style="width:20px;"> button to `sign out`. 
 
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+<img align="left" src="./README-visuals/mb-use-3.gif" height="500px" style="margin-right: 30px" />
+
+# Built with
+---
+[Visual Studio Code](https://code.visualstudio.com/) <br />
+[Pixelmator Pro](https://www.pixelmator.com/pro/) <br />
+[Material UI](https://mui.com/) <br />
+[Moment.js](https://momentj) <br />
+[date-fns](https://date-fns.org/) <br />
+[react-chartjs-2](https://www.chartjs.org/) <br />
+[Gifox](https://gifox.io/) <br />
+[CoinGecko API](https://www.coingecko.com/en/api) <br />
+[Font Awesome](https://fontawesome.com/) <br />
+[Google Fonts](https://fonts.google.com/) <br />
+[Lucid Chart](https://www.lucidchart.com/) <br />
+[Postico](https://eggerapps.at/postico/) <br />
+
+
+# License
+---
+N/A
+
+<br/>
+
+
+# Acknowledgement
+---
+I'd like to extend my sincere thanks to my instructors and everyone at [Prime Digital Academy](www.primeacademy.io) - especially [Chris Black](https://github.com/blackcj) and the <b>Proth cohort</b> - for giving me the tools to do amazing things with amazing technology. After years of juggling upwards of 40 cryptocurrency applications and thinking of all the fun stuff I'd love to do if I ever made my own, bringing this to life was a massively profound experience. I almost wish it would never end. 
+<br />
+
+# Support
+---
+If you have questions or issues - or would like to leave me some feedback - please do not hesitate to email me at: [cmochinski@gmail.com](mailto:cmochinski@gmail.com) or at my GitHub below. I'd sincerely love to hear from you!
+
+---
+<br />
+
+<img align="left" src="./README-visuals/readme-signature-pic.png" alt="mo" style="width:115px;">
+
+
+_[My Twitter (@HolyMosesMusic)](https://twitter.com/holymosesmusic)_ <br />
+_[My GitHub](https://github.com/chrismochinski)_ <br />
+_[My LinkedIn](https://www.linkedin.com/in/chrismochinski/)_ 

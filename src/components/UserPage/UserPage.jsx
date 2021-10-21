@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Typography, Grid, Container } from '@material-ui/core';
-
+import React, { useEffect } from 'react';
+import { Typography, Container } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-
 import useStyles from '../styles/styles';
-
 import { Table, TableBody, TableCell, TableHead, TableRow, Paper } from "@material-ui/core"
-
 import TableContainer from '@mui/material/TableContainer';
-
 import moment from 'moment';
-
 import { useHistory } from 'react-router-dom';
 import Coin from '../../Coin/Coin';
 import UserHoldings from '../UserHoldings/UserHoldings';
@@ -45,7 +39,7 @@ function UserPage() {
             return "Good Morning";
         } else if (currentHour >= 12 && currentHour < 15) {
             return "Good Afternoon";
-        } else if (currentHour >= 15 && currentHour < 20) {
+        } else if (currentHour >= 15 && currentHour < 23) {
             return "Good Evening";
         } else {
             return "Hi"
@@ -55,15 +49,12 @@ function UserPage() {
 
     useEffect(() => {
         dispatch({ type: 'FETCH_CRYPTO_LIST' }); //FETCHING MASTER LIST
-        console.log('user id is:', user)
     }, [])
 
     return (
 
         <div className="userContainer">
             <Typography variant="h4" style={{ paddingTop: '0' }} className={classes.pageMainHeader}>{getTime()}, {user.username}!</Typography>
-            {/* <p>Your ID is: {user.id}</p> */}
-
             <Container className={classes.tableMain}>
                 <Paper className={classes.assetHeader} elevation={6}>
                     <Typography variant="h5" style={{ margin: '10px', paddingTop: '5px', fontSize: '17px', fontFamily: 'Poppins', color: '#216091' }}>As of {moment().format('lll')}:</Typography>
@@ -105,7 +96,6 @@ function UserPage() {
                                         marketCap={shortenBigNumber(coin.market_cap)}
                                         priceChange={coin.price_change_percentage_24h}
                                     />
-
                                 )
                             })}
 
@@ -116,11 +106,8 @@ function UserPage() {
                     </Container>
                 </TableContainer>
             </Container>
-
-            {/* <LogOutButton className="btn" /> */}
         </div>
     );
 }
 
-// this allows us to use <App /> in index.js
 export default UserPage;

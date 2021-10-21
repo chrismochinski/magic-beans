@@ -14,11 +14,14 @@ import ForumIcon from '@mui/icons-material/Forum';
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import LanguageIcon from '@mui/icons-material/Language';
+import VerticalAlignTopIcon from '@mui/icons-material/VerticalAlignTop';
 
 import useStyles from '../styles/styles';
 import swal from 'sweetalert';
 
 function CoinDetails({ card }) {
+
+    const DOMPurify = require('dompurify')(window); //safety measures!
 
     const classes = useStyles();
     const { id } = useParams();
@@ -98,19 +101,19 @@ function CoinDetails({ card }) {
             }).catch(error => console.log('error getting coin details!', error));
     };
 
-    const handleAddCoins = () => { //todo POST ROUTE
+    const handleAddCoins = () => {
         setTestObject(coinAmount)
         console.log('TEST OBJECT IS:', testObject);
         setTotalCost(coinAmount * coinPrice);
-        console.log(`
-        User wants to add ${coinAmount} 
-        of ${coinName} 
-        which is a total user cost of $${(coinAmount * coinPrice).toLocaleString()}
-        at $${coinPrice} per coin.
-        Current MC of $${(coinMarketCap * 1).toLocaleString()}. 
-        ${coinName}'s volume is ${(coinVolume * 1).toLocaleString()} 
-        and, in the last 24 hours, 
-        its price has changed by ${coinPriceChange}%.`) //fix
+        // console.log(`
+        // User wants to add ${coinAmount}  //delete later
+        // of ${coinName}
+        // which is a total user cost of $${(coinAmount * coinPrice).toLocaleString()}
+        // at $${coinPrice} per coin.
+        // Current MC of $${(coinMarketCap * 1).toLocaleString()}.
+        // ${coinName}'s volume is ${(coinVolume * 1).toLocaleString()}
+        // and, in the last 24 hours,
+        // its price has changed by ${coinPriceChange}%.`) //fix
 
         let objectToSend = ({
             user_id: user.id,
@@ -149,34 +152,36 @@ function CoinDetails({ card }) {
         }
     }
 
+    const getDescription = (description) => {
+        return (
+            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(description) }} />
+        )
+    }
+
+    const backToTop = () => {
+        window.scrollTo(0, 0)
+    }
+
     return (
 
         <Container className={classes.detailsPage} >
-            <Typography style={{fontFamily: 'Poppins'}} variant="h4">{coinName}</Typography>
-            <Typography style={{fontFamily: 'Righteous'}} variant="h3"><b>{coinSymbol}</b></Typography>
-            <Typography style={{fontFamily: 'Poppins'}} variant="h3">${coinPriceToDisplay}</Typography>
-            <Typography style={{fontFamily: 'Poppins'}} variant="h5"> {coinPriceChange < 0 ? (<p className="downRed"><KeyboardArrowDownIcon />{coinPriceChange}% today</p>) : (<p className="upGreen"><KeyboardArrowUpIcon />{coinPriceChange}% today</p>)}</Typography>
+            <Typography style={{ fontFamily: 'Poppins' }} variant="h4">{coinName}</Typography>
+            <Typography style={{ fontFamily: 'Righteous' }} variant="h3"><b>{coinSymbol}</b></Typography>
+            <Typography style={{ fontFamily: 'Poppins' }} variant="h3">${coinPriceToDisplay}</Typography>
+            <Typography style={{ fontFamily: 'Poppins' }} variant="h5"> {coinPriceChange < 0 ? (<p className="downRed"><KeyboardArrowDownIcon />{coinPriceChange}% today</p>) : (<p className="upGreen"><KeyboardArrowUpIcon />{coinPriceChange}% today</p>)}</Typography>
 
-            <Typography style={{fontFamily: 'Poppins'}} variant="h6"><b>Market Cap:</b> ${(coinMarketCap * 1).toLocaleString()}</Typography>
-            <Typography style={{fontFamily: 'Poppins'}} variant="h6"><b>Vol:</b> {(coinVolume * 1).toLocaleString()}</Typography>
+            <Typography style={{ fontFamily: 'Poppins' }} variant="h6"><b>Market Cap:</b> ${(coinMarketCap * 1).toLocaleString()}</Typography>
+            <Typography style={{ fontFamily: 'Poppins' }} variant="h6"><b>Vol:</b> {(coinVolume * 1).toLocaleString()}</Typography>
             <Typography style={{ color: '#8F8F8F', fontFamily: 'Poppins', overflowWrap: 'anywhere', fontSize: '14px' }}><LanguageIcon style={{ color: '#7D00DE', overflowWrap: 'anywhere' }} /> {coinWebsite}</Typography>
-            <Typography style={{ color: '#8F8F8F', fontFamily: 'Poppins', overflowWrap: 'anywhere'  }}><TwitterIcon style={{ color: '#00ACEE' }} /> @{coinTwitter}</Typography>
-            {coinForum[0] === '' ? <Typography></Typography> : <Typography style={{ color: '#8F8F8F', fontFamily: 'Poppins', overflowWrap: 'anywhere' }}><ForumIcon style={{ color: '#FF730C' }} /> {coinForum}</Typography>}
+            <Typography style={{ color: '#8F8F8F', fontFamily: 'Poppins', overflowWrap: 'anywhere' }}><TwitterIcon style={{ color: '#00ACEE' }} /> @{coinTwitter}</Typography>
+            {coinForum[0] === '' ? <Typography></Typography> : <Typography style={{ color: '#8F8F8F', fontFamily: 'Poppins', overflowWrap: 'anywhere', marginBottom: '20px' }}><ForumIcon style={{ color: '#FF730C' }} /> {coinForum}</Typography>}
 
 
 
             <Chart id={id} coinName={coinName} />
 
 
-
-            <br />
-            <Typography style={{ overflowWrap: 'anywhere', fontFamily: 'Poppins' }}>{coinDescription}</Typography>
-
-            <Container>
-                <Typography style={{ paddingTop: "40px" }} variant="h4">{renderPage()}</Typography>
-            </Container>
-
-            <Grid container justifyContent="center" >
+            <Grid container justifyContent="center" style={{ marginTop: '30px' }}>
                 <Container>
                     <form onSubmit={handleAddCoins}>
                         <Grid container style={{ justifyContent: 'center' }}>
@@ -208,14 +213,27 @@ function CoinDetails({ card }) {
                     </form>
                 </Container>
 
-
             </Grid>
+
             <div style={{ textAlign: 'center' }}>
                 <Button className={classes.detailToSearchButton} size="medium" variant="contained" onClick={() => navSearch()}><SearchIcon style={{ fontSize: '35px' }} /></Button>
                 <Button variant="contained" size="medium" className={classes.goHomeButton} onClick={() => returnHome()}><HomeIcon style={{ fontSize: '35px' }} /></Button>
 
 
             </div>
+
+            <br />
+            <div style={{ overflowWrap: 'anywhere', fontFamily: 'Poppins' }}>{getDescription(coinDescription)}</div>
+            <Container style={{textAlign: 'center'}}>
+                <Button className={classes.detailToSearchButton} size="medium" variant="contained" onClick={() => backToTop()}><VerticalAlignTopIcon style={{ fontSize: '35px' }} /></Button>
+            </Container>
+            <Container>
+                <Typography style={{ paddingTop: "40px" }} variant="h4">{renderPage()}</Typography>
+            </Container>
+
+
+
+
 
 
         </Container>

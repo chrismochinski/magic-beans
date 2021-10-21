@@ -74,7 +74,9 @@ function CoinSearchPage() {
 
     <div>
       <Container maxWidth="sm" className={classes.mainSearchPage}>
-        <Typography className={classes.pageHeader} variant="h4" >Crypto Search!</Typography>
+      <img src="/images/mb-logo-search.png" className="modLogo" style={{marginBottom: '10px' }} width="230px" />
+
+        {/* <Typography className={classes.pageHeader} variant="h4" >Crypto Search!</Typography> */}
         <form onSubmit={handleChange} style={{ textAlign: 'center' }}>
           <TextField
             inputProps={{ style: { fontSize: 30 } }}

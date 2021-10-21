@@ -2,14 +2,9 @@ import React, { useRef } from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Container, Grid, Typography } from '@mui/material'
 
 import { Line } from 'react-chartjs-2'
 import 'chartjs-adapter-date-fns';
-
-import { chartConfig } from './ChartConfig'
-import { ColorLensOutlined, ConstructionOutlined } from '@mui/icons-material'
-// import { Chart } from 'chart.js'
 
 function Chart({ id, coinName }) {
 
@@ -17,12 +12,12 @@ function Chart({ id, coinName }) {
     const [isLoading, setIsLoading] = useState(false);
     const user = useSelector(store => store.user)
     const [chartData, setChartData] = useState([]);
-    const [time, setTime] = useState();
 
 
-    /*GET*/
-    //API
-    //todo needs own page = chartPage
+    /**
+     * @api {get} from CoinGecko's fabulous free API
+     * (though I may pony up since they're so awesome...)
+     */
     useEffect(() => {
         setIsLoading(true) // begin loading
         dispatch({ type: 'FETCH_COIN_LIST' })
@@ -35,23 +30,10 @@ function Chart({ id, coinName }) {
     let finalArray = [];
 
     const changeToObjects = (data) => {
-        console.log('data is:', data)
         for (let eachArray of data) {
             finalArray.push({ x: eachArray[0], y: eachArray[1] })
         }
-        console.log('final array is:', finalArray)
         setChartData(finalArray)
-
-    
-            //deletelater time crap
-        // let today = new Date();
-        // let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-        // let currentTime = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        // setTime(currentTime);
-        // console.log('time is', time)
-
-
-
         setIsLoading(false)
     }
 
@@ -75,16 +57,13 @@ function Chart({ id, coinName }) {
 
                     <Line
                         data={{
-                            // labels: ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',],
                             datasets: [{
                                 label: `24h ${coinName} Price`,
-                                // fill: true, //fills bottom of chart with color
                                 data: renderData(),
                                 backgroundColor: lineColor(),
                                 borderColor: lineColor(),
                                 borderWidth: 3,
                                 pointRadius: 0,
-
                             },
                             ],
                         }}
@@ -100,7 +79,6 @@ function Chart({ id, coinName }) {
                                     loop: true
                                 }
                             },
-                            // maintainAspectRatio: false,
                             scales: {
                                 x: {
                                     type: 'time',
@@ -111,7 +89,6 @@ function Chart({ id, coinName }) {
                             },
                         }}
                     />
-
                 </div>
             }
         </div>

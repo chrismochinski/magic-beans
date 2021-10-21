@@ -108,8 +108,8 @@ const useStyles = makeStyles(() => ({
   mainSearchPage: {
     padding: '20px',
     textAlign: 'center',
-    paddingTop: '20px',
-    paddingBottom: '200px',
+    paddingTop: '10px',
+    paddingBottom: '100px',
     margin: 'auto',
   },
 

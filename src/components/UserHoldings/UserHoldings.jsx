@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import useStyles from '../styles/styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router';
-import { Typography, Container, Grid, Button } from '@material-ui/core/';
+import { Typography, Grid, Button } from '@material-ui/core/';
 import IconButton from '@mui/material/IconButton';
-
-import './UserHoldings.css';
 
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
@@ -18,7 +16,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
 import Swal from 'sweetalert2';
-
 
 const UserHoldings = () => {
 
@@ -57,21 +54,16 @@ const UserHoldings = () => {
         console.log('using swal to warn before delete');
         Swal.fire({
             title: `Remove all ${name}?`,
-            text: "This position will be removed!",
+            text: "This position will be removed.",
             // icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            cancelButtonColor: '#9333F0',
             confirmButtonText: 'Yep!',
-            cancelButtonText: 'On Second Thought...'
+            cancelButtonText: 'Actually...'
         }).then((result) => {
             if (result.isConfirmed) {
                 handleDeletePress(id);
-                // Swal.fire(
-                //     'Deleted!',
-                //     'Position Removed.',
-                //     'success'
-                // )
             }
         })
     }

@@ -43,7 +43,7 @@ const ModifyPage = () => {
 
             <img src="/images/mb-mod-logo.png" className="modLogo" style={{ marginTop: '20px', marginBottom: '15px' }} width="200px" />
 
-            <Typography className={classes.modHeader} variant="h6" >You currently hold <b>{held} {name}</b> coins.</Typography>
+            <Typography className={classes.modHeader} variant="h6" >You currently hold <b>{held} {name}</b>.</Typography>
 
             <Typography className={classes.modPreInput}>Enter a new amount?</Typography>
             <form onSubmit={handleModifyCoins}>

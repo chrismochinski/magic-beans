@@ -16,6 +16,7 @@
     "chartjs-adapter-date-fns": "^2.0.0",
     "cookie-session": "^2.0.0-rc.1",
     "date-fns": "^2.25.0",
+    "dompurify": "^2.3.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "fa-icons": "^0.2.0",
