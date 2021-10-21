@@ -1,26 +1,21 @@
-import axios from 'axios';
-import { put, takeEvery } from 'redux-saga/effects';
+import axios from "axios";
+import { put, takeEvery } from "redux-saga/effects";
 
-    //POST--------------
 function* postPosition(action) {
-    console.log('in postPosition saga!!!!'); 
-    try {
-        console.log('adding action.payload in postPositionSaga', action.payload);
-        yield axios({
-            method: 'POST',
-            url: '/api/crypto/',
-            data: action.payload
-        });                     //FIX NOT SURE WHAT TO DO HERE YET
-        yield put({ type: 'FETCH_USER_POSITIONS' }) //UPDATED get user stuff into redux store
-    } catch (error) {                             
-        console.log('error in sending new position (addToPositionSaga):', error)
-    }
+  try {
+    yield axios({
+      method: "POST",
+      url: "/api/crypto/",
+      data: action.payload,
+    });
+    yield put({ type: "FETCH_USER_POSITIONS" }); //redux store
+  } catch (error) {
+    console.log("error in sending new position (addToPositionSaga):", error);
+  }
 }
 
 function* addToPositionSaga() {
-    yield takeEvery('ADD_POSITION_TO_DB', postPosition); //UPDATED FROM COINDETAIL.JSX
+  yield takeEvery("ADD_POSITION_TO_DB", postPosition);
 }
 
 export default addToPositionSaga;
-
-

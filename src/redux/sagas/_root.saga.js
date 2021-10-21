@@ -3,7 +3,6 @@ import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import fetchCryptoListSaga from './crypto.saga'; // get route //api
 import userSaga from './user.saga';
-import sevenDaySaga from './sevenDay.saga'; //deletelater
 import coinDetailsSaga from './coinDetails.saga'; //deletelater
 import addToPositionSaga from './addToPosition.saga'; //post route
 import fetchUserHoldingsSaga from './userHoldings.saga';
