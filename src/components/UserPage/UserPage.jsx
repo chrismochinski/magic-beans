@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography, Container } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import useStyles from '../styles/styles';
@@ -17,7 +17,9 @@ function UserPage() {
     const classes = useStyles();
     const history = useHistory();
 
-    const shortenBigNumber = (value) => {  //important for market cap on details page!
+
+    //clean up big numbers like Market Cap
+    const shortenBigNumber = (value) => {
         const suffixes = ["", "K", "M", "B", "T"];
         let suffixNum = Math.floor(("" + value).length / 3);
         let shortValue = parseFloat((suffixNum !== 0 ? (value / Math.pow(1000, suffixNum)) : value).toPrecision(4));
@@ -45,6 +47,8 @@ function UserPage() {
             return "Hi"
         }
     }
+
+
 
 
     useEffect(() => {
@@ -88,11 +92,11 @@ function UserPage() {
                                         symbol={coin.symbol}
                                         price={
                                             coin.symbol === 'btc' ?
-                                            coin.current_price.toLocaleString(undefined,
-                                                { 'minimumFractionDigits': 0, 'maximumFractionDigits': 2 })
+                                                coin.current_price.toLocaleString(undefined,
+                                                    { 'minimumFractionDigits': 0, 'maximumFractionDigits': 2 })
                                                 :
-                                            coin.current_price.toLocaleString(undefined,
-                                            { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 })}
+                                                coin.current_price.toLocaleString(undefined,
+                                                    { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 })}
                                         marketCap={shortenBigNumber(coin.market_cap)}
                                         priceChange={coin.price_change_percentage_24h}
                                     />

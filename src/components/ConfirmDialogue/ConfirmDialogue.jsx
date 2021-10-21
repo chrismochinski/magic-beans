@@ -10,7 +10,6 @@ import Slide from '@mui/material/Slide';
 import { Container, Grid} from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import useStyles from '../styles/styles';
-// import './ConfirmDialogue.css'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -61,8 +60,8 @@ export default function ConfirmDialogue({ handleAddCoins, coinAmount, id, coinNa
                 </DialogContent>
                 <DialogActions >
                     <Container style={{textAlign: 'center', marginBottom: '25px'}}>
-                        <Button style={{ margin: '4px', textAlign: 'center', fontSize: "14px", backgroundColor: "green", color: 'white'}} className={classes.dialogueButtons} onClick={handleCloseConfirm}>Confirm!</Button>
-                        <Button style={{ margin: '4px', textAlign: 'center', fontSize: "14px", backgroundColor: "purple", color: 'white'}} className={classes.dialogueButtons} onClick={handleCloseCancel}>Cancel</Button>
+                        <Button style={{ margin: '4px', textAlign: 'center', fontSize: "14px", backgroundColor: "#5C9827", color: 'white'}} className={classes.dialogueButtons} onClick={handleCloseConfirm}>Confirm!</Button>
+                        <Button style={{ margin: '4px', textAlign: 'center', fontSize: "14px", backgroundColor: "#9333F0", color: 'white'}} className={classes.dialogueButtons} onClick={handleCloseCancel}>Cancel</Button>
                     </Container>
                 </DialogActions>
             </Dialog>

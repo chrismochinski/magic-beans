@@ -29,7 +29,6 @@ function CoinDetails({ card }) {
     const dispatch = useDispatch();
     const user = useSelector(store => store.user)
 
-    //set state of search / chart info results
 
     //setting up loading dialogue
     const [isLoading, setIsLoading] = useState(false); //initial value false on page loading

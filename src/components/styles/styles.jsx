@@ -104,7 +104,7 @@ const useStyles = makeStyles(() => ({
     //fix poking through above head - fix
   },
 
-  //-------------SearchPage > CoinSearchPage-------------//
+  //-------SearchPage > CoinSearchPage-------//
 
 
   mainSearchPage: {
@@ -318,10 +318,17 @@ const useStyles = makeStyles(() => ({
   },
 
   addPositionButton: {
-    margin: '20px',
+    margin: '15px',
     fontSize: '25px',
     fontWeight: 'bolder',
     backgroundColor: '#5C9827',
+    color: 'white',
+  },
+
+  pieButton: {
+    marginBottom: '25px',
+    fontSize: '25px',
+    backgroundColor: '#9333F0',
     color: 'white',
   },
 
@@ -364,6 +371,7 @@ const useStyles = makeStyles(() => ({
     color: 'white',
     backgroundColor: '#9333F0',
   },
+
 
 }))
 

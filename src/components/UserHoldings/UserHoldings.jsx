@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
+import DonutLargeIcon from '@mui/icons-material/DonutLarge';
 
 import Table from "@material-ui/core/Table";
 import TableContainer from '@mui/material/TableContainer';
@@ -17,6 +18,9 @@ import TableRow from "@material-ui/core/TableRow";
 
 import Swal from 'sweetalert2';
 
+import UserDonutChart from '../UserDonutChart/UserDonutChart';
+
+
 const UserHoldings = () => {
 
     const history = useHistory()
@@ -26,6 +30,12 @@ const UserHoldings = () => {
     const cryptoList = useSelector(store => store.cryptoListReducer); //full crypto list
 
     const [userHoldingsArray, setUserHoldingsArray] = useState([]);
+
+    const [list, setList] = useState(false)
+    const [totalDisp, setTotalDisp] = useState() //total holding storage
+
+
+
     const classes = useStyles();
 
     let totalHolding = 0;
@@ -59,7 +69,7 @@ const UserHoldings = () => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#9333F0',
             confirmButtonText: 'Yep!',
-            cancelButtonText: 'Actually...'
+            cancelButtonText: 'Cancel!'
         }).then((result) => {
             if (result.isConfirmed) {
                 handleDeletePress(id);
@@ -75,7 +85,7 @@ const UserHoldings = () => {
         });
     }
 
-    const handleModifyPress = (name, id, held ) => {
+    const handleModifyPress = (name, id, held) => {
         history.push(`/modify/${id}/${name}/${held}`); //send to modify page with coin ID
     }
 
@@ -109,10 +119,19 @@ const UserHoldings = () => {
         }
         const reducer = (previousValue, currentValue) => previousValue + currentValue;
         totalToSend = runningTotalArray.reduce(reducer)
+
         return (
             <div>{totalToSend}</div>
         )
     }
+
+    //function that displays clickable donut chart
+    const changeView = () => {
+        setList(!list)
+        console.log('clicked the div:', list)
+    }
+
+
 
     return (
         <div>
@@ -139,35 +158,46 @@ const UserHoldings = () => {
                                         <TableCell style={{ padding: '3px' }} className={classes.holdingSymbol}>{holding.symbol}</TableCell>
                                         <TableCell style={{ padding: '3px' }} className={classes.holdingAmount}>{fixHeldDecimals(holding.coins_held)}</TableCell>
                                         <TableCell style={{ padding: '3px' }} className={classes.holdingVal}>${getCurrentCryptoValue(cryptoList, holding.coin_id, holding.coins_held)}</TableCell>
-                                        <TableCell style={{ padding: '3px' }} className={classes.holdingDelete}><IconButton variant="contained" size="small" className={classes.holdingsDeleteButton} onClick={() => deleteWarn(holding.id, holding.name)}><DeleteForeverIcon style={{ color: '#9A0D01', transform: 'scale(1.6)', paddingLeft: '12px'}} /></IconButton></TableCell>
+                                        <TableCell style={{ padding: '3px' }} className={classes.holdingDelete}><IconButton variant="contained" size="small" className={classes.holdingsDeleteButton} onClick={() => deleteWarn(holding.id, holding.name)}><DeleteForeverIcon style={{ color: '#9A0D01', transform: 'scale(1.6)', paddingLeft: '12px' }} /></IconButton></TableCell>
                                         <TableCell style={{ padding: '3px' }} className={classes.holdingModify}><IconButton variant="contained" size="small" className={classes.holdingsModifyButton} onClick={() => handleModifyPress(holding.name, holding.id, holding.coins_held)}><ImportExportIcon style={{ color: '#D4C215', transform: 'scale(1.6)', paddingRight: '7px' }} /></IconButton></TableCell>
                                     </TableRow>
                                 )
                             })}
                         </TableBody>
                     </Table>
+
+
                 </TableContainer>
 
 
-
             }
+
+
+
+            <Typography style={{ marginTop: '15px', marginBottom: '0px', fontSize: '30px', textAlign: 'center' }} variant="h4">Total: <b>${totalToSend.toLocaleString(undefined,
+                { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 })}</b>
+            </Typography><br />
             <Grid container justifyContent="center" >
 
-                <Grid item>
-                    <Typography style={{marginTop: '15px', fontSize: '30px'}}variant="h4">Total: <b>${totalToSend.toLocaleString(undefined,
-                        { 'minimumFractionDigits': 2, 'maximumFractionDigits': 2 })}</b></Typography>
-                </Grid>
 
-                <Grid item className={classes.addButton} xs={12} s={2} md={2} lg={2} xl={2}>
+                <Grid item className={classes.addButton} >
+
                     <Button
                         variant="outlined"
-                        size="small"
+                        size="medium"
                         onClick={handleAddClick}
                         className={classes.addPositionButton}><b>Add</b></Button>
                 </Grid>
+
+                <Grid item style={{margin: '15px'}}>
+                    <UserDonutChart />
+
+
+                </Grid>
+
             </Grid>
 
-        </div>
+        </div >
     )
 }
 
