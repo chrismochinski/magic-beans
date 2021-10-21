@@ -1,4 +1,4 @@
-# **Magic Beans Cryptofolio**  <img src="./README-visuals/magic-beans-logo.png" width="40%" style="float: left; margin: 5px">
+# **Magic Beans Cryptofolio**  <img src="./README-visuals/magic-beans-logo.png" width="30%" style="float: left; margin: 5px">
 
 # <span style="color: #B00E0E">** **PRE-RELEASE W.I.P.** **</span> <br/> <font size=4>Application is set for initial launch 10/25/21
 
@@ -19,7 +19,9 @@
 <text align="left">
 
 ---
-##### <img src="./README-visuals/mb-original-wireframe.jpeg" width="80%" style="float: left; margin-right: 10px"> _(this image represents the detailed, original, conceptual application flowchart. Several days were spent meticulously peeling back layers of API data and planning data paths as well as designing routes. The final product featured the majority of stretch functionality and implemented a few extra features to boot)_
+<img src="./README-visuals/mb-original-wireframe.jpeg" width="80%" style="float: left; margin-right: 5px"> 
+<i>(this image represents the detailed, original, conceptual application flowchart. Several days were spent meticulously peeling back layers of API data and planning data paths as well as designing routes. The final product featured the majority of stretch functionality and implemented a few extra features to boot)</i>
+
 
 ---
 
@@ -50,7 +52,8 @@
 
 # Installation
 ---
-- Create a database using the provided .sql file (title the DB <b>"magic_beans"</b>)
+- Create a database using the provided .sql file (title the DB <b>`magic_beans`</b>)
+- Run the queries in the included `database.sql` file
 - Run `npm install` from the project root directory
 - Run `npm run server` to run the node server
 - In a separate terminal tab, run `npm run client` to launch the React app
