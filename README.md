@@ -1,7 +1,6 @@
 # **Magic Beans Cryptofolio**  <img src="./README-visuals/magic-beans-logo.png" width="40%" style="float: left; margin: 5px">
 
-# <span style="color: #B00E0E">** **PRE-RELEASE W.I.P.** **</span> <br/> 
-### Application is set for initial launch 10/25/21
+# <span style="color: #B00E0E">** **PRE-RELEASE W.I.P.** **</span> <br/> <font size=4>Application is set for initial launch 10/25/21
 
 
 ### <b><span style="color:#F0ED86">A cryptocurrency market data and portfolio tracker for everyone!</b>
