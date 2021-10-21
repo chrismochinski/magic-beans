@@ -19,7 +19,7 @@
 <text align="left">
 
 ---
-<img src="./README-visuals/mb-original-wireframe.jpeg" width="80%" style="float: left; margin-right: 5px"> 
+<img src="./README-visuals/mb-original-wireframe.jpeg" style="float: left; margin-right: 5px"> 
 <i>(this image represents the detailed, original, conceptual application flowchart. Several days were spent meticulously peeling back layers of API data and planning data paths as well as designing routes. The final product featured the majority of stretch functionality and implemented a few extra features to boot)</i>
 
 
@@ -120,7 +120,7 @@ If you have questions or issues - or would like to leave me some feedback - plea
 ---
 <br />
 
-<img align="left" src="./README-visuals/readme-signature-pic.png" alt="mo" style="width:130px; margin: 10px">
+<img align="left" src="./README-visuals/readme-signature-pic.png" alt="mo" style="width:150px; margin: 10px">
 
 
 _[My Twitter (@HolyMosesMusic)](https://twitter.com/holymosesmusic)_ <br />

@@ -26,7 +26,6 @@ const UserHoldings = () => {
     const cryptoList = useSelector(store => store.cryptoListReducer); //full crypto list
 
     const [userHoldingsArray, setUserHoldingsArray] = useState([]);
-    const [valueToDisplay, setValueToDisplay] = useState();
     const classes = useStyles();
 
     let totalHolding = 0;
@@ -70,7 +69,6 @@ const UserHoldings = () => {
 
     //if user confirms on SWAL warning:
     const handleDeletePress = (id) => {
-        console.log('handleDeletePress pushed! id is:', id, 'and User id is:', store.user.id);
         dispatch({
             type: 'DELETE_HOLDING',
             payload: { id: id, user_id: store.user.id }
@@ -78,16 +76,13 @@ const UserHoldings = () => {
     }
 
     const handleModifyPress = (name, id, held ) => {
-        console.log('handleModifyPress for order', id, 'pushed for', held, 'of', name)
         history.push(`/modify/${id}/${name}/${held}`); //send to modify page with coin ID
     }
-
 
     const handleAddClick = () => {
         console.log('add button clicked')
         history.push('/search'); //important add this page for search, SHARE WITH HOURGLASS HAMBURGER LINK
     }
-
 
     //function to get total value per coin
     const getCurrentCryptoValue = (data, id, count) => {
@@ -109,15 +104,11 @@ const UserHoldings = () => {
     let totalToSend = 0;
     const totalToDisplay = (incomingNumber) => {
         if (incomingNumber == undefined) {
-            console.log('still zero...')
         } else {
-            console.log('incoming number:', incomingNumber)
             runningTotalArray.push(incomingNumber)
-            console.log('running total is:', runningTotalArray)
         }
         const reducer = (previousValue, currentValue) => previousValue + currentValue;
         totalToSend = runningTotalArray.reduce(reducer)
-        console.log('total to send:', totalToSend)
         return (
             <div>{totalToSend}</div>
         )
@@ -125,8 +116,6 @@ const UserHoldings = () => {
 
     return (
         <div>
-
-
 
             {holdings.length === 0 ? <Typography className={classes.assetHeadline} variant="h4" style={{ color: '#F70C8A' }}>No Assets Yet</Typography> :
 
