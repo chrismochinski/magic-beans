@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import { Doughnut, Pie } from "react-chartjs-2";
+import { Doughnut, } from "react-chartjs-2";
 import { useSelector } from "react-redux";
 
 //optimize
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { Container, Grid } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
 import useStyles from '../styles/styles';
 
 import DonutLargeIcon from '@mui/icons-material/DonutLarge';
-
-
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -81,8 +75,6 @@ export default function UserDonutChart() {
                 aria-describedby="alert-dialog-slide-description"
             >
 
-
-
                 <Doughnut
                     data={{
                         labels: loopNames(),
@@ -98,19 +90,15 @@ export default function UserDonutChart() {
                                 '#F2DFC2',
                                 '#FA6534',
                             ],
-
                         },
-
                         ],
                     }}
                     height={400}
                     width={400}
                     options={{
-                        
+                       
                         animations: false,
                         maintainAspectRatio: true,
-
-
                     }}
                 />
 

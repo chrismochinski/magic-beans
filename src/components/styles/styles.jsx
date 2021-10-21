@@ -21,9 +21,9 @@ const useStyles = makeStyles(() => ({
   },
   loginForm: {
     textAlign: 'center',
-    
+
   },
-  
+
   loginButton: {
     marginTop: '15px',
     fontSize: '20px',
@@ -158,7 +158,7 @@ const useStyles = makeStyles(() => ({
   },
 
   detailToSearchButton: {
-   marginTop: '20px',
+    marginTop: '20px',
     padding: '10px',
     fontSize: '20px',
     marginRight: '5px',
@@ -238,7 +238,7 @@ const useStyles = makeStyles(() => ({
     width: '100%',
 
   },
-  
+
 
   userTableHeaderCell: {
     fontFamily: 'Cabin Condensed',
@@ -249,19 +249,14 @@ const useStyles = makeStyles(() => ({
   },
 
 
-    //-------------DETAILS page-------------//
+  //-------------DETAILS page-------------//
 
   detailsPage: {
-    //FIX nothing here yet - background img perhaps
-    // backgroundImage: `url(${'./images/mb-logo-opaque.png'})`,
-    // backgroundSize: '98%',
-    // backgroundPosition: 'center',
+    //fix change to background iamge?
   },
 
+  //-------------user holding table BODY CELL-------------//
 
-
-
-  //====user holding table BODY CELL====//
 
   holdingSymbol: {
     fontFamily: 'Poppins',
@@ -365,7 +360,7 @@ const useStyles = makeStyles(() => ({
     color: 'white',
   },
 
- cancelButton: {
+  cancelButton: {
     fontSize: '16px',
     fontWeight: 'bold',
     color: 'white',

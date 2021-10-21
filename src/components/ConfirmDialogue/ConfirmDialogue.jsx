@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -8,7 +7,6 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { Container, Grid} from '@material-ui/core';
-import { useDispatch } from 'react-redux';
 import useStyles from '../styles/styles';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
