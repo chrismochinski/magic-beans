@@ -1,11 +1,10 @@
 const rejectUnauthenticated = (req, res, next) => {
   // check if logged in
   if (req.isAuthenticated()) {
-    // They were authenticated! User may do the next thing
-    // Note! They may not be Authorized to do all things
+    // User authenticated
     next();
   } else {
-    // failure best handled on the server. do redirect here.
+    // Unauth forbidden redirect
     res.sendStatus(403);
   }
 };

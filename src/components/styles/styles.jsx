@@ -6,11 +6,23 @@ const useStyles = makeStyles(() => ({
 
   disclaimer: {
     textAlign: 'center',
-    padding: '40px',
+    paddingTop: '20px',
   },
   Button: {
     marginTop: '40px',
     paddingTop: '40px'
+  },
+
+  disclaimerHeadline: {
+    fontFamily: 'Poppins',
+    fontSize: '45px',
+  },
+
+  disclaimerStatements: {
+    margin: '15px',
+    fontFamily: 'Poppins',
+    fontSize: '15px',
+
   },
 
   //-------------Login / Register-------------//

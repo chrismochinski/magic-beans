@@ -30,7 +30,7 @@ function LandingPage() {
 
       <div className="grid">
         
-        {/* UPDATED THIS IS THE LOGIN SPACE - MAKE CARD */}
+      
           <div className="grid-col grid-col_4">
             <RegisterForm />
 
