@@ -106,7 +106,7 @@ function CoinSearchPage() {
               variant="contained"
               size="medium"
               type="submit"
-              className={classes.searchButton} 
+              className={classes.searchButton}
             >
               Search
             </Button>

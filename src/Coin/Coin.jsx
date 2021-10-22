@@ -6,8 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import useStyles from "../components/styles/styles";
 
-function Coin({ id, name, image, symbol, price, marketCap, priceChange }) {   //deletelater unnecessary variables
-
+function Coin({ id, name, image, symbol, price, marketCap, priceChange }) {
   const history = useHistory();
   const classes = useStyles();
 
@@ -25,7 +24,12 @@ function Coin({ id, name, image, symbol, price, marketCap, priceChange }) {   //
       key={id}
     >
       <TableCell className={classes.tableCell}>
-        <img className={classes.coinIcon} src={image} style={{paddingTop: '4px'}} alt="icon" />
+        <img
+          className={classes.coinIcon}
+          src={image}
+          style={{ paddingTop: "4px" }}
+          alt="icon"
+        />
       </TableCell>
       <TableCell className={classes.tableTickerCell}>
         {symbol.toUpperCase()}

@@ -1,19 +1,25 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import useStyles from '../styles/styles.jsx'
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import useStyles from "../styles/styles.jsx";
 
 //for password visibility:
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-import { IconButton, InputAdornment, Button, TextField, Grid, Typography } from "@material-ui/core";
+import {
+  IconButton,
+  InputAdornment,
+  Button,
+  TextField,
+  Grid,
+  Typography,
+} from "@material-ui/core";
 
 function RegisterForm() {
-
   const classes = useStyles();
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
@@ -21,7 +27,7 @@ function RegisterForm() {
     event.preventDefault();
 
     dispatch({
-      type: 'REGISTER',
+      type: "REGISTER",
       payload: {
         username: username,
         password: password,
@@ -35,8 +41,7 @@ function RegisterForm() {
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
   return (
-    <Grid container className={classes.loginForm} spacing={1} >
-
+    <Grid container className={classes.loginForm} spacing={1}>
       <form className="formPanel" onSubmit={registerUser}>
         <img className={classes.logo} src="/images/magic-beans-logo.png" />
 
@@ -49,7 +54,8 @@ function RegisterForm() {
         <div>
           <label htmlFor="username">
             {/* Username: */}
-            <TextField className={classes.loginTextField}
+            <TextField
+              className={classes.loginTextField}
               variant="outlined"
               label="new username"
               type="text"
@@ -63,7 +69,8 @@ function RegisterForm() {
         <div>
           <label htmlFor="password">
             {/* Password: */}
-            <TextField className={classes.loginTextField}
+            <TextField
+              className={classes.loginTextField}
               variant="outlined"
               label="new password"
               type="password"
@@ -72,7 +79,8 @@ function RegisterForm() {
               required
               type={showPassword ? "text" : "password"}
               onChange={(event) => setPassword(event.target.value)}
-              InputProps={{ // <-- This is where the toggle button is added.
+              InputProps={{
+                // <-- This is where the toggle button is added.
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
@@ -83,13 +91,22 @@ function RegisterForm() {
                       {showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   </InputAdornment>
-                )
+                ),
               }}
             />
           </label>
         </div>
         <div>
-        <Button className={classes.loginButton} size="large" variant="contained" type="submit" name="submit" value="Register">Sign Up!</Button>
+          <Button
+            className={classes.loginButton}
+            size="large"
+            variant="contained"
+            type="submit"
+            name="submit"
+            value="Register"
+          >
+            Sign Up!
+          </Button>
 
           {/* <input className="btn" type="submit" name="submit" value="Register" /> */}
         </div>

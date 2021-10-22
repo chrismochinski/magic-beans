@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 
 class TemplateClass extends Component {
   state = {
-    heading: 'Class Component',
+    heading: "Class Component",
   };
 
   render() {

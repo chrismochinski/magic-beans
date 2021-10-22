@@ -396,7 +396,28 @@ const useStyles = makeStyles(() => ({
   aboutHeader: {
     fontFamily: 'Luckiest Guy',
     fontSize: '40px',
-  }
+  },
+
+  aboutSubHeader: {
+    fontFamily: 'Poppins',
+    fontSize: '16px',
+    marginBottom: '10px',
+  },
+
+  aboutContainer: {
+    textAlign: 'center',
+    width: '90%',
+    marginLeft: '5%',
+    marginRight: '5%',
+  },
+
+  aboutHomeButton: {
+    marginTop: '10px',
+    fontSize: '20px',
+    fontWeight: 'bold',
+    color: 'white',
+    backgroundColor: '#9333F0',
+  },
 
 }))
 

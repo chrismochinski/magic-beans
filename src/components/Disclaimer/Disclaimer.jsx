@@ -24,10 +24,10 @@ const Disclaimer = () => {
         Disclaimer:{" "}
       </Typography>
       <Typography className={classes.disclaimerStatements}>
-        The developers of this application are not now nor will they ever claim to
-        be financial advisors, CPAs, accountants, ninjas, cowboys or astronauts.
-        They are not to be held responsible for any investment decisions you
-        choose to make. <br />
+        The developers of this application are not now nor will they ever claim
+        to be financial advisors, CPAs, accountants, ninjas, cowboys or
+        astronauts. They are not to be held responsible for any investment
+        decisions you choose to make. <br />
         <br /> Cryptocurrency is a volatile market and should be approached with
         care. Please don't invest money you can't afford to lose.
       </Typography>

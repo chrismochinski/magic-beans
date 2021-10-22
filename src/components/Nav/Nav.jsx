@@ -1,16 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Hamburger from '../Hamburger/Hamburger';
-import './Nav.css';
-import { useSelector, useDispatch } from 'react-redux';
-import LogoutIcon from '@mui/icons-material/Logout';
-import { useHistory } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import Hamburger from "../Hamburger/Hamburger";
+import "./Nav.css";
+import { useSelector, useDispatch } from "react-redux";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { useHistory } from "react-router-dom";
 
-import useStyles from '../styles/styles.jsx';
+import useStyles from "../styles/styles.jsx";
 
-import { IconButton } from '@mui/material';
-import InfoIcon from '@mui/icons-material/Info';
-import LoginIcon from '@mui/icons-material/Login';
+import { IconButton } from "@mui/material";
+import InfoIcon from "@mui/icons-material/Info";
+import LoginIcon from "@mui/icons-material/Login";
 
 function Nav() {
   const dispatch = useDispatch();
@@ -19,21 +19,24 @@ function Nav() {
   const history = useHistory();
 
   const navToLogin = () => {
-    history.push('/login')
-  }
+    history.push("/login");
+  };
 
   const navToAbout = () => {
-    history.push('/about')
-  }
+    history.push("/about");
+  };
 
   return (
-    
     <div className="nav">
       <Link to="/user">
-      <img src="./images/mb-text-logo.png" className="nav-title" style={{width: '200px'}}/>
+        <img
+          src="./images/mb-text-logo.png"
+          className="nav-title"
+          style={{ width: "200px" }}
+        />
         {/* <h2 className="nav-title"><b>Magic Beans</b><br  /><span className="cryptofolio">Cryptofolio</span></h2> */}
       </Link>
-      
+
       <div>
         {/* If no user is logged in, show these links */}
         {user.id === undefined && (
@@ -50,12 +53,7 @@ function Nav() {
         )}
 
         {/* If a user is logged in, show these links */}
-        {user.id && (
-          <Hamburger />
-
-        )}
-
-
+        {user.id && <Hamburger />}
       </div>
     </div>
   );
