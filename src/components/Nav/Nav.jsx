@@ -30,7 +30,8 @@ function Nav() {
     
     <div className="nav">
       <Link to="/user">
-        <h2 className="nav-title"><b>Magic Beans</b><br  /><span className="cryptofolio">Cryptofolio</span></h2>
+      <img src="./images/mb-text-logo.png" className="nav-title" style={{width: '200px'}}/>
+        {/* <h2 className="nav-title"><b>Magic Beans</b><br  /><span className="cryptofolio">Cryptofolio</span></h2> */}
       </Link>
       
       <div>

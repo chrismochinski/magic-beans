@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import useStyles from '../styles/styles.jsx'
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import useStyles from "../styles/styles.jsx";
 
 //for password visibility:
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-import { IconButton, InputAdornment, Button, TextField, Grid, Typography } from "@material-ui/core";
+import {
+  IconButton,
+  InputAdornment,
+  Button,
+  TextField,
+  Grid,
+  Typography,
+} from "@material-ui/core";
 
 function LoginForm() {
-
   const classes = useStyles();
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const errors = useSelector(store => store.errors);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
   const login = (event) => {
@@ -22,14 +28,14 @@ function LoginForm() {
 
     if (username && password) {
       dispatch({
-        type: 'LOGIN',
+        type: "LOGIN",
         payload: {
           username: username,
           password: password,
         },
       });
     } else {
-      dispatch({ type: 'LOGIN_INPUT_ERROR' });
+      dispatch({ type: "LOGIN_INPUT_ERROR" });
     }
   }; // end login
 
@@ -39,8 +45,7 @@ function LoginForm() {
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
   return (
-
-    <Grid container className={classes.loginForm} spacing={1} >
+    <Grid container className={classes.loginForm} spacing={1}>
       <form className="formPanel" onSubmit={login}>
         <img className={classes.logo} src="/images/magic-beans-logo.png" />
 
@@ -53,7 +58,8 @@ function LoginForm() {
         <div>
           <label htmlFor="username">
             {/* Username: */}
-            <TextField className={classes.loginTextField} 
+            <TextField
+              className={classes.loginTextField}
               variant="outlined"
               label="username"
               type="text"
@@ -67,16 +73,18 @@ function LoginForm() {
         <div>
           <label htmlFor="password">
             {/* <Typography>Password:</Typography> */}
-            <TextField className={classes.loginTextField}
+            <TextField
+              className={classes.loginTextField}
               variant="outlined"
               label="password"
               type="password"
               name="password"
               required
               value={password}
-              type={showPassword ? "text" : "password"} 
+              type={showPassword ? "text" : "password"}
               onChange={(event) => setPassword(event.target.value)}
-              InputProps={{ // <-- This is where the toggle button is added.
+              InputProps={{
+                // <-- This is where the toggle button is added.
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
@@ -87,15 +95,23 @@ function LoginForm() {
                       {showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   </InputAdornment>
-                )
+                ),
               }}
             />
           </label>
         </div>
         <div>
-        <Button className={classes.loginButton} size="large" variant="contained" type="submit" name="submit">Go!</Button>
+          <Button
+            className={classes.loginButton}
+            size="large"
+            variant="contained"
+            type="submit"
+            name="submit"
+          >
+            Go!
+          </Button>
 
-           {/* <input className="btn" type="submit" name="submit" value="Log In" /> */}
+          {/* <input className="btn" type="submit" name="submit" value="Log In" /> */}
         </div>
       </form>
     </Grid>
@@ -104,8 +120,8 @@ function LoginForm() {
 
 export default LoginForm;
 
-
-{/* <input
+{
+  /* <input
 type="password"
 name="password"
 required
@@ -116,4 +132,5 @@ onChange={(event) => setPassword(event.target.value)}
 </div>
 <div>
 <input className="btn" type="submit" name="submit" value="Log In" />
-</div> */}
+</div> */
+}

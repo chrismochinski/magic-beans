@@ -5,7 +5,8 @@
 
   margin: 0;
   margin-bottom: 15px;
-  background-color: #216091;
+  background: rgb(33,96,145);
+background: linear-gradient(180deg, rgba(33,96,145,1) 93%, rgba(18,44,59,0) 100%);
   overflow: hidden;
 }
 
@@ -14,20 +15,15 @@
 }
 
 .nav-title {
-  font-size: 31px;
+  font-size: 34px;
   font-weight: 400;
   color: #f2f2f2;
-  font-family: 'Comfortaa', cursive;  
-  padding-left: 20px;
-  margin-bottom: 14px;
+  font-family: 'Luckiest Guy', cursive;  
+  padding-left: 10px;
+  margin-bottom: 15px;
   margin-top: 14px;
 }
 
-.cryptofolio {
-  margin: 0;
-  font-size: 19px;
-  font-family: 'Comfortaa', cursive;
-}
 
 
 .nav-title:focus {
@@ -48,10 +44,7 @@
 
   text-align: center;
   padding: 24px 10px;
-  font-family: 'Cabin Condensed', sans-serif;
-
-  text-decoration: none;
-  font-size: 15px;
+ 
 
     /* important MUST FIGURE OUT HOW TO REMOVE BOX  */
 
@@ -65,11 +58,11 @@
 
 .hamburgerLink {
  color: #49689E; 
-  transform: scale(2.3);
+  transform: scale(2);
 
  margin-top: 20px;
  margin-left: 8px;
- margin-right: 10px;
+ margin-right: 8px;
 
  border: none;
  cursor: pointer;
@@ -82,7 +75,7 @@
   border: none;
   cursor: pointer;
   outline: 0;
-  transform: scale(2.3);
+  transform: scale(2);
  margin-right: 20px;
 }
 
@@ -94,7 +87,8 @@
   margin-right: 20px;
   margin-top: 28px;
   margin-bottom: 28px;
-  transform: scale(2.1);}
+  transform: scale(2.2);
+}
 
 .navIconR:focus {
   background-color: #49689E;
@@ -104,11 +98,10 @@
   display: inline-block;
   color: #f2f2f2;
   text-align: center;
-  /* padding: 24px 5px; */
   margin-right: 20px;
   margin-top: 28px;
   margin-bottom: 28px;
-  transform: scale(2.1);}
+  transform: scale(2.2);}
 
 .navLink:hover {
   color: rgb(225, 225, 225);

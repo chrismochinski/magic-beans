@@ -83,7 +83,8 @@ export default function UserDonutChart() {
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <Doughnut style={{padding: '5px'}}
+        <Doughnut
+          style={{ padding: "5px" }}
           data={{
             labels: loopNames(),
             datasets: [
@@ -107,9 +108,6 @@ export default function UserDonutChart() {
           options={{
             plugins: {
               legend: true,
-              title: {
-                
-              },
             },
             animations: true,
             maintainAspectRatio: true,

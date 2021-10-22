@@ -14,12 +14,12 @@ const useStyles = makeStyles(() => ({
   },
 
   disclaimerHeadline: {
-    fontFamily: 'Poppins',
+    fontFamily: 'Luckiest Guy',
     fontSize: '45px',
   },
 
   disclaimerStatements: {
-    margin: '15px',
+    margin: '12px',
     fontFamily: 'Poppins',
     fontSize: '15px',
 
@@ -53,8 +53,8 @@ const useStyles = makeStyles(() => ({
 
   pageMainHeader: {
     fontFamily: 'Josefin Sans',
-    padding: '10px',
-    marginBottom: '`10px',
+    padding: '1px',
+    marginBottom: '10px',
     fontSize: '36px',
     textAlign: 'center',
   },
@@ -74,7 +74,7 @@ const useStyles = makeStyles(() => ({
   tableTickerCell: {
     textAlign: 'center',
     padding: '0',
-    fontSize: '20px',
+    fontSize: '19px',
   },
 
 
@@ -84,19 +84,30 @@ const useStyles = makeStyles(() => ({
     fontSize: '20px',
   },
 
+  tablePriceCell: {
+    textAlign: 'center',
+    padding: '0',
+    fontSize: '19px',
+  },
+
+  table24Cell: {
+    textAlign: 'center',
+    padding: '0',
+    fontSize: '18px',
+  },
+
   //-------------imported from spike-------------//
 
 
   tableRow: {
     cursor: 'pointer',
-    paddingTop: '50px',
     textAlign: 'center',
   },
 
 
   //size of icon in main list table
   coinIcon: {
-    width: '44px',
+    width: '43px',
   },
 
 
@@ -379,6 +390,13 @@ const useStyles = makeStyles(() => ({
     backgroundColor: '#9333F0',
   },
 
+  //-------------About Page-------------//
+
+
+  aboutHeader: {
+    fontFamily: 'Luckiest Guy',
+    fontSize: '40px',
+  }
 
 }))
 

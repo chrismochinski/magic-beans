@@ -31,7 +31,7 @@ const Hamburger = () => {
         <img
           src="./images/icons8-hamburger-58.png"
           width="50px"
-          style={{ marginRight: "5px" }}
+          style={{ marginRight: "12px" }}
         />
       </IconButton>
 

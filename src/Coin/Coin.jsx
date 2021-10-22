@@ -25,13 +25,13 @@ function Coin({ id, name, image, symbol, price, marketCap, priceChange }) {   //
       key={id}
     >
       <TableCell className={classes.tableCell}>
-        <img className={classes.coinIcon} src={image} alt="icon" />
+        <img className={classes.coinIcon} src={image} style={{paddingTop: '4px'}} alt="icon" />
       </TableCell>
       <TableCell className={classes.tableTickerCell}>
         {symbol.toUpperCase()}
       </TableCell>
-      <TableCell className={classes.tableCell}>${price}</TableCell>
-      <TableCell className={classes.tableCell}>
+      <TableCell className={classes.tablePriceCell}>${price}</TableCell>
+      <TableCell className={classes.table24Cell}>
         {" "}
         {priceChange < 0 ? (
           <p className="downRed">
