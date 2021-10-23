@@ -7,16 +7,14 @@ import {
   Card,
   CardMedia,
   CardContent,
-  CardActions,
   Grid,
 } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import TextField from "@mui/material/TextField";
-import Paper from "@material-ui/core/Paper";
 import { useHistory } from "react-router-dom";
-import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
 import LayersClearIcon from "@mui/icons-material/LayersClear";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import useStyles from "../styles/styles";
 
@@ -53,7 +51,7 @@ function CoinSearchPage() {
         cryptoList[i].symbol === newSearch.toLowerCase() ||
         cryptoList[i].name === newSearch.toLowerCase() ||
         cryptoList[i].image === newSearch.toLowerCase() ||
-        cryptoList[i].id[0] === newSearch.toLowerCase() // search first letter only (experimental)
+        cryptoList[i].id[0] === newSearch.toLowerCase()
       ) {
         searchArray.unshift(cryptoList[i]);
       } else {
@@ -83,10 +81,9 @@ function CoinSearchPage() {
           src="/images/mb-logo-search.png"
           className="modLogo"
           style={{ marginBottom: "10px" }}
-          width="230px"
+          width="250px"
         />
 
-        {/* <Typography className={classes.pageHeader} variant="h4" >Crypto Search!</Typography> */}
         <form onSubmit={handleChange} style={{ textAlign: "center" }}>
           <TextField
             inputProps={{ style: { fontSize: 30 } }}
@@ -144,37 +141,36 @@ function CoinSearchPage() {
             item
             key={card.id}
           >
-            <Card className={classes.card} elevation={5}>
+            <Card className={classes.card} elevation={5} >
               <CardMedia
                 className={classes.cardMedia}
                 component="img"
-                height="140"
+                height="120"
                 image={card.image}
                 title="Crypto Icon"
                 alt="Image Broken"
               />
-              <CardContent className={classes.cardContent}>
+              <CardContent className={classes.cardContent} style={{}}>
                 <Grid>
                   <Grid
                     item
-                    className={classes.floatLeft}
+                    className={classes.floatCenter}
                     xs={12}
                     s={10}
                     md={10}
                     lg={10}
                     xl={10}
                   >
-                    <Typography variant="h6">
-                      {card.name} || ${card.symbol.toUpperCase()} || $
-                      {card.current_price.toLocaleString(undefined, {
-                        minimumFractionDigits: 0,
-                        maximumFractionDigits: 2,
-                      })}
+                    <Typography variant="h5" className={classes.cardText}>
+                      {card.name} <span className={classes.pipe}>|</span> {" "}
+                      <span style={{fontFamily: 'Righteous', borderWidth: '4px'}} >{card.symbol.toUpperCase()} 
+                      </span> <span className={classes.pipe}>|</span>{" "}
+                      #{card.market_cap_rank}
                     </Typography>
                   </Grid>
                   <Grid
                     item
-                    className={classes.floatRight}
+                    className={classes.floatCenter}
                     xs={12}
                     s={2}
                     md={2}
@@ -182,7 +178,7 @@ function CoinSearchPage() {
                     xl={2}
                   >
                     <Button
-                      style={{ padding: "10px", marginTop: "10px" }}
+                      className={classes.detailsButton}
                       onClick={() => getDetails(card)}
                       variant="outlined"
                       size="large"

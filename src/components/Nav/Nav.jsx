@@ -31,10 +31,9 @@ function Nav() {
       <Link to="/user">
         <img
           src="./images/mb-text-logo.png"
-          className="nav-title"
+          className="nav-title" alt="Magic Beans Cryptofolio!"
           style={{ width: "200px" }}
         />
-        {/* <h2 className="nav-title"><b>Magic Beans</b><br  /><span className="cryptofolio">Cryptofolio</span></h2> */}
       </Link>
 
       <div>

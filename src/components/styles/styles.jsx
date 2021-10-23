@@ -1,126 +1,115 @@
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
-
   //-------------Disclaimer.jsx-------------//
 
   disclaimer: {
-    textAlign: 'center',
-    paddingTop: '20px',
+    textAlign: "center",
+    paddingTop: "20px",
   },
   Button: {
-    marginTop: '40px',
-    paddingTop: '40px'
+    marginTop: "40px",
+    paddingTop: "40px",
   },
 
   disclaimerHeadline: {
-    fontFamily: 'Luckiest Guy',
-    fontSize: '45px',
+    fontFamily: "Luckiest Guy",
+    fontSize: "45px",
   },
 
   disclaimerStatements: {
-    margin: '12px',
-    fontFamily: 'Poppins',
-    fontSize: '15px',
-
+    margin: "12px",
+    fontFamily: "Poppins",
+    fontSize: "15px",
   },
 
   //-------------Login / Register-------------//
 
   logo: {
-    width: '70%',
-    marginBottom: '0',
+    width: "70%",
+    marginBottom: "0",
   },
   loginForm: {
-    textAlign: 'center',
-
+    textAlign: "center",
   },
 
   loginButton: {
-    marginTop: '15px',
-    fontSize: '20px',
-    fontWeight: 'bolder',
-    backgroundColor: '#5C9827',
-    color: 'white',
-
+    marginTop: "15px",
+    fontSize: "20px",
+    fontWeight: "bolder",
+    backgroundColor: "#5C9827",
+    color: "white",
   },
   loginTextField: {
-    width: '25ch',
-    marginBottom: '5px'
+    width: "25ch",
+    marginBottom: "5px",
   },
 
   //-------------Main userPage-------------//
 
   pageMainHeader: {
-    fontFamily: 'Josefin Sans',
-    padding: '1px',
-    marginBottom: '10px',
-    fontSize: '36px',
-    textAlign: 'center',
+    fontFamily: "Josefin Sans",
+    padding: "1px",
+    marginBottom: "10px",
+    fontSize: "36px",
+    textAlign: "center",
   },
 
   pageHeader: {
-    fontFamily: 'Poppins',
-    padding: '10px',
-    marginBottom: '10px',
-    fontSize: '36px',
-    textAlign: 'center',
+    fontFamily: "Poppins",
+    padding: "10px",
+    marginBottom: "10px",
+    fontSize: "36px",
+    textAlign: "center",
   },
-
 
   //-------------Main userPage TABLE-------------//
 
-
   tableTickerCell: {
-    textAlign: 'center',
-    padding: '0',
-    fontSize: '19px',
+    textAlign: "center",
+    padding: "0",
+    fontSize: "19px",
   },
 
-
   tableCell: {
-    textAlign: 'center',
-    padding: '0',
-    fontSize: '20px',
+    textAlign: "center",
+    padding: "0",
+    fontSize: "20px",
   },
 
   tablePriceCell: {
-    textAlign: 'center',
-    padding: '0',
-    fontSize: '19px',
+    textAlign: "center",
+    padding: "0",
+    fontSize: "19px",
   },
 
   table24Cell: {
-    textAlign: 'center',
-    padding: '0',
-    fontSize: '18px',
+    textAlign: "center",
+    padding: "0",
+    fontSize: "18px",
   },
 
   //-------------imported from spike-------------//
 
-
   tableRow: {
-    cursor: 'pointer',
-    textAlign: 'center',
+    cursor: "pointer",
+    textAlign: "center",
   },
-
 
   //size of icon in main list table
   coinIcon: {
-    width: '43px',
+    width: "43px",
   },
 
-
-
   tableHeader: {
-    fontWeight: 'bold',
-    fontSize: '21px',
-    textAlign: 'center',
-    paddingTop: '4px',
-    paddingBottom: '4px',
+    fontWeight: "bold",
+    fontSize: "21px",
+    textAlign: "center",
+    paddingTop: "4px",
+    paddingBottom: "4px",
     paddingLeft: 0, // table goes beyond edges of phone screen w/o this
     paddingRight: 0, // table goes beyond edges of phone screen w/o this
-    fontFamily: 'Cabin Condensed',
+    fontFamily: "Cabin Condensed",
   },
 
   tableBody: {
@@ -129,110 +118,138 @@ const useStyles = makeStyles(() => ({
 
   //-------SearchPage > CoinSearchPage-------//
 
-
   mainSearchPage: {
-    padding: '20px',
-    textAlign: 'center',
-    paddingTop: '10px',
-    paddingBottom: '100px',
-    margin: 'auto',
+    padding: "20px",
+    textAlign: "center",
+    paddingTop: "10px",
+    paddingBottom: "100px",
+    margin: "auto",
   },
 
-  floatLeft: {
-    width: '100%',
-    margin: 'auto',
+  //-------SearchPage > CARD contents-------//
+
+  arrowPercent: {
+    verticalAlign: '-15%',
+    fontSize: '130%',
   },
 
-  floatRight: {
-    width: '100%',
-    margin: 'auto',
+  pipe: {
+    fontSize: "160%",
+    color: "#1976D245",
+    padding: "2px",
+    verticalAlign: "-12%",
   },
 
+  question: {
+    fontSize: "150%",
+    color: "#1976D260",
+    verticalAlign: "-11%",
+  },
+
+  floatCenter: {
+    width: "100%",
+    margin: "auto",
+  },
+
+  cardText: {
+    fontSize: "1.8em",
+    color: "#00000085",
+  },
+
+  cardNameText: {
+    fontFamily: "Poppins",
+  },
+
+  cardTickerText: {
+    fontFamily: "Poppins",
+    fontWeight: "bolder",
+  },
 
   searchButton: {
-    marginTop: '20px',
-    marginRight: '5px',
-    padding: '10px',
-    fontSize: '20px',
-    fontWeight: 'bolder',
-    backgroundColor: '#5C9827',
-    color: 'white',
+    marginTop: "20px",
+    marginRight: "5px",
+    padding: "10px",
+    fontSize: "20px",
+    fontWeight: "bolder",
+    backgroundColor: "#5C9827",
+    color: "white",
+  },
 
+  detailsButton: {
+    marginTop: "5px",
+    padding: "7px",
+    fontSize: "1.3em",
+    fontWeight: "bold",
+    backgroundColor: "#5C9827",
+    color: "white",
   },
 
   goHomeButton: {
-    marginTop: '20px',
-    padding: '10px',
-    fontSize: '20px',
-    marginLeft: '5px',
-    fontWeight: 'bold',
-    color: 'white',
-    backgroundColor: '#9333F0',
+    marginTop: "20px",
+    padding: "10px",
+    fontSize: "20px",
+    marginLeft: "5px",
+    fontWeight: "bold",
+    color: "white",
+    backgroundColor: "#9333F0",
   },
 
   clearSearchButton: {
-    marginTop: '20px',
-    padding: '10px',
-    fontSize: '20px',
-    marginLeft: '10px',
-    fontWeight: 'bold',
-    color: 'white',
-    backgroundColor: '#D54D00',
+    marginTop: "20px",
+    padding: "10px",
+    fontSize: "20px",
+    marginLeft: "10px",
+    fontWeight: "bold",
+    color: "white",
+    backgroundColor: "#D54D00",
   },
 
   detailToSearchButton: {
-    marginTop: '20px',
-    padding: '10px',
-    fontSize: '20px',
-    marginRight: '5px',
-    fontWeight: 'bold',
-    backgroundColor: '#9333F0',
-    color: 'white',
+    marginTop: "20px",
+    padding: "10px",
+    fontSize: "20px",
+    marginRight: "5px",
+    fontWeight: "bold",
+    backgroundColor: "#9333F0",
+    color: "white",
   },
 
-
   cardMedia: {
-    width: '70%',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    padding: '0',
-
+    width: "70%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    padding: "0",
   },
 
   fieldAndButton: {
-    align: 'left',
+    align: "left",
   },
 
   //-------------confirm modal-------------//
 
-
-
-
   dialogueLogo: {
-    width: '150px',
-    justify: 'center',
-    margin: 'auto',
-    paddingTop: '23px'
+    width: "150px",
+    justify: "center",
+    margin: "auto",
+    paddingTop: "23px",
   },
-
-
 
   //-------------used everywhere-------------//
 
   backButton: {
-    color: 'white',
-    backgroundColor: '#9333F0',
-    fontSize: '20px',
-    marginTop: '20px',
-    padding: '10px',
+    color: "white",
+    backgroundColor: "#9333F0",
+    fontSize: "20px",
+    marginTop: "20px",
+    padding: "10px",
   },
 
   homeButton: {
-    color: 'white',
-    backgroundColor: '#216091',
-    fontSize: '20px',
-    marginTop: '20px',
-    padding: '10px',
+    color: "white",
+    backgroundColor: "#216091",
+    fontSize: "20px",
+    marginTop: "20px",
+    padding: "10px",
   },
 
   textField: {
@@ -242,35 +259,27 @@ const useStyles = makeStyles(() => ({
   //-------------user holdings list-------------//
 
   assetHeadline: {
-    fontFamily: 'Poppins',
-    fontSize: '40px',
-
+    fontFamily: "Poppins",
+    fontSize: "40px",
   },
 
-  holdingsDeleteButton: {
+  holdingsDeleteButton: {},
 
-  },
-
-  holdingsModifyButton: {
-
-  },
+  holdingsModifyButton: {},
 
   //-------------user holdings TABLE-------------//
 
   tableMain: {
-    width: '100%',
-
+    width: "100%",
   },
 
-
   userTableHeaderCell: {
-    fontFamily: 'Cabin Condensed',
-    textAlign: 'center',
-    fontSize: '18px',
+    fontFamily: "Cabin Condensed",
+    textAlign: "center",
+    fontSize: "18px",
     padding: 0,
     margin: 0,
   },
-
 
   //-------------DETAILS page-------------//
 
@@ -280,145 +289,139 @@ const useStyles = makeStyles(() => ({
 
   //-------------user holding table BODY CELL-------------//
 
-
   holdingSymbol: {
-    fontFamily: 'Poppins',
-    fontSize: '18px',
-    textAlign: 'center',
-    fontWeight: 'bold',
+    fontFamily: "Poppins",
+    fontSize: "18px",
+    textAlign: "center",
+    fontWeight: "bold",
     padding: 0,
     margin: 0,
-
   },
 
   holdingAmount: {
-    fontFamily: 'Poppins',
-    textAlign: 'center',
-    fontSize: '17px',
-    fontWeight: 'bold',
+    fontFamily: "Poppins",
+    textAlign: "center",
+    fontSize: "17px",
+    fontWeight: "bold",
     padding: 0,
     margin: 0,
-
-
   },
 
   holdingVal: {
-    fontFamily: 'Poppins',
+    fontFamily: "Poppins",
 
-    textAlign: 'center',
-    fontSize: '17px',
-    fontWeight: 'bold',
+    textAlign: "center",
+    fontSize: "17px",
+    fontWeight: "bold",
     padding: 0,
     margin: 0,
-
-
   },
 
   //delete button
   holdingDelete: {
     padding: 0,
-    textAlign: 'right',
+    textAlign: "right",
   },
 
   //put button
   holdingModify: {
     padding: 0,
-    textAlign: 'left',
-
+    textAlign: "left",
   },
 
   assetHeader: {
-
-    marginBottom: '18px',
-    backgroundImage: `url(${'./images/accountant-bean.png'})`,
-    backgroundSize: '98%',
-    backgroundPosition: 'top',
+    marginBottom: "18px",
+    backgroundImage: `url(${"./images/accountant-bean.png"})`,
+    backgroundSize: "98%",
+    backgroundPosition: "top",
   },
 
   addPositionButton: {
-    margin: '15px',
-    fontSize: '25px',
-    fontWeight: 'bolder',
-    backgroundColor: '#5C9827',
-    color: 'white',
+    margin: "15px",
+    fontSize: "25px",
+    fontWeight: "bolder",
+    backgroundColor: "#5C9827",
+    color: "white",
   },
 
   pieButton: {
-    marginBottom: '25px',
-    fontSize: '25px',
-    backgroundColor: '#9333F0',
-    color: 'white',
+    marginBottom: "25px",
+    fontSize: "25px",
+    backgroundColor: "#9333F0",
+    color: "white",
   },
 
   addIcon: {
-    transform: 'scale(2.5)',
+    transform: "scale(2.5)",
   },
 
   //-------------Modify Page-------------//
 
-
   modHeader: {
-    fontFamily: 'Comfortaa',
-    padding: '10px',
-    marginBottom: '10px',
-    marginLeft: '20px',
-    marginRight: '20px',
-    fontSize: '18px',
-    textAlign: 'center',
+    fontFamily: "Comfortaa",
+    padding: "10px",
+    marginBottom: "10px",
+    marginLeft: "20px",
+    marginRight: "20px",
+    fontSize: "18px",
+    textAlign: "center",
   },
 
   modPreInput: {
-    fontFamily: 'Comfortaa',
-    padding: '10px',
-    marginBottom: '10px',
-    fontSize: '28px',
-    textAlign: 'center',
+    fontFamily: "Comfortaa",
+    padding: "10px",
+    marginBottom: "10px",
+    fontSize: "28px",
+    textAlign: "center",
   },
 
   modifyButton: {
-    margin: '15px',
-    fontSize: '26px',
-    fontWeight: 'bolder',
-    backgroundColor: '#5C9827',
-    color: 'white',
+    margin: "15px",
+    fontSize: "26px",
+    fontWeight: "bolder",
+    backgroundColor: "#5C9827",
+    color: "white",
   },
 
   cancelButton: {
-    fontSize: '16px',
-    fontWeight: 'bold',
-    color: 'white',
-    backgroundColor: '#9333F0',
+    fontSize: "16px",
+    fontWeight: "bold",
+    color: "white",
+    backgroundColor: "#9333F0",
   },
 
   //-------------About Page-------------//
 
+  mainAboutPage: {
+    padding: "20px",
+    textAlign: "center",
+    paddingTop: "10px",
+    paddingBottom: "100px",
+    margin: "auto",
+  },
 
   aboutHeader: {
-    fontFamily: 'Luckiest Guy',
-    fontSize: '40px',
+    fontFamily: "Luckiest Guy",
+    fontSize: "40px",
   },
 
   aboutSubHeader: {
-    fontFamily: 'Poppins',
-    fontSize: '16px',
-    marginBottom: '10px',
+    fontFamily: "Poppins",
+    fontSize: "16px",
+    marginBottom: "10px",
   },
 
-  aboutContainer: {
-    textAlign: 'center',
-    width: '90%',
-    marginLeft: '5%',
-    marginRight: '5%',
+  aboutBean: {
+    alignSelf: "center",
   },
 
   aboutHomeButton: {
-    marginTop: '10px',
-    fontSize: '20px',
-    fontWeight: 'bold',
-    color: 'white',
-    backgroundColor: '#9333F0',
+    marginTop: "10px",
+    fontSize: "20px",
+    fontWeight: "bold",
+    color: "white",
+    backgroundColor: "#9333F0",
   },
-
-}))
+}));
 
 export default useStyles;

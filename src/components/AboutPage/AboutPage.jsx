@@ -13,24 +13,32 @@ function AboutPage() {
   };
 
   return (
-    <div className={classes.aboutContainer} >
-      <Container>
-        <Typography className={classes.aboutHeader}>About The App</Typography>
-        <Typography className={classes.aboutSubHeader}>
-          This lovely page is under construction. Here is a cool bean giving a speech.
-        </Typography>
-      </Container>
-      <Container className={classes.aboutContainer} style={{textAlign: 'center'}}>
-        <img src="./images/bean-podium.png" width="220px" />
-        <Button 
-          variant="contained"
-          size="medium"
-          className={classes.aboutHomeButton}
-          onClick={() => goHome()}
-        >
-          <HomeIcon style={{ fontSize: "35px" }} />
-        </Button>
-      </Container>
+    <div className={classes.mainAboutPage}>
+      <Typography className={classes.aboutHeader}>About The App</Typography>
+      <Typography className={classes.aboutSubHeader}>
+        This lovely page is under construction. Here is a cool bean giving a
+        speech.
+      </Typography>
+
+      <Grid container>
+        <Grid item xs={12}>
+          <img
+            src="./images/bean-podium.png"
+            width="220px"
+            className={classes.aboutBean}
+          />
+        </Grid>
+        <Grid item item xs={12}>
+          <Button
+            variant="contained"
+            size="medium"
+            className={classes.aboutHomeButton}
+            onClick={() => goHome()}
+          >
+            <HomeIcon style={{ fontSize: "35px" }} />
+          </Button>
+        </Grid>
+      </Grid>
     </div>
   );
 }

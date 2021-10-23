@@ -1,11 +1,11 @@
-import { combineReducers } from 'redux';
-import errors from './errors.reducer';
-import user from './user.reducer';
-import cryptoListReducer from './crypto.reducer'; //updated
-import sevenDayChartReducer from './sevenDayReducer';
-import coinDetailsReducer from './coinDetailsReducer';
-import positionReducer from './position.reducer'; //updated for post
-import holdingsReducer from './holdings.reducer';
+import { combineReducers } from "redux";
+import errors from "./errors.reducer";
+import user from "./user.reducer";
+import cryptoListReducer from "./crypto.reducer"; //updated
+import sevenDayChartReducer from "./sevenDayReducer";
+import coinDetailsReducer from "./coinDetailsReducer";
+import positionReducer from "./position.reducer"; //updated for post
+import holdingsReducer from "./holdings.reducer";
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.

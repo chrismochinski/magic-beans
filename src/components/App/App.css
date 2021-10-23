@@ -5,7 +5,7 @@ body,
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
 }
 
@@ -13,7 +13,6 @@ img {
   display: inline-block;
   max-width: 100%;
 }
-
 
 /* --------------------------------------------------------------------------------
 Container
@@ -23,7 +22,6 @@ Container
   padding: 20px;
   text-align: center;
   align-items: center;
-
 }
 
 /* --------------------------------------------------------------------------------
@@ -70,7 +68,7 @@ Button
   border-bottom: 1px solid #444;
   border-radius: 0;
   background: none;
-  font-family: 'Cabin Condensed', sans-serif;
+  font-family: "Cabin Condensed", sans-serif;
   color: #444;
 }
 
@@ -97,10 +95,9 @@ Alert
 
 /* -------------------------Form Treatment----------------------------- */
 
-
 .formPanel {
   box-sizing: border-box;
-  font-family: 'Cabin Condensed', sans-serif;
+  font-family: "Cabin Condensed", sans-serif;
   width: 400px;
   max-width: 70%;
   padding-top: 17px;
@@ -114,7 +111,7 @@ Alert
   font-size: 2.3em;
   margin-bottom: 12px;
   margin-top: 12px;
-  font-family: 'Luckiest Guy';
+  font-family: "Luckiest Guy";
 }
 
 input {
@@ -131,7 +128,7 @@ input {
 /* -------------------------UserPage----------------------------- */
 
 .userHeadline {
-  font-family: 'Josefin Sans', sans-serif; 
+  font-family: "Josefin Sans", sans-serif;
   font-size: 30px;
   margin: 0;
 }
@@ -142,42 +139,35 @@ input {
   /* background-color: ??  */
 }
 
-
 /* -------------------------Imported from spike----------------------------- */
 
 .upGreen {
   color: green;
   margin: 0;
   padding: 0;
+
 }
 
 .downRed {
   color: red;
   margin: 0;
   padding: 0;
+
 }
-
-
-
-/* ----------------------SearchForm / CoinSearchPage------------------------ */
 
 
 /* ----------------------user holding table------------------------ */
 
-.squish {
-  maxHight: 9px;
-}
-
 .coinDetailLoading {
-display:block;
-margin:auto;
+  display: block;
+  margin: auto;
 }
 
 /* -------------------------Modify Page----------------------------- */
 
 .modLogo {
-  display:block;
-  margin:auto;
+  display: block;
+  margin: auto;
 }
 
 .swal-modal .swal-text {
@@ -194,5 +184,8 @@ margin:auto;
   justify-content: center;
   display: block;
   margin: auto;
+}
 
+.line-height {
+  line-height: 49px;
 }

@@ -21,6 +21,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
 import VerticalAlignTopIcon from "@mui/icons-material/VerticalAlignTop";
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 import useStyles from "../styles/styles";
 import swal from "sweetalert";
@@ -170,6 +171,7 @@ function CoinDetails({ card }) {
     }
   };
 
+  //description HTML content clickable
   const getDescription = (description) => {
     return (
       <div
@@ -197,22 +199,22 @@ function CoinDetails({ card }) {
         {" "}
         {coinPriceChange < 0 ? (
           <p className="downRed">
-            <KeyboardArrowDownIcon />
-            {coinPriceChange}% today
+            <KeyboardArrowDownIcon className={classes.arrowPercent}/>
+            {Math.abs(coinPriceChange)}% today
           </p>
         ) : (
           <p className="upGreen">
-            <KeyboardArrowUpIcon />
+            <KeyboardArrowUpIcon className={classes.arrowPercent}/>
             {coinPriceChange}% today
           </p>
         )}
       </Typography>
 
       <Typography style={{ fontFamily: "Poppins" }} variant="h6">
-        <b>Market Cap:</b> ${(coinMarketCap * 1).toLocaleString()}
+        <b>Market Cap:</b> ${(coinMarketCap * 1).toLocaleString()} <HelpOutlineIcon className={classes.question}/>
       </Typography>
       <Typography style={{ fontFamily: "Poppins" }} variant="h6">
-        <b>Vol:</b> {(coinVolume * 1).toLocaleString()}
+        <b>Vol:</b> {(coinVolume * 1).toLocaleString()} <HelpOutlineIcon className={classes.question}/>
       </Typography>
       <Typography
         style={{
