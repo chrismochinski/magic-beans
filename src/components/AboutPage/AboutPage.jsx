@@ -28,7 +28,6 @@ function AboutPage() {
       >
         About The App
       </Typography>
-    
 
       <Grid container>
         <Grid
@@ -86,12 +85,10 @@ function AboutPage() {
           <Typography className={classes.thanks}>
             A bajillion thanks to my wonderful little family for being
             wonderful, my instructors at Prime for the endless encouragement, my
-            cohort mates for the late night coding parties, Jeff Rutland and
-            Tyler Jorenby for the their veteran wisdom, Crypto Jebb and his team
-            for the companionship on weekdays between 8:30 and 9:30 AM, the fine
-            folks at Coingecko for providing an awesome API, and my absolutely
-            perfect fiancée Sharesa (almost) Mochinski for holding down the fort
-            and being the most incredible human ever.
+            cohort mates for the late night coding parties, the fine folks at
+            Coingecko for providing an awesome API, and my spectacular fiancée
+            Sharesa (almost) Mochinski for holding down the fort and being the
+            most incredible human ever.
           </Typography>
         </Grid>
 

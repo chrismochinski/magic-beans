@@ -60,9 +60,9 @@ function CoinDetails({ card }) {
   const [coinPriceChange, setCoinPriceChange] = useState();
   const [coinLastUpdated, setCoinLastUpdated] = useState("");
 
-  //STUFF TO SEND!
-  const [coinAmount, setCoinAmount] = useState();
-  const [testObject, setTestObject] = useState({});
+  //stuff to send
+  const [coinAmount, setCoinAmount] = useState('');
+  // const [testObject, setTestObject] = useState({});
 
   const navSearch = () => {
     history.push("/search");
@@ -93,9 +93,7 @@ function CoinDetails({ card }) {
     fetchCoinPriceInfo();
   }, []);
 
-  /*GET*/
-  //API
-  //todo MAYBE own page??????
+  //get (API)
   const fetchCoinPriceInfo = async () => {
     // important updates all coin PRICE-related info such as MC
     await axios
@@ -119,9 +117,9 @@ function CoinDetails({ card }) {
       .catch((error) => console.log("error getting coin details!", error));
   };
 
+  //handles adding coins based on user input
   const handleAddCoins = () => {
-    setTestObject(coinAmount);
-    console.log("TEST OBJECT IS:", testObject);
+    // setTestObject(coinAmount);
     setTotalCost(coinAmount * coinPrice);
 
     let objectToSend = {
@@ -137,7 +135,7 @@ function CoinDetails({ card }) {
     console.log("testing object to send:", objectToSend);
   };
 
-  //POST
+  //POST position to database
   const readyToDispatch = (newPosition) => {
     console.log("SENDING TO DB:", newPosition);
     swal({
@@ -159,6 +157,7 @@ function CoinDetails({ card }) {
     history.push("/user");
   };
 
+  //loading animation when redux store not yet populated
   const renderPage = () => {
     if (isLoading) {
       return (
@@ -182,11 +181,10 @@ function CoinDetails({ card }) {
     );
   };
 
+  //scrolls to top of page on button
   const backToTop = () => {
     window.scrollTo(0, 0);
   };
-
-
 
   return (
     <Container className={classes.detailsPage}>
@@ -214,11 +212,12 @@ function CoinDetails({ card }) {
         )}
       </Typography>
 
-
-
       <Grid container>
         <Grid item>
-          <Typography style={{ fontFamily: "Poppins", fontSize: '1.2em'}} variant="h6">
+          <Typography
+            style={{ fontFamily: "Poppins", fontSize: "1.2em" }}
+            variant="h6"
+          >
             <b>Market Cap:</b> ${(coinMarketCap * 1).toLocaleString()}
           </Typography>
         </Grid>
@@ -227,9 +226,6 @@ function CoinDetails({ card }) {
           <MarketCapModal />
         </Grid>
       </Grid>
-
-
-
 
       <Grid container>
         <Grid item>
@@ -241,9 +237,6 @@ function CoinDetails({ card }) {
           <VolumeModal />
         </Grid>
       </Grid>
-
-
-
 
       <Typography
         style={{
