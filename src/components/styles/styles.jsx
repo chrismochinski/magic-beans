@@ -51,10 +51,10 @@ const useStyles = makeStyles(() => ({
   //-------------Main userPage-------------//
 
   pageMainHeader: {
-    fontFamily: "Josefin Sans",
+    fontFamily: "Poppins",
     padding: "1px",
-    marginBottom: "10px",
-    fontSize: "36px",
+    marginBottom: "12px",
+    fontSize: "28px",
     textAlign: "center",
   },
 
@@ -71,7 +71,8 @@ const useStyles = makeStyles(() => ({
   tableTickerCell: {
     textAlign: "center",
     padding: "0",
-    fontSize: "19px",
+    fontSize: "21px",
+    fontFamily: 'Poppins',
   },
 
   tableCell: {
@@ -83,13 +84,16 @@ const useStyles = makeStyles(() => ({
   tablePriceCell: {
     textAlign: "center",
     padding: "0",
-    fontSize: "19px",
+    fontSize: "20px",
+    fontFamily: "Poppins",
   },
 
   table24Cell: {
     textAlign: "center",
     padding: "0",
     fontSize: "18px",
+    fontFamily: "Poppins",
+
   },
 
   //-------------imported from spike-------------//
@@ -106,7 +110,7 @@ const useStyles = makeStyles(() => ({
 
   tableHeader: {
     fontWeight: "bold",
-    fontSize: "21px",
+    fontSize: "22px",
     textAlign: "center",
     paddingTop: "4px",
     paddingBottom: "4px",

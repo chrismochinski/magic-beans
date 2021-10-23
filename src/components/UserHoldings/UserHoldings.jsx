@@ -88,7 +88,7 @@ const UserHoldings = () => {
 
   const handleAddClick = () => {
     console.log("add button clicked");
-    history.push("/search"); 
+    history.push("/search"); //important add this page for search, SHARE WITH HOURGLASS HAMBURGER LINK
   };
 
   //function to get total value per coin
@@ -162,8 +162,7 @@ const UserHoldings = () => {
                 >
                   Value
                 </TableCell>
-                {/* <TableCell className={classes.userTableHeaderCell}></TableCell>
-                                    <TableCell className={classes.userTableHeaderCell}></TableCell> */}
+               
               </TableRow>
             </TableHead>
             <TableBody className={classes.holdingsTableBody}>
@@ -249,13 +248,15 @@ const UserHoldings = () => {
         style={{
           marginTop: "15px",
           marginBottom: "0px",
-          fontSize: "30px",
+          fontSize: "34px",
           textAlign: "center",
+          fontFamily: "Poppins",
         }}
         variant="h4"
       >
         Total:{" "}
         <b>
+          {/* User grand total is HERE: */}
           $
           {totalToSend.toLocaleString(undefined, {
             minimumFractionDigits: 2,

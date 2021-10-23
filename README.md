@@ -1,7 +1,5 @@
 # **Magic Beans Cryptofolio**  <img src="./README-visuals/magic-beans-logo.png" width="30%" style="float: left; margin: 5px">
 
-# <span style="color: #B00E0E">** **PRE-RELEASE W.I.P.** **</span> <br/> <font size=4>Application is set for initial launch 10/25/21
-
 
 ### <b><span style="color:#F0ED86">A cryptocurrency market data and portfolio tracker for everyone!</b>
 
@@ -69,7 +67,7 @@
 - `Create an account` or `login` with your username and password to advance.
 - If you see a  <img src="./README-visuals/bitcoinLogoSpinning.gif" alt="agree button" style="width:30px;"> logo, this means that the real-time market data - as well as your stored portfolio and position information - is loading/calculating. Depending on the status of the market, this could take a few seconds (you can view `CoinGecko's API` status [HERE](https://status.coingecko.com/)).
 - At any time, tap the <img src="./README-visuals/icons8-hamburger-58.png" alt="hamburger menu" style="width:25px;"> menu to open a drawer of navigation options. 
-- This `actual hamburger menu` features a <img src="./README-visuals/aboutButton.png" alt="previous button" style="width:30px;"> which will navigate to the `about page` _(COMING SOON)_.
+- This `actual hamburger menu` features a <img src="./README-visuals/aboutButton.png" alt="previous button" style="width:30px;"> which will navigate to the `about page`. This page features some developer acknowledgments and links (also found at the bottom of this README).
 - If you have not added any crypto holdings yet, you'll be greeted by an empty `positions table`. You can scroll down to browse the top 250 cryptocurrencies (ordered descending by market capitalization) at that particular time. Tapping on any `row` will bring you to a `details page` with a wealth of current market data as well as a 24-hour price chart. The line will be <font color="red"><b>red</b></font> if the price is lower than it was 24 hours prior and <font color="green"><b>green</b></font> if it's higher.
 - On this `details page`, you can enter any amount of that particular cryptocurrency that you'd like to add to <img src="./README-visuals/addButton.png" alt="next button" style="width:40px;"> to `your portfolio`. The following dialogue will allow you to <img src="./README-visuals/confirmButton.png" alt="next button" style="width:52px"> or <img src="./README-visuals/cancelButton.png" alt="next button" style="width:52px"> (don't sweat it too much - you can always change this later).
 - If you do <img src="./README-visuals/confirmButton.png" alt="next button" style="width:52px"> the addition of an asset holding, you'll see a friendly `success` dialogue that indicates that you now own a little more of the future of global currency! It even crunches the numbers for you 😃

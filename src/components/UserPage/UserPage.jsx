@@ -118,11 +118,11 @@ function UserPage() {
                 {/* <TableCell className={classes.tableCell}>Name</TableCell> */}
                 <TableCell className={classes.tableHeader}>Ticker</TableCell>
                 <TableCell className={classes.tableHeader}>
-                  Current Price
+                  Current<br />Price
                 </TableCell>
                 {/* <TableCell className={classes.tableCell}>Market Cap</TableCell> */}
                 <TableCell className={classes.tableHeader}>
-                  24h Change
+                  24h<br />Change
                 </TableCell>
               </TableRow>
             </TableHead>

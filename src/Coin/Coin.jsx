@@ -39,7 +39,7 @@ function Coin({ id, name, image, symbol, price, marketCap, priceChange }) {
         {" "}
         {priceChange < 0 ? (
           <p className="downRed">
-            <KeyboardArrowDownIcon style={{verticalAlign: '-17%'}} />
+            <KeyboardArrowDownIcon style={{verticalAlign: '-7%'}} />
             {Math.abs(priceChange.toFixed(2))}%
           </p>
         ) : (
