@@ -1,9 +1,28 @@
-footer {
-  margin-top: 30px;
-  padding: 20px;
+/* footer {
+  margin-top: 50px;
+  padding: 10px;
   text-align: center;
   font-size: 15px;
   font-weight: 200;
   font-family: 'Poppins'; 
+
+} */
+
+footer {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  margin-top: 10px;
+  text-align: center;
+  min-height: 100%;
+  min-height: -webkit-calc(100% - 186px);
+  min-height: -moz-calc(100% - 186px);
+  min-height: calc(100% - 186px);
+  width: 100%;
+  font-family: 'Poppins';   font-size: 90%;
+  color: rgb(53, 53, 53);
+}
+
+a {
+  color: rgb(135, 104, 104);
 
 }

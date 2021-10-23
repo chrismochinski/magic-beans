@@ -14,7 +14,7 @@ function AboutPage() {
 
   return (
     <div className={classes.mainAboutPage}>
-      <Typography className={classes.aboutHeader}>About The App</Typography>
+      <Typography className="aboutHeader" style={{fontFamily: 'Luckiest Guy', fontSize: '40px', color: "#216091"}}>About The App</Typography>
       <Typography className={classes.aboutSubHeader}>
         This lovely page is under construction. Here is a cool bean giving a
         speech.

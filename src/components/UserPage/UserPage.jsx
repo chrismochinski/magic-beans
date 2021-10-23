@@ -91,7 +91,7 @@ function UserPage() {
 
           <UserHoldings />
         </Paper>
-        <Typography
+        <Typography className="explore"
           variant="h3"
           style={{
             fontFamily: "Luckiest Guy",

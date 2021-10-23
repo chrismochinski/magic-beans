@@ -112,6 +112,8 @@ Alert
   margin-bottom: 12px;
   margin-top: 12px;
   font-family: "Luckiest Guy";
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: rgba(0, 0, 0, 0.283);
 }
 
 input {
@@ -137,6 +139,12 @@ input {
   text-align: center;
   align-items: center;
   /* background-color: ??  */
+}
+
+.explore {
+  color: "#216091";
+  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-color: rgba(0, 0, 0, 0.283);
 }
 
 /* -------------------------Imported from spike----------------------------- */
@@ -188,4 +196,9 @@ input {
 
 .line-height {
   line-height: 49px;
+}
+
+.aboutHeader {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: rgba(0, 0, 0, 0.488);
 }

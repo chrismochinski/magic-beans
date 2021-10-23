@@ -45,7 +45,7 @@ function RegisterForm() {
       <form className="formPanel" onSubmit={registerUser}>
         <img className={classes.logo} src="/images/magic-beans-logo.png" />
 
-        <h2 className="loginText">Register User</h2>
+        <h2 className="loginText" style={{  color: "#216091"}}>Register User</h2>
         {errors.registrationMessage && (
           <h3 className="alert" role="alert">
             {errors.registrationMessage}

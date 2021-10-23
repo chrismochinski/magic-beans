@@ -6,6 +6,10 @@ const useStyles = makeStyles(() => ({
   disclaimer: {
     textAlign: "center",
     paddingTop: "20px",
+    // backgroundImage: `url(${"./images/blueSplash.png"})`,
+    backgroundSize: '70',
+    backgroundPosition: '30% 40%',
+    backgroundRepeat: 'no-repeat',
   },
   Button: {
     marginTop: "40px",
@@ -332,6 +336,7 @@ const useStyles = makeStyles(() => ({
   assetHeader: {
     marginBottom: "18px",
     backgroundImage: `url(${"./images/accountant-bean.png"})`,
+    backgroundRepeat: 'no-repeat',
     backgroundSize: "98%",
     backgroundPosition: "top",
   },
@@ -400,10 +405,6 @@ const useStyles = makeStyles(() => ({
     margin: "auto",
   },
 
-  aboutHeader: {
-    fontFamily: "Luckiest Guy",
-    fontSize: "40px",
-  },
 
   aboutSubHeader: {
     fontFamily: "Poppins",
@@ -422,6 +423,11 @@ const useStyles = makeStyles(() => ({
     color: "white",
     backgroundColor: "#9333F0",
   },
+
+  //-------------Info dialogues-------------//
+
+
+
 }));
 
 export default useStyles;

@@ -5,6 +5,8 @@ import { useParams } from "react-router";
 import { useHistory } from "react-router-dom";
 import ConfirmDialogue from "../ConfirmDialogue/ConfirmDialogue";
 import Chart from "../Chart/Chart";
+import MarketCapModal from "../MarketCapModal/MarketCapModal";
+import VolumeModal from "../VolumeModal/VolumeModal";
 
 import {
   Typography,
@@ -21,7 +23,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
 import VerticalAlignTopIcon from "@mui/icons-material/VerticalAlignTop";
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 import useStyles from "../styles/styles";
 import swal from "sweetalert";
@@ -184,6 +186,8 @@ function CoinDetails({ card }) {
     window.scrollTo(0, 0);
   };
 
+
+
   return (
     <Container className={classes.detailsPage}>
       <Typography style={{ fontFamily: "Poppins" }} variant="h4">
@@ -199,23 +203,48 @@ function CoinDetails({ card }) {
         {" "}
         {coinPriceChange < 0 ? (
           <p className="downRed">
-            <KeyboardArrowDownIcon className={classes.arrowPercent}/>
+            <KeyboardArrowDownIcon className={classes.arrowPercent} />
             {Math.abs(coinPriceChange)}% today
           </p>
         ) : (
           <p className="upGreen">
-            <KeyboardArrowUpIcon className={classes.arrowPercent}/>
+            <KeyboardArrowUpIcon className={classes.arrowPercent} />
             {coinPriceChange}% today
           </p>
         )}
       </Typography>
 
-      <Typography style={{ fontFamily: "Poppins" }} variant="h6">
-        <b>Market Cap:</b> ${(coinMarketCap * 1).toLocaleString()} <HelpOutlineIcon className={classes.question}/>
-      </Typography>
-      <Typography style={{ fontFamily: "Poppins" }} variant="h6">
-        <b>Vol:</b> {(coinVolume * 1).toLocaleString()} <HelpOutlineIcon className={classes.question}/>
-      </Typography>
+
+
+      <Grid container>
+        <Grid item>
+          <Typography style={{ fontFamily: "Poppins" }} variant="h6">
+            <b>Market Cap:</b> ${(coinMarketCap * 1).toLocaleString()}
+          </Typography>
+        </Grid>
+
+        <Grid item style={{ margin: 0, padding: 0 }}>
+          <MarketCapModal />
+        </Grid>
+      </Grid>
+
+
+
+
+      <Grid container>
+        <Grid item>
+          <Typography style={{ fontFamily: "Poppins" }} variant="h6">
+            <b>Vol:</b> {(coinVolume * 1).toLocaleString()}{" "}
+          </Typography>
+        </Grid>
+        <Grid item>
+          <VolumeModal />
+        </Grid>
+      </Grid>
+
+
+
+
       <Typography
         style={{
           color: "#8F8F8F",

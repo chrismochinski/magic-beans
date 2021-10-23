@@ -49,7 +49,7 @@ function LoginForm() {
       <form className="formPanel" onSubmit={login}>
         <img className={classes.logo} src="/images/magic-beans-logo.png" />
 
-        <h2 className="loginText">Login</h2>
+        <h2 className="loginText" style={{color: "#216091"}}>Login</h2>
         {errors.loginMessage && (
           <h3 className="alert" role="alert">
             {errors.loginMessage}
