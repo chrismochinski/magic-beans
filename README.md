@@ -33,7 +33,7 @@
 
 
 
-<img align="right" src="./README-visuals/mb-use-2.gif" height="500px" style="margin: 20px"/>
+<img align="right" src="./README-visuals/mb-use-2.gif" height="600px" style="margin: 20px"/>
 
 
 
@@ -88,7 +88,7 @@
 
 - At any time, inside the <img src="./README-visuals/icons8-hamburger-58.png" alt="hamburger menu" style="width:25px;"> menu, you can tap the <img src="./README-visuals/logoutButton.png" alt="logout button" style="width:25px;"> button to `sign out`. 
 
-<img align="left" src="./README-visuals/mb-use-3.gif" height="500px" style="margin: 20px" />
+<img align="left" src="./README-visuals/mb-use-3.gif" height="600px" style="margin: 20px" />
 
 # Built with
 ---
