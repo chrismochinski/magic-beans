@@ -53,22 +53,22 @@ const Hamburger = () => {
         <div>
           <ListItem onClick={() => setOpen(false)}>
             <Link to="/user">
-              <HomeIcon className="hamburgerLink" />
+              <HomeIcon className="hamburgerIcons" />
             </Link>
           </ListItem>
           <ListItem onClick={() => setOpen(false)}>
             <Link to="/about">
-              <InfoIcon className="hamburgerLink" />
+              <InfoIcon className="hamburgerIcons" />
             </Link>
           </ListItem>
           <ListItem onClick={() => setOpen(false)}>
             <Link to="/search">
-              <SearchIcon className="hamburgerLink" />
+              <SearchIcon className="hamburgerIcons" />
             </Link>
           </ListItem>
           <ListItem onClick={() => handleLogoutClick()}>
             <Link to="/home">
-              <LogoutIcon className="hamburgerLink" />
+              <LogoutIcon className="hamburgerIcons" />
             </Link>
             {/* <LogOutButton className="navLink" /> */}
           </ListItem>

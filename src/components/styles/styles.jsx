@@ -6,7 +6,6 @@ const useStyles = makeStyles(() => ({
   disclaimer: {
     textAlign: "center",
     paddingTop: "20px",
-    // backgroundImage: `url(${"./images/blueSplash.png"})`,
     backgroundSize: "70",
     backgroundPosition: "30% 40%",
     backgroundRepeat: "no-repeat",
@@ -197,8 +196,6 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "#5C9827",
     color: "white",
   },
-
-
 
   clearSearchButton: {
     marginTop: "20px",
@@ -420,35 +417,38 @@ const useStyles = makeStyles(() => ({
 
   aboutListHeader: {
     textAlign: "left",
-    fontSize: "22px",
+    fontSize: "20px",
     marginTop: "14px",
-    marginBottom: "8px",
+    marginBottom: "9px",
     fontFamily: "Poppins",
+    lineHeight: 1,
   },
 
   aboutList: {
     textAlign: "left",
-    fontSize: "13px",
+    fontSize: "74%",
     fontFamily: "Poppins",
   },
 
   thanks: {
     marginTop: "12px",
+    marginLeft: "10px",
+    marginRight: "10px",
     textAlign: "center",
-    fontSize: "9px",
+    fontSize: "0.5em",
     fontFamily: "Poppins",
   },
 
   a: {
-    textDecorationLine: 'none', 
-    color: 'black',
+    textDecorationLine: "none",
+    color: "black",
   },
 
   socialRow: {
-    marginTop: "22px",
-    transform: 'scale(1.3)',
-    color: 'black',
-    marginBottom: '10px',
+    marginTop: "18px",
+    transform: "scale(1.3)",
+    color: "black",
+    marginBottom: "10px",
   },
 
   aboutHomeButton: {
@@ -458,7 +458,6 @@ const useStyles = makeStyles(() => ({
     color: "white",
     backgroundColor: "#9333F0",
   },
-
 
   //-------------Info dialogues-------------//
 }));

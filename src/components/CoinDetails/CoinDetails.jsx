@@ -218,7 +218,7 @@ function CoinDetails({ card }) {
 
       <Grid container>
         <Grid item>
-          <Typography style={{ fontFamily: "Poppins" }} variant="h6">
+          <Typography style={{ fontFamily: "Poppins", fontSize: '1.2em'}} variant="h6">
             <b>Market Cap:</b> ${(coinMarketCap * 1).toLocaleString()}
           </Typography>
         </Grid>

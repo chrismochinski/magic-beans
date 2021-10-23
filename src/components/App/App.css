@@ -206,5 +206,6 @@ input {
 .aboutLink {
   color: black;
   margin: 3px;
+  transform: scale(.9)
 
 }

@@ -14,7 +14,6 @@ import TextField from "@mui/material/TextField";
 import { useHistory } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import LayersClearIcon from "@mui/icons-material/LayersClear";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import useStyles from "../styles/styles";
 
