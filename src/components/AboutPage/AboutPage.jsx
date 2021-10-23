@@ -28,10 +28,7 @@ function AboutPage() {
       >
         About The App
       </Typography>
-      {/* <Typography className={classes.aboutSubHeader}>
-        This lovely page is under construction. Here is a cool bean giving a
-        speech.
-      </Typography> */}
+    
 
       <Grid container>
         <Grid
@@ -111,14 +108,14 @@ function AboutPage() {
         </Grid>
 
         <Grid item item xs={12} sm={12} md={12} lg={12} xl={12}>
-          <Button
+          {/* <Button
             variant="contained"
-            size="medium"
+            size="small"
             className={classes.aboutHomeButton}
             onClick={() => goHome()}
           >
             <HomeIcon style={{ fontSize: "35px" }} />
-          </Button>
+          </Button> */}
         </Grid>
       </Grid>
     </div>

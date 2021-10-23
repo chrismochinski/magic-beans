@@ -283,7 +283,7 @@ const useStyles = makeStyles(() => ({
   userTableHeaderCell: {
     fontFamily: "Cabin Condensed",
     textAlign: "center",
-    fontSize: "18px",
+    fontSize: "19px",
     padding: 0,
     margin: 0,
   },
@@ -298,7 +298,7 @@ const useStyles = makeStyles(() => ({
 
   holdingSymbol: {
     fontFamily: "Poppins",
-    fontSize: "18px",
+    fontSize: "17px",
     textAlign: "center",
     fontWeight: "bold",
     padding: 0,
@@ -308,7 +308,7 @@ const useStyles = makeStyles(() => ({
   holdingAmount: {
     fontFamily: "Poppins",
     textAlign: "center",
-    fontSize: "17px",
+    fontSize: "16px",
     fontWeight: "bold",
     padding: 0,
     margin: 0,
@@ -316,9 +316,8 @@ const useStyles = makeStyles(() => ({
 
   holdingVal: {
     fontFamily: "Poppins",
-
     textAlign: "center",
-    fontSize: "17px",
+    fontSize: "16px",
     fontWeight: "bold",
     padding: 0,
     margin: 0,

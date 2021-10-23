@@ -46,7 +46,7 @@ function Nav() {
             </IconButton>
 
             <IconButton onClick={() => navToAbout()}>
-              <InfoIcon className="navIconR" />
+              <InfoIcon className="navIconR"  />
             </IconButton>
           </div>
         )}

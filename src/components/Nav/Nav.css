@@ -46,8 +46,6 @@ background: linear-gradient(180deg, rgba(33,96,145,1) 93%, rgba(18,44,59,0) 100%
   padding: 24px 10px;
  
 
-    /* important MUST FIGURE OUT HOW TO REMOVE BOX  */
-
 
   /* these last two make the logout button in
   the nav bar look like another link */
@@ -98,7 +96,7 @@ background: linear-gradient(180deg, rgba(33,96,145,1) 93%, rgba(18,44,59,0) 100%
   color: #f2f2f2;
   text-align: center;
   /* padding: 24px 5px; */
-  margin-right: 20px;
+  margin-right: 10px;
   margin-top: 28px;
   margin-bottom: 28px;
   transform: scale(2.2);
@@ -112,7 +110,7 @@ background: linear-gradient(180deg, rgba(33,96,145,1) 93%, rgba(18,44,59,0) 100%
   display: inline-block;
   color: #f2f2f2;
   text-align: center;
-  margin-right: 20px;
+  margin-right: 10px;
   margin-top: 28px;
   margin-bottom: 28px;
   transform: scale(2.2);}
