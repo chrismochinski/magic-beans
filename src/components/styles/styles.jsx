@@ -7,9 +7,9 @@ const useStyles = makeStyles(() => ({
     textAlign: "center",
     paddingTop: "20px",
     // backgroundImage: `url(${"./images/blueSplash.png"})`,
-    backgroundSize: '70',
-    backgroundPosition: '30% 40%',
-    backgroundRepeat: 'no-repeat',
+    backgroundSize: "70",
+    backgroundPosition: "30% 40%",
+    backgroundRepeat: "no-repeat",
   },
   Button: {
     marginTop: "40px",
@@ -133,8 +133,8 @@ const useStyles = makeStyles(() => ({
   //-------SearchPage > CARD contents-------//
 
   arrowPercent: {
-    verticalAlign: '-15%',
-    fontSize: '130%',
+    verticalAlign: "-15%",
+    fontSize: "130%",
   },
 
   pipe: {
@@ -179,15 +179,6 @@ const useStyles = makeStyles(() => ({
     color: "white",
   },
 
-  detailsButton: {
-    marginTop: "5px",
-    padding: "7px",
-    fontSize: "1.3em",
-    fontWeight: "bold",
-    backgroundColor: "#5C9827",
-    color: "white",
-  },
-
   goHomeButton: {
     marginTop: "20px",
     padding: "10px",
@@ -197,6 +188,17 @@ const useStyles = makeStyles(() => ({
     color: "white",
     backgroundColor: "#9333F0",
   },
+
+  detailsButton: {
+    marginTop: "5px",
+    padding: "7px",
+    fontSize: "1.3em",
+    fontWeight: "bold",
+    backgroundColor: "#5C9827",
+    color: "white",
+  },
+
+
 
   clearSearchButton: {
     marginTop: "20px",
@@ -336,7 +338,7 @@ const useStyles = makeStyles(() => ({
   assetHeader: {
     marginBottom: "18px",
     backgroundImage: `url(${"./images/accountant-bean.png"})`,
-    backgroundRepeat: 'no-repeat',
+    backgroundRepeat: "no-repeat",
     backgroundSize: "98%",
     backgroundPosition: "top",
   },
@@ -398,13 +400,11 @@ const useStyles = makeStyles(() => ({
   //-------------About Page-------------//
 
   mainAboutPage: {
-    padding: "20px",
+    padding: "8px",
     textAlign: "center",
     paddingTop: "10px",
-    paddingBottom: "100px",
     margin: "auto",
   },
-
 
   aboutSubHeader: {
     fontFamily: "Poppins",
@@ -414,20 +414,53 @@ const useStyles = makeStyles(() => ({
 
   aboutBean: {
     alignSelf: "center",
+    marginTop: "16px",
+    marginBottom: "10px",
+  },
+
+  aboutListHeader: {
+    textAlign: "left",
+    fontSize: "22px",
+    marginTop: "14px",
+    marginBottom: "8px",
+    fontFamily: "Poppins",
+  },
+
+  aboutList: {
+    textAlign: "left",
+    fontSize: "13px",
+    fontFamily: "Poppins",
+  },
+
+  thanks: {
+    marginTop: "12px",
+    textAlign: "center",
+    fontSize: "9px",
+    fontFamily: "Poppins",
+  },
+
+  a: {
+    textDecorationLine: 'none', 
+    color: 'black',
+  },
+
+  socialRow: {
+    marginTop: "22px",
+    transform: 'scale(1.3)',
+    color: 'black',
+    marginBottom: '10px',
   },
 
   aboutHomeButton: {
-    marginTop: "10px",
+    marginTop: "24px",
     fontSize: "20px",
     fontWeight: "bold",
     color: "white",
     backgroundColor: "#9333F0",
   },
 
+
   //-------------Info dialogues-------------//
-
-
-
 }));
 
 export default useStyles;

@@ -202,3 +202,9 @@ input {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: rgba(0, 0, 0, 0.488);
 }
+
+.aboutLink {
+  color: black;
+  margin: 3px;
+
+}

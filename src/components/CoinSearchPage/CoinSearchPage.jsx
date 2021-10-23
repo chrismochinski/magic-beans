@@ -81,10 +81,19 @@ function CoinSearchPage() {
           src="/images/mb-logo-search.png"
           className="modLogo"
           style={{ marginBottom: "10px" }}
-          width="250px"
+          width="270px"
         />
 
-        <form onSubmit={handleChange} style={{ textAlign: "center" }}>
+        <form
+          onSubmit={handleChange}
+          style={{
+            marginTop: "20px",
+            textAlign: "center",
+            width: "80%",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
           <TextField
             inputProps={{ style: { fontSize: 30 } }}
             InputLabelProps={{ style: { fontSize: 20 } }}
@@ -141,7 +150,7 @@ function CoinSearchPage() {
             item
             key={card.id}
           >
-            <Card className={classes.card} elevation={5} >
+            <Card className={classes.card} elevation={5}>
               <CardMedia
                 className={classes.cardMedia}
                 component="img"
@@ -162,10 +171,14 @@ function CoinSearchPage() {
                     xl={10}
                   >
                     <Typography variant="h5" className={classes.cardText}>
-                      {card.name} <span className={classes.pipe}>|</span> {" "}
-                      <span style={{fontFamily: 'Righteous', borderWidth: '4px'}} >{card.symbol.toUpperCase()} 
-                      </span> <span className={classes.pipe}>|</span>{" "}
-                      #{card.market_cap_rank}
+                      {card.name} <span className={classes.pipe}>|</span>{" "}
+                      <span
+                        style={{ fontFamily: "Righteous", borderWidth: "4px" }}
+                      >
+                        {card.symbol.toUpperCase()}
+                      </span>{" "}
+                      <span className={classes.pipe}>|</span> #
+                      {card.market_cap_rank}
                     </Typography>
                   </Grid>
                   <Grid
