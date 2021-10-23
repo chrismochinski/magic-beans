@@ -26,7 +26,7 @@ function AboutPage() {
           color: "#216091",
         }}
       >
-        About The App!
+        About The App
       </Typography>
       {/* <Typography className={classes.aboutSubHeader}>
         This lovely page is under construction. Here is a cool bean giving a
@@ -98,15 +98,7 @@ function AboutPage() {
           </Typography>
         </Grid>
 
-        <Grid
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
-          xl={12}
-          className={classes.socialRow}
-        >
+        <Grid item className={classes.socialRow}>
           <a href="https://www.linkedin.com/in/chrismochinski/" target="_blank">
             <LinkedInIcon className="aboutLink" />
           </a>

@@ -449,7 +449,8 @@ const useStyles = makeStyles(() => ({
   },
 
   socialRow: {
-    marginTop: "18px",
+    margin: "auto",
+    paddingTop: "18px",
     transform: "scale(1.3)",
     color: "black",
     marginBottom: "10px",
