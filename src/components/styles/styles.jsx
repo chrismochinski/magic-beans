@@ -141,8 +141,8 @@ const useStyles = makeStyles(() => ({
   },
 
   question: {
-    fontSize: "150%",
-    color: "#1976D260",
+    fontSize: "130%",
+    color: "#1976D250",
     verticalAlign: "-11%",
   },
 
