@@ -57,7 +57,6 @@ function LoginForm() {
         )}
         <div>
           <label htmlFor="username">
-            {/* Username: */}
             <TextField
               className={classes.loginTextField}
               variant="outlined"
@@ -72,7 +71,6 @@ function LoginForm() {
         </div>
         <div>
           <label htmlFor="password">
-            {/* <Typography>Password:</Typography> */}
             <TextField
               className={classes.loginTextField}
               variant="outlined"
@@ -84,7 +82,7 @@ function LoginForm() {
               type={showPassword ? "text" : "password"}
               onChange={(event) => setPassword(event.target.value)}
               InputProps={{
-                // <-- This is where the toggle button is added.
+                // This is where the toggle button is added.
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
@@ -111,7 +109,6 @@ function LoginForm() {
             Go!
           </Button>
 
-          {/* <input className="btn" type="submit" name="submit" value="Log In" /> */}
         </div>
       </form>
     </Grid>
@@ -120,17 +117,3 @@ function LoginForm() {
 
 export default LoginForm;
 
-{
-  /* <input
-type="password"
-name="password"
-required
-value={password}
-onChange={(event) => setPassword(event.target.value)}
-/>
-</label>
-</div>
-<div>
-<input className="btn" type="submit" name="submit" value="Log In" />
-</div> */
-}

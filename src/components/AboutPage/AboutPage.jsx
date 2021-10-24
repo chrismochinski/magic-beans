@@ -1,12 +1,13 @@
 import React from "react";
-import { Typography, Grid, Button, Container } from "@material-ui/core/";
+import { Typography, Grid } from "@material-ui/core/";
 import useStyles from "../styles/styles";
-import HomeIcon from "@mui/icons-material/Home";
 import { useHistory } from "react-router";
 
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GitHubIcon from "@mui/icons-material/GitHub";
+
+import "./AboutPage.css";
 
 function AboutPage() {
   const classes = useStyles();
@@ -85,10 +86,13 @@ function AboutPage() {
           <Typography className={classes.thanks}>
             A bajillion thanks to my wonderful little family for being
             wonderful, my instructors at Prime for the endless encouragement, my
-            cohort mates for the late night coding parties, the fine folks at
-            Coingecko for providing an awesome API, and my spectacular fiancée
-            Sharesa (almost) Mochinski for holding down the fort and being the
-            most incredible human ever.
+            cohort mates for the late night coding parties, the fine folks at{" "}
+            <a href="https://www.coingecko.com/" target="_blank">
+              Coingecko
+            </a>{" "}
+            for providing an awesome API, my fiancée Sharesa [almost] Mochinski
+            for holding down the fort and being the most incredible human ever,
+            and Cooper...for naming this app.
           </Typography>
         </Grid>
 

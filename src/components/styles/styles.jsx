@@ -29,9 +29,10 @@ const useStyles = makeStyles(() => ({
   //-------------Login / Register-------------//
 
   logo: {
-    width: "70%",
+    width: "65%",
     marginBottom: "0",
   },
+
   loginForm: {
     textAlign: "center",
   },
