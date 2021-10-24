@@ -24,10 +24,12 @@ const Disclaimer = () => {
         Disclaimer:{" "}
       </Typography>
       <Typography className={classes.disclaimerStatements}>
-        The developers of this application are not now nor will they ever claim
-        to be financial advisors, CPAs, accountants, ninjas, cowboys or
-        astronauts. They are not to be held responsible for any investment
-        decisions you choose to make. <br />
+        This application is a convenient place to track real-time
+        cryptocurrency market and portfolio data. It is <i>not</i> an exchange.{" "}
+        <span style={{ fontSize: "19px" }}>Real money is not spent here.</span>
+        <br />
+        <br /> The developer of this application is not a financial advisor,
+        CPA, accountant, ninja, cowboy or astronaut. <br />
         <br /> Cryptocurrency is a volatile market and should be approached with
         care. Please don't invest money you can't afford to lose.
       </Typography>

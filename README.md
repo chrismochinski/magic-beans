@@ -108,12 +108,12 @@
 
 # Acknowledgement
 ---
-I'd like to extend my sincere thanks to my instructors and everyone at [Prime Digital Academy](www.primeacademy.io) - especially [Chris Black](https://github.com/blackcj) and the <b>Proth cohort</b> - for giving me the tools to do amazing things with amazing technology. After years of juggling upwards of 40 cryptocurrency applications and thinking of all the fun stuff I'd love to do if I ever made my own, bringing this to life was a massively profound experience. I almost wish it would never end. 
+I'd like to extend my sincere thanks to my instructors and everyone at [Prime Digital Academy](www.primeacademy.io) - especially [Chris Black](https://github.com/blackcj) and the Proth cohort - for giving me the tools to do amazing things with amazing technology. Thanks also to my little family, especially  After years of juggling upwards of 40 cryptocurrency applications and thinking of all the fun stuff I'd love to do if I ever made my own, bringing this to life was a truly amazing experience. I absolutely cannot wait to do more. 
 <br />
 
 # Support
 ---
-If you have questions or issues - or would like to leave me some feedback - please do not hesitate to email me at: [cmochinski@gmail.com](mailto:cmochinski@gmail.com) or at my GitHub below. I'd sincerely love to hear from you!
+If you have any questions - or would like to leave me some feedback - please do not hesitate to email me at: [cmochinski@gmail.com](mailto:cmochinski@gmail.com) or visit my GitHub below. I'd sincerely love to hear from you!
 
 ---
 <br />

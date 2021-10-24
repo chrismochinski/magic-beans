@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
 
   disclaimerHeadline: {
     fontFamily: "Luckiest Guy",
-    fontSize: "45px",
+    fontSize: "38px",
   },
 
   disclaimerStatements: {
