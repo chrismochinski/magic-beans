@@ -24,10 +24,10 @@
 ---
 
 <br />
-
+<!-- 
 
 <img src="./README-visuals/mb-gif-1.gif" style="margin: 20px"/>
-
+ -->
 
 
 
