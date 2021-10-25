@@ -51,23 +51,23 @@ function AboutPage() {
             Built With:
           </Typography>
           <Typography className={classes.aboutList}>
-            🍩 Visual Studio Code
+            🍩 React
             <br />
-            🍩 Pixelmator Pro
+            🍩 Redux-Saga
             <br />
-            🍩 CoinGecko API
+            🍩 Node
             <br />
-            🍩 Material UI
+            🍩 Express
             <br />
-            🍩 Moment.js
-            <br />
-            🍩 date-fns
+            🍩 Postgres
             <br />
             🍩 react-chartjs-2
             <br />
-            🍩 GiFox
+            🍩 Material UI
             <br />
-            🍩 Postico
+            🍩 Coingecko API
+            <br />
+            🍩 date-fns
             <br />
             🍩 Love
             <br />
