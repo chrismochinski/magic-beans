@@ -91,7 +91,8 @@ function UserPage() {
 
           <UserHoldings />
         </Paper>
-        <Typography className="explore"
+        <Typography
+          className="explore"
           variant="h3"
           style={{
             fontFamily: "Luckiest Guy",
@@ -118,11 +119,15 @@ function UserPage() {
                 {/* <TableCell className={classes.tableCell}>Name</TableCell> */}
                 <TableCell className={classes.tableHeader}>Ticker</TableCell>
                 <TableCell className={classes.tableHeader}>
-                  Current<br />Price
+                  Current
+                  <br />
+                  Price
                 </TableCell>
                 {/* <TableCell className={classes.tableCell}>Market Cap</TableCell> */}
                 <TableCell className={classes.tableHeader}>
-                  24h<br />Change
+                  24h
+                  <br />
+                  Change
                 </TableCell>
               </TableRow>
             </TableHead>

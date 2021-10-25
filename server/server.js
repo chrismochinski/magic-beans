@@ -31,6 +31,7 @@ app.use('/api/crypto', cryptoListRouter);
 
 // Serve static files
 app.use(express.static('build'));
+app.use('/apidoc', express.static('apidoc')); 
 
 // App Set //
 const PORT = process.env.PORT || 5000;

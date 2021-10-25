@@ -2,23 +2,51 @@ const axios = require("axios");
 const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
-const { 
+const {
   rejectUnauthenticated,
-} = require('../modules/authentication-middleware');
+} = require("../modules/authentication-middleware");
 
 /**
- * @api {get}
- * /crypto/holdings/
- * @apiParams {Number} id user's unique id
- * get all user's portfolio positions
+ * @api {get} /crypto/holdings Get user holdings
+ * @apiName GetPositions
+ * @apiGroup Crypto
+ * @apiDesription This route returns all user's current holdings (aka "positions")
+ * 
+ * @apiSuccess {Group[]} Positions  An array of user holding information
+ * @apiSuccess {Number} positions.user_id   User's unique id, populated by whomever is logged in
+ * @apiSuccess {String} positions.coin_id   Coin's unique id - a lower case version of name with no spaces
+ * @apiSuccess {String} positions.symbol    Coin's unique symbol - three to five letters
+ * @apiSuccess {String} positions.name    Coin's name - similar to id, with caps
+ * @apiSuccess {Number} positions.coins_held    Number of coins user holds of that crypto
+ * @apiSuccess {Number} position.total_cost   Amount user "spent" on that position
+ * @apiSuccess {Number} position.per_coin_val   Price per coin at time of "purchase"
+ * @apiSuccess {String} position.date   Date of "purchase" of position
+ * 
+ * @apiSuccessExample {json} Success-Response:
+ * 
+ *  [
+  {
+    id: 104,
+    user_id: 2,
+    coin_id: 'bitcoin',
+    symbol: 'BTC',
+    name: 'Bitcoin',
+    coins_held: '0.0311',
+    total_cost: '1940.01',
+    per_coin_val: '62329.00',
+    date: 2021-10-17T05:00:00.000Z
+  }
+],
  */
-router.get("/holdings/", rejectUnauthenticated, (req, res) => { //auth check
+router.get("/holdings/", rejectUnauthenticated, (req, res) => {
+  //auth check
   console.log("User ID is:", req.user.id);
   const getQuery = `SELECT * FROM positions WHERE user_id = $1 ORDER BY "id" ASC;`;
   pool
     .query(getQuery, [req.user.id])
     .then((result) => {
       res.send(result.rows);
+      console.log("result is:", result.rows);
     })
     .catch((err) => {
       console.log("ERROR: Get user holdings:", err);
@@ -27,9 +55,13 @@ router.get("/holdings/", rejectUnauthenticated, (req, res) => { //auth check
 });
 
 /**
- * @api {get}
- * /crypto/
- * get top 250 crypto list (top 250 subject to change)
+ * @api {post} /crypto User input new holding info
+ * @apiName PostNewPosition
+ * @apiGroup crypto
+ *
+ *
+ * @apiDescription This route runs when a user submits a brand new holding
+ *
  */
 router.get("/", (req, res) => {
   axios
@@ -56,7 +88,8 @@ router.get("/", (req, res) => {
  * @apiParam {Number} total_cost total USD amount user "spent" on addition
  * @apiParam {Number} per_coin_val value of coin at precise time of addition
  */
-router.post('/', rejectUnauthenticated, (req, res) => { //auth check
+router.post("/", rejectUnauthenticated, (req, res) => {
+  //auth check
   const queryText = `INSERT INTO "positions"
   ("user_id", "coin_id", "symbol", "name",
   "coins_held", "total_cost", "per_coin_val")
@@ -86,13 +119,14 @@ router.post('/', rejectUnauthenticated, (req, res) => { //auth check
  * @apiParams {String} id unique id of coin
  * @apiParams {Number} user_id unique id of user
  */
-router.delete("/holdings/", rejectUnauthenticated, (req, res) => { //auth check
+router.delete("/holdings/", rejectUnauthenticated, (req, res) => {
+  //auth check
   console.log("id of position to delete:", req.body.id, req.body.user_id);
 
   if (req.body.user_id === req.user.id) {
     const deleteQuery = `DELETE FROM "positions" WHERE "id" = $1 AND "user_id" = $2;`;
     pool
-      .query(deleteQuery, [req.body.id, req.user.id]) //auth check 
+      .query(deleteQuery, [req.body.id, req.user.id]) //auth check
       .then((result) => {
         res.sendStatus(201);
         console.log("success! Deleted one position");
@@ -113,7 +147,8 @@ router.delete("/holdings/", rejectUnauthenticated, (req, res) => { //auth check
  * @apiParams {Number} mod updated number of coins held
  * @apiParams {Number} user_id unique user id
  */
-router.put("/holdings/", rejectUnauthenticated, (req, res) => { //auth check
+router.put("/holdings/", rejectUnauthenticated, (req, res) => {
+  //auth check
   console.log(
     "id of position to UPDATE:",
     req.body.id,
@@ -124,7 +159,8 @@ router.put("/holdings/", rejectUnauthenticated, (req, res) => { //auth check
   if (req.body.user_id === req.user.id) {
     const updateQuery = `
     UPDATE "positions" SET "coins_held" = $1 WHERE "id" = $2 AND "user_id" = $3;`; //auth check
-    pool.query(updateQuery, [req.body.mod, req.body.id, req.user.id]) //auth check
+    pool
+      .query(updateQuery, [req.body.mod, req.body.id, req.user.id]) //auth check
       .then((result) => {
         res.sendStatus(201);
         console.log(
