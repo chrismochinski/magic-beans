@@ -160,7 +160,7 @@ const useStyles = makeStyles(() => ({
   },
 
   cardText: {
-    fontSize: "1.8em",
+    fontSize: "1.5em",
     color: "#00000085",
   },
 

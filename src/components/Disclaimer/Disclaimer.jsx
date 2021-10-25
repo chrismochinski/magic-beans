@@ -25,8 +25,7 @@ const Disclaimer = () => {
       </Typography>
       <Typography className={classes.disclaimerStatements}>
         This application is a convenient place to track real-time
-        cryptocurrency market and portfolio data. It is <i>not</i> an exchange.{" "}
-        <span style={{ fontSize: "19px" }}>Real money is not spent here.</span>
+        cryptocurrency market and portfolio data. It is <i>not</i> an exchange. Real money is not spent here.
         <br />
         <br /> The developer of this application is not a financial advisor,
         CPA, accountant, ninja, cowboy or astronaut. <br />
