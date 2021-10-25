@@ -21,7 +21,7 @@ export default function UserDonutChart() {
   const [open, setOpen] = React.useState(false);
   const classes = useStyles();
 
-  const holdings = useSelector((store) => store.holdingsReducer); //everything the user has in his database
+  const holdings = useSelector((store) => store.holdingsReducer); //everything the user has in their database
 
   const handleClickOpen = () => {
     setOpen(true);

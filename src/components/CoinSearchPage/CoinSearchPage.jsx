@@ -182,6 +182,7 @@ function CoinSearchPage() {
                   </Grid>
                   <Grid
                     item
+                    onClick={() => getDetails(card)} //moved from child element (MUI Button)
                     className={classes.floatCenter}
                     xs={12}
                     s={2}
@@ -191,7 +192,6 @@ function CoinSearchPage() {
                   >
                     <Button
                       className={classes.detailsButton}
-                      onClick={() => getDetails(card)}
                       variant="outlined"
                       size="large"
                       color="primary"
