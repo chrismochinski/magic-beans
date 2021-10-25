@@ -101,7 +101,7 @@ function UserPage() {
         >
           <b>Explore!</b>
         </Typography>
-        <Typography
+        {/* <Typography
           style={{
             fontFamily: "Poppins",
             marginBottom: "10px",
@@ -109,7 +109,7 @@ function UserPage() {
           }}
         >
           <b>Top 250 Cryptocurrencies</b>
-        </Typography>
+        </Typography> */}
         <TableContainer sx={{ maxHeight: 470 }}>
           <Table className="center" stickyHeader aria-label="sticky table">
             <TableHead>
