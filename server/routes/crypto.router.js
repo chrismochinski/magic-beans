@@ -37,6 +37,7 @@ const {
     date: 2021-10-17T05:00:00.000Z
   }
 ],
+ *
  */
 router.get("/holdings/", rejectUnauthenticated, (req, res) => {
   //auth check
@@ -46,7 +47,7 @@ router.get("/holdings/", rejectUnauthenticated, (req, res) => {
     .query(getQuery, [req.user.id])
     .then((result) => {
       res.send(result.rows);
-      console.log("result is:", result.rows);
+      console.log("result is:", result.rows); //for api doc
     })
     .catch((err) => {
       console.log("ERROR: Get user holdings:", err);
@@ -54,15 +55,7 @@ router.get("/holdings/", rejectUnauthenticated, (req, res) => {
     });
 });
 
-/**
- * @api {post} /crypto User input new holding info
- * @apiName PostNewPosition
- * @apiGroup crypto
- *
- *
- * @apiDescription This route runs when a user submits a brand new holding
- *
- */
+
 router.get("/", (req, res) => {
   axios
     .get(
@@ -77,16 +70,57 @@ router.get("/", (req, res) => {
     });
 });
 
+
 /**
- * @api {post}
- * /crypto/
- * @apiParam {Number} user_id user's unique ID
- * @apiParam {String} coin_id coin's unique ID
- * @apiParam {String} symbol coin's unique ticker symbol
- * @apiParam {String} name coin's unique full name
- * @apiParam {Number} coins_held number of coins user has added
- * @apiParam {Number} total_cost total USD amount user "spent" on addition
- * @apiParam {Number} per_coin_val value of coin at precise time of addition
+ * @api {post} /crypto Post new user position
+ * @apiName PostPosition
+ * @apiGroup Crypto
+ * @apiDesription This route posts a new user holding (aka "position") to their portfolio
+ * 
+ * @apiSuccess {Group[]} Positions  An array of user holding information
+ * @apiSuccess {Number} positions.user_id   User's unique id, populated by whomever is logged in
+ * @apiSuccess {String} positions.coin_id   Coin's unique id - a lower case version of name with no spaces
+ * @apiSuccess {String} positions.symbol    Coin's unique symbol - three to five letters
+ * @apiSuccess {String} positions.name    Coin's name - similar to id, with caps
+ * @apiSuccess {Number} positions.coins_held    Number of coins user holds of that crypto
+ * @apiSuccess {Number} position.total_cost   Amount user "spent" on that position
+ * @apiSuccess {Number} position.per_coin_val   Price per coin at time of "purchase"
+ * @apiSuccess {String} position.date   Date of "purchase" of position
+ * 
+ * @apiSuccessExample {json} Success-Response:
+ * 
+ * Result {
+  command: 'INSERT',
+  rowCount: 1,
+  oid: 0,
+  rows: [],
+  fields: [],
+  _parsers: undefined,
+  _types: TypeOverrides {
+    _types: {
+      getTypeParser: [Function: getTypeParser],
+      setTypeParser: [Function: setTypeParser],
+      arrayParser: [Object],
+      builtins: [Object]
+    },
+    text: {},
+    binary: {}
+  },
+  RowCtor: null,
+  rowAsArray: false
+}
+{
+    id: 194,
+    user_id: 2,
+    coin_id: 'polkadot',
+    symbol: 'DOT',
+    name: 'Polkadot',
+    coins_held: '5.0000',
+    total_cost: '220.30',
+    per_coin_val: '44.06',
+    date: 2021-10-25T05:00:00.000Z
+  }
+ * 
  */
 router.post("/", rejectUnauthenticated, (req, res) => {
   //auth check
@@ -105,6 +139,7 @@ router.post("/", rejectUnauthenticated, (req, res) => {
       req.body.per_coin_val,
     ])
     .then((result) => {
+      console.log("result of post in server is:", result); //for api doc
       res.sendStatus(201);
     })
     .catch((error) => {
@@ -114,10 +149,50 @@ router.post("/", rejectUnauthenticated, (req, res) => {
 });
 
 /**
- * @api {delete} /crypto/holdings
- * /crypto/holdings/
- * @apiParams {String} id unique id of coin
- * @apiParams {Number} user_id unique id of user
+ * @api {delete} /crypto/holdings/:id Delete one user position
+ * @apiName DeletePosition
+ * @apiGroup Crypto
+ * 
+ * @apiDescription This route deletes one user-selected holding (aka "position")
+ * 
+ * @apiParams {Number} positions.id unique id of coin
+ * @apiParams {Number} user.user_id unique id of user
+ * 
+ * @apiSuccess {Group[]} Positions  An array of user holding information
+ * @apiSuccess {Number} positions.id    id of specific user holding (Primary Key / Auto Generated)
+ * @apiSuccess {Number} positions.user_id   User's unique id, populated by whomever is logged in
+ * @apiSuccess {String} positions.coin_id   Coin's unique id - a lower case version of name with no spaces
+ * @apiSuccess {String} positions.symbol    Coin's unique symbol - three to five letters
+ * @apiSuccess {String} positions.name    Coin's name - similar to id, with caps
+ * @apiSuccess {Number} positions.coins_held    Number of coins user holds of that crypto
+ * @apiSuccess {Number} position.total_cost   Amount user "spent" on that position
+ * @apiSuccess {Number} position.per_coin_val   Price per coin at time of "purchase"
+ * @apiSuccess {String} position.date   Date of "purchase" of position
+ * 
+ * @apiSuccessExample {json} Success Response:
+ * 
+ * id of position to delete: 194 2
+success! Deleted one position: Result {
+  command: 'DELETE',
+  rowCount: 1,
+  oid: null,
+  rows: [],
+  fields: [],
+  _parsers: undefined,
+  _types: TypeOverrides {
+    _types: {
+      getTypeParser: [Function: getTypeParser],
+      setTypeParser: [Function: setTypeParser],
+      arrayParser: [Object],
+      builtins: [Object]
+    },
+    text: {},
+    binary: {}
+  },
+  RowCtor: null,
+  rowAsArray: false
+}
+
  */
 router.delete("/holdings/", rejectUnauthenticated, (req, res) => {
   //auth check
@@ -129,7 +204,7 @@ router.delete("/holdings/", rejectUnauthenticated, (req, res) => {
       .query(deleteQuery, [req.body.id, req.user.id]) //auth check
       .then((result) => {
         res.sendStatus(201);
-        console.log("success! Deleted one position");
+        console.log("success! Deleted one position:", result);
       })
       .catch((error) => {
         console.log("error in DELETE at crypto.router.js:", error);
@@ -141,11 +216,51 @@ router.delete("/holdings/", rejectUnauthenticated, (req, res) => {
 });
 
 /**
- * @api {put}
- * /crypto/holdings/
- * @apiParams {String} id unique coin id
- * @apiParams {Number} mod updated number of coins held
- * @apiParams {Number} user_id unique user id
+ * @api {put} /crypto/holdings/:id Modify one user position
+ * @apiName ModifyPosition
+ * @apiGroup Crypto
+ * 
+ * @apiDescription This route will MODIFY one user-selected holding (aka "position") and will set resulting value to whatever user enters
+ * 
+ * @apiParams {Number} user.id unique id of user (Primary Key - auth)
+ * @apiParams {Number} positions.user_id unique id of user (Foreign Key - auth)
+ * @apiParams {Number} positions.id unique id of holding (Primary Key)
+ * @apiParams {Number} positions.coins_held user-entered value to modify
+ * 
+ * @apiSuccess {Group[]} Positions  An array of user holding information
+ * @apiSuccess {Number} positions.id    id of specific user holding (Primary Key / Auto Generated)
+ * @apiSuccess {Number} positions.user_id   User's unique id, populated by whomever is logged in
+ * @apiSuccess {String} positions.coin_id   Coin's unique id - a lower case version of name with no spaces
+ * @apiSuccess {String} positions.symbol    Coin's unique symbol - three to five letters
+ * @apiSuccess {String} positions.name    Coin's name - similar to id, with caps
+ * @apiSuccess {Number} positions.coins_held    Number of coins user holds of that crypto (this is the value they enter)
+ * @apiSuccess {Number} position.total_cost   Amount user "spent" on that position
+ * @apiSuccess {Number} position.per_coin_val   Price per coin at time of "purchase"
+ * @apiSuccess {String} position.date   Date of "purchase" of position
+ * 
+ * @apiSuccessResponse {json} Success Response:
+ * 
+ * Result {
+  command: 'UPDATE',
+  rowCount: 1,
+  oid: null,
+  rows: [],
+  fields: [],
+  _parsers: undefined,
+  _types: TypeOverrides {
+    _types: {
+      getTypeParser: [Function: getTypeParser],
+      setTypeParser: [Function: setTypeParser],
+      arrayParser: [Object],
+      builtins: [Object]
+    },
+    text: {},
+    binary: {}
+  },
+  RowCtor: null,
+  rowAsArray: false
+}
+
  */
 router.put("/holdings/", rejectUnauthenticated, (req, res) => {
   //auth check
@@ -169,6 +284,7 @@ router.put("/holdings/", rejectUnauthenticated, (req, res) => {
           "to new total of",
           req.body.mod
         );
+        console.log('for api doc:', result)
       })
       .catch((error) => {
         console.log("error in DELETE at crypto.router.js:", error);
