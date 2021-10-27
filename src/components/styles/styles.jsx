@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles({
   //-------------Disclaimer.jsx-------------//
 
   disclaimer: {
@@ -459,6 +459,6 @@ const useStyles = makeStyles(() => ({
   },
 
   //-------------Info dialogues-------------//
-}));
+}, {index: 1});
 
 export default useStyles;
