@@ -271,7 +271,13 @@ const UserHoldings = () => {
             variant="outlined"
             size="medium"
             onClick={handleAddClick}
-            className={classes.addPositionButton}
+            style={{
+              margin: "15px",
+              fontSize: "24px",
+              fontWeight: "bolder",
+              backgroundColor: "#5C9827",
+              color: "white",
+            }}
           >
             <b>Add</b>
           </Button>

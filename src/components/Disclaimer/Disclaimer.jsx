@@ -20,7 +20,7 @@ const Disclaimer = () => {
         Disclaimer:{" "}
       </Typography>
       <Typography className={classes.disclaimerStatements}>
-        This application is a convenient place to track real-time cryptocurrency
+        This <u>styled-for-mobile</u> application is a convenient place to track real-time cryptocurrency
         market and portfolio data. It is <i>not</i> an exchange. Real money is
         not spent here.
         <br />
