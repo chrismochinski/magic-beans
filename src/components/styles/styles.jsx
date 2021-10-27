@@ -344,13 +344,7 @@ const useStyles = makeStyles(() => ({
     backgroundPosition: "top",
   },
 
-  addPositionButton: {
-    margin: "15px",
-    fontSize: "25px",
-    fontWeight: "bolder",
-    backgroundColor: "#5C9827",
-    color: "white",
-  },
+  
 
   pieButton: {
     marginBottom: "25px",

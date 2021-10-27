@@ -14,18 +14,15 @@ const Disclaimer = () => {
     history.push("/login");
   };
 
-  // const noThanks = () => {
-  //     console.log('User DOES NOT agree with terms. Navigating to seizurebots');
-  // }
-
   return (
     <Container className={classes.disclaimer}>
       <Typography className={classes.disclaimerHeadline} variant="h3">
         Disclaimer:{" "}
       </Typography>
       <Typography className={classes.disclaimerStatements}>
-        This application is a convenient place to track real-time
-        cryptocurrency market and portfolio data. It is <i>not</i> an exchange. Real money is not spent here.
+        This application is a convenient place to track real-time cryptocurrency
+        market and portfolio data. It is <i>not</i> an exchange. Real money is
+        not spent here.
         <br />
         <br /> The developer of this application is not a financial advisor,
         CPA, accountant, ninja, cowboy or astronaut. <br />
@@ -35,7 +32,13 @@ const Disclaimer = () => {
 
       <Button
         onClick={() => goToLogin()}
-        className={classes.addPositionButton}
+        style={{
+          margin: "15px",
+          fontSize: "25px",
+          fontWeight: "bolder",
+          backgroundColor: "#5C9827",
+          color: "white",
+        }}
         variant="contained"
         size="medium"
       >
