@@ -46,7 +46,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "apidoc": "apidoc -i server/routes/ -o apidoc/"
-
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
