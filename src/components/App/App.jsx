@@ -31,8 +31,8 @@ function App() {
 
     Thanks for checking out Magic Beans
     You have no idea how much it means
-    Don't mind the 403 below. 
-    Just create an account and you're good to go!
+    Don't mind the next page 403
+    Have some fun and trade with me!
 
     
 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$               $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
