@@ -23,7 +23,6 @@ function CoinSearchPage() {
   const dispatch = useDispatch();
   const cryptoList = useSelector((store) => store.cryptoListReducer);
 
-  console.log("cryptolistreducer is:", cryptoList);
 
   const [newSearch, setNewSearch] = useState("");
   const [searchArray, setSearchArray] = useState([]);
@@ -62,6 +61,7 @@ function CoinSearchPage() {
   };
 
   const clearSearchArray = () => {
+    console.log('search results cleared')
     setSearchArray([]);
   };
 

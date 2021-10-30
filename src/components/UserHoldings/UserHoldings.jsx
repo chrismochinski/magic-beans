@@ -87,7 +87,6 @@ const UserHoldings = () => {
   };
 
   const handleAddClick = () => {
-    console.log("add button clicked");
     history.push("/search"); //important add this page for search, SHARE WITH HOURGLASS HAMBURGER LINK
   };
 

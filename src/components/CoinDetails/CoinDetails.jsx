@@ -81,7 +81,6 @@ function CoinDetails({ card }) {
       )
       .then((res) => {
         setCoinInfo(res.data);
-        console.log("res.data in fetchCoinInfo is:", res.data);
         setCoinName(res.data.name);
         setCoinSymbol(res.data.symbol.toUpperCase());
         setCoinTwitter(res.data.links.twitter_screen_name);

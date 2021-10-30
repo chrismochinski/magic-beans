@@ -16,13 +16,11 @@ import { put, takeEvery } from 'redux-saga/effects';
 
 function* fetchUserHoldings(action) {
     try {
-        console.log('adding action.payload in postPositionSaga', action);
         const holdings = yield axios({
             method: 'GET',
             url: '/api/crypto/holdings',
             data: action.payload
         });                  
-        console.log('full user holdings response is:', holdings.data)
         yield put({ type: 'SET_USER_HOLDINGS', payload: holdings.data}); 
     } catch (error) {                             
         console.log('error getting user holdings:', error)
