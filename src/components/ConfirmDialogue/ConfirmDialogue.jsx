@@ -8,6 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { Container, Grid } from "@material-ui/core";
 import useStyles from "../styles/styles";
+import Swal from "sweetalert2";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -23,6 +24,19 @@ export default function ConfirmDialogue({
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
+  //making sure user entry is positive number
+  const posOrNeg = () => {
+    if (coinAmount > 0) {
+      handleClickOpen();
+    } else {
+      Swal.fire({
+        title: "Oh Snap!",
+        text: "Please enter a positive number.",
+      });
+    }
+  };
+
+  //open the modal and get user confirmation
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -50,7 +64,7 @@ export default function ConfirmDialogue({
         variant="contained"
         size="medium"
         className={classes.addPositionButton}
-        onClick={handleClickOpen}
+        onClick={posOrNeg}
       >
         ADD
       </Button>

@@ -61,7 +61,7 @@ function CoinDetails({ card }) {
   const [coinLastUpdated, setCoinLastUpdated] = useState("");
 
   //stuff to send
-  const [coinAmount, setCoinAmount] = useState('');
+  const [coinAmount, setCoinAmount] = useState("");
   // const [testObject, setTestObject] = useState({});
 
   const navSearch = () => {
@@ -117,9 +117,9 @@ function CoinDetails({ card }) {
       .catch((error) => console.log("error getting coin details!", error));
   };
 
+
   //handles adding coins based on user input
   const handleAddCoins = () => {
-    // setTestObject(coinAmount);
     setTotalCost(coinAmount * coinPrice);
 
     let objectToSend = {
@@ -132,12 +132,10 @@ function CoinDetails({ card }) {
       per_coin_val: parseFloat(coinPrice),
     };
     readyToDispatch(objectToSend);
-    console.log("testing object to send:", objectToSend);
   };
 
   //POST position to database
   const readyToDispatch = (newPosition) => {
-    console.log("SENDING TO DB:", newPosition);
     swal({
       title: "Nice!",
       text: `You added ${newPosition.coins_held} ${
@@ -277,7 +275,7 @@ function CoinDetails({ card }) {
 
       <Grid container justifyContent="center" style={{ marginTop: "30px" }}>
         <Container>
-          <form onSubmit={handleAddCoins}>
+          <form onSubmit={() => handleAddCoins()}>
             <Grid container style={{ justifyContent: "center" }}>
               <Grid item>
                 <TextField
