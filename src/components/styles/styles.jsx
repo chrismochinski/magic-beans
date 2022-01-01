@@ -424,7 +424,7 @@ const useStyles = makeStyles({
 
   aboutList: {
     textAlign: "left",
-    fontSize: "75%",
+    fontSize: "3.1vw",
     fontFamily: "Poppins",
   },
 
