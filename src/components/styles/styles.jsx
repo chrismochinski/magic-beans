@@ -424,16 +424,17 @@ const useStyles = makeStyles({
 
   aboutList: {
     textAlign: "left",
-    fontSize: "3.1vw",
+    fontSize: "3.1vw", 
     fontFamily: "Poppins",
   },
 
   thanks: {
-    marginTop: "12px",
-    marginLeft: "15px",
-    marginRight: "15px",
+    marginTop: "2vh",
+    // marginLeft: "15px",
+    // marginRight: "15px",
+    marginInline: "7vw",
     textAlign: "center",
-    fontSize: "0.5em",
+    fontSize: "1.25vw",
     fontFamily: "Poppins",
   },
 
