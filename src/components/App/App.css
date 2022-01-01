@@ -112,7 +112,7 @@ Alert
   margin-bottom: 12px;
   margin-top: 12px;
   font-family: "Luckiest Guy";
-  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: rgba(0, 0, 0, 0.283);
 }
 
@@ -143,7 +143,7 @@ input {
 
 .explore {
   color: "#216091";
-  -webkit-text-stroke-width: .5px;
+  -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: rgba(0, 0, 0, 0.283);
 }
 
@@ -153,16 +153,13 @@ input {
   color: green;
   margin: 0;
   padding: 0;
-
 }
 
 .downRed {
   color: red;
   margin: 0;
   padding: 0;
-
 }
-
 
 /* ----------------------user holding table------------------------ */
 
@@ -206,13 +203,26 @@ input {
 .aboutLink {
   color: black;
   margin: 3px;
-  transform: scale(.9)
+  /* transform: scale(.9) */
+}
 
+@media (min-width: 900px) {
+  .aboutLink {
+    transform: scale(1.6);
+    margin: 2vw 1vh;
+  }
+}
+
+@media (min-width: 400) {
+  .aboutLink {
+    transform: scale(0.3);
+    margin: 0.7vw, 0.5vw;
+  }
 }
 
 
-/* -------------------------MUI Makestyles Transfers 10/26/21----------------------------- */
 
+/* -------------------------MUI Makestyles Transfers 10/26/21----------------------------- */
 
 /* .addPositionButton {
   margin: 15px;
@@ -222,5 +232,3 @@ input {
   color: white;
 
 } */
-
-

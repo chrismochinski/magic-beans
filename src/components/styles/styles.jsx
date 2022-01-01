@@ -415,7 +415,7 @@ const useStyles = makeStyles({
 
   aboutListHeader: {
     textAlign: "left",
-    fontSize: "20px",
+    fontSize: "4vw",
     marginTop: "14px",
     marginBottom: "9px",
     fontFamily: "Poppins",
@@ -430,8 +430,7 @@ const useStyles = makeStyles({
 
   thanks: {
     marginTop: "2vh",
-    // marginLeft: "15px",
-    // marginRight: "15px",
+ 
     marginInline: "7vw",
     textAlign: "center",
     fontSize: "1.25vw",

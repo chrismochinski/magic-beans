@@ -23,7 +23,7 @@ function AboutPage() {
         className="aboutHeader"
         style={{
           fontFamily: "Luckiest Guy",
-          fontSize: "40px",
+          fontSize: "8vw",
           color: "#216091",
         }}
       >
@@ -42,7 +42,7 @@ function AboutPage() {
         >
           <img
             src="./images/bean-podium.png"
-            width="60%"
+            width="55%"
             className={classes.aboutBean}
           />
         </Grid>
