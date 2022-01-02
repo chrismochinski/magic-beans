@@ -34,7 +34,9 @@ function Coin({ id, name, image, symbol, price, marketCap, priceChange }) {
       <TableCell className={classes.tableTickerCell}>
         {symbol.toUpperCase()}
       </TableCell>
-      <TableCell className={classes.tablePriceCell}>${price}</TableCell>
+      <TableCell className={classes.tablePriceCell}>$ {price}</TableCell>
+
+      
       <TableCell className={classes.table24Cell}>
         {" "}
         {priceChange < 0 ? (
@@ -45,7 +47,7 @@ function Coin({ id, name, image, symbol, price, marketCap, priceChange }) {
         ) : (
           <p className="upGreen">
             {" "}
-            <KeyboardArrowUpIcon style={{verticalAlign: '-17%'}} /> {priceChange.toFixed(2)}%
+            <KeyboardArrowUpIcon style={{verticalAlign: '-17%'}} /> {priceChange}%
           </p>
         )}
       </TableCell>

@@ -13,7 +13,7 @@ CREATE TABLE "user" (
 CREATE TABLE "positions" (
     "id" SERIAL PRIMARY KEY,
     "user_id" INT REFERENCES "user" NOT NULL,
-    "coin_id" INT,
+    "coin_id" VARCHAR(255),
     "symbol" VARCHAR(10),
     "name" VARCHAR(100),
     "coins_held" DECIMAL(14,4),
