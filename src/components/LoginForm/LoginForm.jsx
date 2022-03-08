@@ -75,7 +75,7 @@ function LoginForm() {
               className={classes.loginTextField}
               variant="outlined"
               label="password"
-              type="password"
+              // type="password" //commenting for password visibility - committing
               name="password"
               required
               value={password}
