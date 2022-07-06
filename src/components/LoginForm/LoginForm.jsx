@@ -6,14 +6,7 @@ import useStyles from "../styles/styles.jsx";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-import {
-  IconButton,
-  InputAdornment,
-  Button,
-  TextField,
-  Grid,
-  Typography,
-} from "@material-ui/core";
+import { IconButton, InputAdornment, Button, TextField, Grid, Typography } from "@material-ui/core";
 
 function LoginForm() {
   const classes = useStyles();
@@ -49,7 +42,9 @@ function LoginForm() {
       <form className="formPanel" onSubmit={login}>
         <img className={classes.logo} src="/images/magic-beans-logo.png" />
 
-        <h2 className="loginText" style={{color: "#216091"}}>Login</h2>
+        <h2 className="loginText" style={{ color: "#216091" }}>
+          Login
+        </h2>
         {errors.loginMessage && (
           <h3 className="alert" role="alert">
             {errors.loginMessage}
@@ -87,8 +82,7 @@ function LoginForm() {
                     <IconButton
                       aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
+                      onMouseDown={handleMouseDownPassword}>
                       {showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   </InputAdornment>
@@ -98,16 +92,9 @@ function LoginForm() {
           </label>
         </div>
         <div>
-          <Button
-            className={classes.loginButton}
-            size="large"
-            variant="contained"
-            type="submit"
-            name="submit"
-          >
+          <Button className={classes.loginButton} size="large" variant="contained" type="submit" name="submit">
             Go!
           </Button>
-
         </div>
       </form>
     </Grid>
@@ -115,4 +102,3 @@ function LoginForm() {
 }
 
 export default LoginForm;
-
