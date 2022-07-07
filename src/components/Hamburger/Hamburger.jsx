@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
@@ -14,8 +14,6 @@ import InfoIcon from "@mui/icons-material/Info";
 import ListItem from "@mui/material/ListItem";
 
 const Hamburger = () => {
-  //idea
-
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -27,25 +25,12 @@ const Hamburger = () => {
   return (
     <div>
       <IconButton onClick={() => setOpen(true)}>
-        {/* <MenuIcon className="hamburgerIcon"  /> */}
-        <img
-          src="./images/icons8-hamburger-58.png"
-          width="50px"
-          style={{ marginRight: "12px" }}
-        />
+        <img src="./images/icons8-hamburger-58.png" width="50px" style={{ marginRight: "12px" }} />
       </IconButton>
 
-      <SwipeableDrawer
-        anchor="right"
-        open={open}
-        onOpen={() => setOpen(true)}
-        onClose={() => setOpen(false)}
-      >
+      <SwipeableDrawer anchor="right" open={open} onOpen={() => setOpen(true)} onClose={() => setOpen(false)}>
         <div className="closeDrawerButton" style={{ textAlign: "center" }}>
-          <IconButton
-            style={{ marginBottom: "10px", textAlign: "center" }}
-            onClick={() => setOpen(false)}
-          >
+          <IconButton style={{ marginBottom: "10px", textAlign: "center" }} onClick={() => setOpen(false)}>
             <ChevronRightIcon className="hamburgerLink" />
           </IconButton>
         </div>
@@ -70,7 +55,6 @@ const Hamburger = () => {
             <Link to="/home">
               <LogoutIcon className="hamburgerIcons" />
             </Link>
-            {/* <LogOutButton className="navLink" /> */}
           </ListItem>
         </div>
       </SwipeableDrawer>
