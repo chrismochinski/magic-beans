@@ -5,8 +5,8 @@
 
   margin: 0;
   margin-bottom: 15px;
-  background: rgb(33,96,145);
-background: linear-gradient(180deg, rgba(33,96,145,1) 93%, rgba(18,44,59,0) 100%);
+  background: rgb(33, 96, 145);
+  background: linear-gradient(180deg, rgba(33, 96, 145, 1) 93%, rgba(18, 44, 59, 0) 100%);
   overflow: hidden;
 }
 
@@ -18,34 +18,22 @@ background: linear-gradient(180deg, rgba(33,96,145,1) 93%, rgba(18,44,59,0) 100%
   font-size: 34px;
   font-weight: 400;
   color: #f2f2f2;
-  font-family: 'Luckiest Guy', cursive;  
+  font-family: "Luckiest Guy", cursive;
   padding-left: 10px;
   margin-bottom: 15px;
   margin-top: 14px;
 }
 
-
-
-.nav-title:focus {
-/* important figure this out  */
-}
-
 .nav-title:hover {
   cursor: pointer;
-
 }
-
-
 
 .navLink {
   display: inline-block;
   color: #f2f2f2;
-  /* background-color: #49689E; */
 
   text-align: center;
   padding: 24px 10px;
- 
-
 
   /* these last two make the logout button in
   the nav bar look like another link */
@@ -55,32 +43,32 @@ background: linear-gradient(180deg, rgba(33,96,145,1) 93%, rgba(18,44,59,0) 100%
 }
 
 .hamburgerLink {
- color: #49689E; 
+  color: #49689e;
   transform: scale(2);
 
- margin-top: 20px;
- margin-left: 8px;
- margin-right: 8px;
-
- border: none;
- cursor: pointer;
- outline: 0;
- text-align: center;
-}
-
-.hamburgerIcons {
-  color: #49689E; 
-   transform: scale(2);
- 
-  margin-top: 12px;
+  margin-top: 20px;
   margin-left: 8px;
   margin-right: 8px;
- 
+
   border: none;
   cursor: pointer;
   outline: 0;
   text-align: center;
- }
+}
+
+.hamburgerIcons {
+  color: #49689e;
+  transform: scale(2);
+
+  margin-top: 12px;
+  margin-left: 8px;
+  margin-right: 8px;
+
+  border: none;
+  cursor: pointer;
+  outline: 0;
+  text-align: center;
+}
 
 .hamburgerIcon {
   color: white;
@@ -88,14 +76,13 @@ background: linear-gradient(180deg, rgba(33,96,145,1) 93%, rgba(18,44,59,0) 100%
   cursor: pointer;
   outline: 0;
   transform: scale(2);
- margin-right: 20px;
+  margin-right: 20px;
 }
 
 .navIconR {
   display: inline-block;
   color: #f2f2f2;
   text-align: center;
-  /* padding: 24px 5px; */
   margin-right: 10px;
   margin-top: 28px;
   margin-bottom: 28px;
@@ -103,7 +90,7 @@ background: linear-gradient(180deg, rgba(33,96,145,1) 93%, rgba(18,44,59,0) 100%
 }
 
 .navIconR:focus {
-  background-color: #49689E;
+  background-color: #49689e;
 }
 
 .navIconL {
@@ -113,9 +100,9 @@ background: linear-gradient(180deg, rgba(33,96,145,1) 93%, rgba(18,44,59,0) 100%
   margin-right: 10px;
   margin-top: 28px;
   margin-bottom: 28px;
-  transform: scale(2.2);}
+  transform: scale(2.2);
+}
 
 .navLink:hover {
   color: rgb(225, 225, 225);
 }
-
