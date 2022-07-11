@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
 import { Doughnut } from "react-chartjs-2";
 import { useSelector } from "react-redux";
 
-//optimize
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
