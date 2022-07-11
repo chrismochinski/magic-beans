@@ -12,8 +12,6 @@ const ModifyPage = () => {
   const classes = useStyles();
   const { id, name, held } = useParams();
   const [coinModNumber, setCoinModNumber] = useState();
-  const [heldNumber, setHeldNumber] = useState();
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleModifyCoins = () => {
     console.log("handleModifyCoins function");
