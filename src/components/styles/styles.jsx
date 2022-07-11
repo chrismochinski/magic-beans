@@ -120,10 +120,6 @@ const useStyles = makeStyles({
     fontFamily: "Cabin Condensed",
   },
 
-  tableBody: {
-    //fix poking through above head - fix
-  },
-
   //-------SearchPage > CoinSearchPage-------//
 
   mainSearchPage: {
@@ -291,9 +287,6 @@ const useStyles = makeStyles({
 
   //-------------DETAILS page-------------//
 
-  detailsPage: {
-    //fix change to background iamge?
-  },
 
   //-------------user holding table BODY CELL-------------//
 

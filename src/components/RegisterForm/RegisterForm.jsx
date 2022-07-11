@@ -6,14 +6,7 @@ import useStyles from "../styles/styles.jsx";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-import {
-  IconButton,
-  InputAdornment,
-  Button,
-  TextField,
-  Grid,
-  Typography,
-} from "@material-ui/core";
+import { IconButton, InputAdornment, Button, TextField, Grid, Typography } from "@material-ui/core";
 
 function RegisterForm() {
   const classes = useStyles();
@@ -45,7 +38,9 @@ function RegisterForm() {
       <form className="formPanel" onSubmit={registerUser}>
         <img className={classes.logo} src="/images/magic-beans-logo.png" />
 
-        <h2 className="loginText" style={{  color: "#216091"}}>Register User</h2>
+        <h2 className="loginText" style={{ color: "#216091" }}>
+          Register User
+        </h2>
         {errors.registrationMessage && (
           <h3 className="alert" role="alert">
             {errors.registrationMessage}
@@ -86,8 +81,7 @@ function RegisterForm() {
                     <IconButton
                       aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
+                      onMouseDown={handleMouseDownPassword}>
                       {showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   </InputAdornment>
@@ -103,12 +97,9 @@ function RegisterForm() {
             variant="contained"
             type="submit"
             name="submit"
-            value="Register"
-          >
+            value="Register">
             Sign Up!
           </Button>
-
-          {/* <input className="btn" type="submit" name="submit" value="Register" /> */}
         </div>
       </form>
     </Grid>
