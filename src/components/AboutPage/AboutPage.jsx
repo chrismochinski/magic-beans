@@ -64,9 +64,9 @@ function AboutPage() {
             <a href="https://www.coingecko.com/" target="_blank">
               Coingecko
             </a>{" "}
-            for providing an awesome API, my fiancée{" "}
+            for providing an awesome API, my wife{" "}
             <a href="https://www.instagram.com/sharesadoeshair" target="_blank">
-              Sharesa [almost] Mochinski
+              Sharesa{" "}
             </a>
             for holding down the fort and being the most incredible human ever, and{" "}
             <a href="https://www.youtube.com/channel/UC0YkTHGHUNvr2iJ7zpjZelA" target="_blank">
