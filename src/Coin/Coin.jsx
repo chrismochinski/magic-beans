@@ -45,7 +45,7 @@ function Coin({ id, name, image, symbol, price, marketCap, priceChange }) {
         ) : (
           <p className="upGreen">
             {" "}
-            <KeyboardArrowUpIcon style={{verticalAlign: '-17%', transform: 'scale(0.8)'}} /> {Number(priceChange).toFixed(2)}% 
+            <KeyboardArrowUpIcon style={{verticalAlign: 'middle', transform: 'scale(0.8)'}} /> {Number(priceChange).toFixed(2)}% 
           </p>
         )}
       </TableCell>
