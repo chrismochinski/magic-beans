@@ -52,7 +52,7 @@ export const positions = pgTable("position", {
   // coinName: varchar("coin_name", {length: 100}), // > DROPPED - derive from Coingecko API
   coinsPurchased: numeric("coins_purchased", {precision: 14, scale: 4}).notNull(),
   pricePerFullCoin: numeric("price_per_full_coin", {precision: 12, scale: 2}).notNull(),
-  createdAt: timestamp("created_at", {withTimezone: true}).defaultNow().notNull(),
+  purchasedAt: timestamp("purchased_at", {withTimezone: true}).defaultNow().notNull(),
 });
 
 export type PositionRow = typeof positions.$inferSelect;

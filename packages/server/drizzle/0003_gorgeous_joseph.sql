@@ -1,0 +1,1 @@
+ALTER TABLE "position" RENAME COLUMN "purchasedAt" TO "purchased_at";

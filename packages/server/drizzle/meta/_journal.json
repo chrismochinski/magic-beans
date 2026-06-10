@@ -15,6 +15,20 @@
       "when": 1781065122093,
       "tag": "0001_talented_midnight",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1781066015558,
+      "tag": "0002_vengeful_mindworm",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1781067074805,
+      "tag": "0003_gorgeous_joseph",
+      "breakpoints": true
     }
   ]
 }

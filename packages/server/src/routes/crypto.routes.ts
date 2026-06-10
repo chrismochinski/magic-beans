@@ -36,7 +36,7 @@ function toPosition(row: PositionRow): Position {
     coinId: row.coinId,
     coinsPurchased: Number(row.coinsPurchased),
     pricePerFullCoin: Number(row.pricePerFullCoin),
-    createdAt: row.createdAt.toISOString(),
+    purchasedAt: row.purchasedAt.toISOString(),
   };
 }
 

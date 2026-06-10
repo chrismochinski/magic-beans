@@ -31,8 +31,8 @@ export interface Position {
   coinsPurchased: number;
   /** Price of one whole coin at the moment of this purchase, in USD. A historical fact. */
   pricePerFullCoin: number;
-  /** ISO timestamp of when the position was created. */
-  createdAt: string;
+  /** ISO timestamp of when this purchase was made (user-set; defaults to now). */
+  purchasedAt: string;
 }
 
 /**
@@ -54,9 +54,9 @@ export interface PositionWithMarket extends Position {
 
 /**
  * The payload a client sends to create a new position. The server fills in `id`, `userId` (from
- * the logged-in session), and `createdAt`, so the client never provides those.
+ * the logged-in session), and `purchasedAt`, so the client never provides those (renamed from `createdAt`)
  */
-export type NewPositionInput = Omit<Position, "id" | "userId" | "createdAt">;
+export type NewPositionInput = Omit<Position, "id" | "userId" | "purchasedAt">;
 
 /**
  * The payload to update an existing position. For now only the purchased quantity is editable,
