@@ -4,6 +4,8 @@
 
 # Build directories for Front-End Assets
 build/
+dist/
+.vite/
 
 # Logs
 logs
@@ -63,6 +65,5 @@ typings/
 
 # dotenv environment variables file
 .env
-
-# ignore package-lock as it complicates merging
-package-lock.json
+.env.local
+.env.*.local
