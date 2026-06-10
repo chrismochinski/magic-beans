@@ -1,15 +1,16 @@
 /**
  * @file Server entry point.
  * @description
- * Boots the Express app: shared middleware (CORS + JSON body parsing), then routes, then starts
- * listening. Right now it only exposes a health check so we can confirm the server runs; we will
- * mount the auth and crypto routers here as we build them.
+ * Boots the Express app: shared middleware (CORS + JSON body parsing), then the route modules, then
+ * a central error handler, then starts listening. As we add features (auth next), we mount their
+ * routers here alongside the crypto routes.
  * @author Chris "Mo" Mochinski
  */
 
-import express from "express";
+import express, { type ErrorRequestHandler } from "express";
 import cors from "cors";
 import { env } from "./env.js";
+import { cryptoRouter } from "./routes/crypto.routes.js";
 
 const app = express();
 
@@ -25,6 +26,18 @@ app.use(express.json());
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", time: new Date().toISOString() });
 });
+
+// Feature routes.
+app.use("/api/crypto", cryptoRouter);
+
+// Central error handler. Any error forwarded by asyncHandler lands here, so we log it once and send
+// a clean 500 instead of leaking a stack trace to the client. Must be defined AFTER the routes, and
+// must take all four args for Express to recognize it as an error handler.
+const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
+  console.error("Unhandled error:", err);
+  res.status(500).json({ error: "Internal server error" });
+};
+app.use(errorHandler);
 
 app.listen(env.port, () => {
   console.log(`Magic Beans API listening on http://localhost:${env.port}`);

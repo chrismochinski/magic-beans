@@ -27,12 +27,10 @@ export interface Position {
   userId: number;
   /** CoinGecko's lowercase id, for example "bitcoin". The single link to all live market data. */
   coinId: string;
-  /** How many coins the user holds. */
-  totalHeld: number;
-  /** What the user "spent" to acquire this position, in USD. A historical fact, never changes. */
-  totalCost: number;
-  /** Price per coin at the time of purchase, in USD. A historical fact, never changes. */
-  perCoinVal: number;
+  /** How many coins this purchase was for (often a fraction, for example 0.5 BTC). */
+  coinsPurchased: number;
+  /** Price of one whole coin at the moment of this purchase, in USD. A historical fact. */
+  pricePerFullCoin: number;
   /** ISO timestamp of when the position was created. */
   createdAt: string;
 }
@@ -61,12 +59,12 @@ export interface PositionWithMarket extends Position {
 export type NewPositionInput = Omit<Position, "id" | "userId" | "createdAt">;
 
 /**
- * The payload to update an existing position. For now only the held quantity is editable, matching
- * the original app's "modify" feature.
+ * The payload to update an existing position. For now only the purchased quantity is editable,
+ * matching the original app's "modify" feature.
  */
 export interface UpdatePositionInput {
   id: number;
-  totalHeld: number;
+  coinsPurchased: number;
 }
 
 /**

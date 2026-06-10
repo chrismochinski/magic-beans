@@ -38,8 +38,11 @@ export type UserRow = typeof users.$inferSelect;
 export type NewUserRow = typeof users.$inferInsert;
 
 /**
- * The `position` table - the coins that users hold. Each row is a single coin in a user's portfolio.
- * The `user_id` column is a foreign key that references the `id` in the `user` table
+ * The `position` table - one row per PURCHASE (a buy at a point in time), not one row per coin. Buy
+ * bitcoin twice and you get two rows; the UI aggregates rows by coin to show a holding. The
+ * `user_id` column is a foreign key referencing `id` in the `user` table. We store the two facts of
+ * a purchase - how many coins, and the price of one whole coin at that moment - and DERIVE total
+ * cost (coinsPurchased * pricePerFullCoin) rather than storing it (no redundant field to drift).
  */
 export const positions = pgTable("position", {
   id: serial("id").primaryKey(),
@@ -47,9 +50,8 @@ export const positions = pgTable("position", {
   coinId: varchar("coin_id", {length: 255}).notNull(),
   // coinSymbol: varchar("coin_symbol", {length: 10}), // > DROPPED - derive from Coingecko API
   // coinName: varchar("coin_name", {length: 100}), // > DROPPED - derive from Coingecko API
-  totalHeld: numeric("total_held", {precision: 14, scale: 4}).notNull(),
-  totalCost: numeric("total_cost", {precision: 12, scale: 2}).notNull(),
-  perCoinVal: numeric("per_coin_val", {precision: 12, scale: 2}).notNull(),
+  coinsPurchased: numeric("coins_purchased", {precision: 14, scale: 4}).notNull(),
+  pricePerFullCoin: numeric("price_per_full_coin", {precision: 12, scale: 2}).notNull(),
   createdAt: timestamp("created_at", {withTimezone: true}).defaultNow().notNull(),
 });
 

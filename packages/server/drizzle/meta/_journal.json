@@ -8,6 +8,13 @@
       "when": 1781057949088,
       "tag": "0000_talented_the_executioner",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1781065122093,
+      "tag": "0001_talented_midnight",
+      "breakpoints": true
     }
   ]
 }
