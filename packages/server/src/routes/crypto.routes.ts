@@ -187,3 +187,26 @@ cryptoRouter.put(
     res.json(toPosition(updated));
   }),
 );
+
+
+/** 
+ * DELETE /api/crypto/holdings/coin/:coinId
+ */
+cryptoRouter.delete(
+  "/holdings/coin/:coinId",
+  asyncHandler(async (req, res) => {
+    const userId = getCurrentUserId(req);
+    const coinId = req.params.coinId;
+    if (!coinId) {
+      res.status(400).json({ error: "coinId is required" });
+      return;
+    }
+
+    const deleted = await db
+      .delete(positions)
+      .where(and(eq(positions.coinId, coinId), eq(positions.userId, userId)))
+      .returning();
+
+    res.status(deleted.length > 0 ? 204 : 404).send();
+  }),
+);  

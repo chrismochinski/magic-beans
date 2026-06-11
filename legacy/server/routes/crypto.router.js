@@ -2,9 +2,7 @@ const axios = require("axios");
 const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
-const {
-  rejectUnauthenticated,
-} = require("../modules/authentication-middleware");
+const { rejectUnauthenticated } = require("../modules/authentication-middleware");
 
 /**
  * @api {get} /crypto/holdings Get user holdings
@@ -55,11 +53,10 @@ router.get("/holdings/", rejectUnauthenticated, (req, res) => {
     });
 });
 
-
 router.get("/", (req, res) => {
   axios
     .get(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=250&page=1&sparkline=false"
+      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=250&page=1&sparkline=false",
     )
     .then((response) => {
       res.send(response.data);
@@ -69,7 +66,6 @@ router.get("/", (req, res) => {
       res.sendStatus(500);
     });
 });
-
 
 /**
  * @api {post} /crypto Post new user position
@@ -264,12 +260,7 @@ router.delete("/holdings/", rejectUnauthenticated, (req, res) => {
  */
 router.put("/holdings/", rejectUnauthenticated, (req, res) => {
   //auth check
-  console.log(
-    "id of position to UPDATE:",
-    req.body.id,
-    req.body.mod,
-    req.body.user_id
-  );
+  console.log("id of position to UPDATE:", req.body.id, req.body.mod, req.body.user_id);
 
   if (req.body.user_id === req.user.id) {
     const updateQuery = `
@@ -282,12 +273,58 @@ router.put("/holdings/", rejectUnauthenticated, (req, res) => {
           "success! Updated position w/ id",
           req.body.id,
           "to new total of",
-          req.body.mod
+          req.body.mod,
         );
-        console.log('for api doc:', result)
+        console.log("for api doc:", result);
       })
       .catch((error) => {
         console.log("error in DELETE at crypto.router.js:", error);
+        res.sendStatus(500);
+      });
+  } else {
+    res.sendStatus(403);
+  }
+});
+
+/**
+ * @api {delete} /crypto/holdings/coin/:coinId Delete all user positions for a particular coin
+ * @apiName DeleteAllPositionsForCoin
+ * @apiGroup Crypto
+ *
+ * @apiDescription This route deletes ALL user-selected holdings (aka "positions") for
+ * a particular coin. For example, if a user bought bitcoin three separate times,
+ * this route would delete all three rows of bitcoin purchase data.
+ * > NOTE: I AM ADDING THIS IDEA TO SEE IF I CAN GET CLOSE
+ *
+ * @apiParams {Number} user.id unique id of user (Primary Key - auth)
+ * @apiParams {Number} positions.user_id unique id of user (Foreign Key - auth)
+ * @apiParams {String} positions.coin_id unique id of coin (Foreign Key)
+ *
+ * @apiSuccess {Group[]} Positions  An array of user holding information
+ * @apiSuccess {Number} positions.id    id of specific user holding (Primary Key / Auto Generated)
+ * @apiSuccess {Number} positions.user_id   User's unique id, populated by whomever is logged in
+ * @apiSuccess {String} positions.coin_id   Coin's unique id - a lower case version of name with no spaces
+ * @apiSuccess {String} positions.symbol    Coin's unique symbol - three to five letters
+ * @apiSuccess {String} positions.name    Coin's name - similar to id, with caps
+ * @apiSuccess {Number} positions.coins_held    Number of coins user holds of that crypto (this is the value they enter)
+ * @apiSuccess {Number} position.total_cost   Amount user "spent" on that position
+ * @apiSuccess {Number} position.per_coin_val   Price per coin at time of "purchase"
+ * @apiSuccess {String} position.date   Date of "purchase" of position
+ */
+router.delete("/holdings/coin/:coinId", rejectUnauthenticated, (req, res) => {
+  //auth check
+  console.log("coinId of positions to delete:", req.params.coinId, req.body.user_id);
+
+  if (req.body.user_id === req.user.id) {
+    const deleteQuery = `DELETE FROM "positions" WHERE "coin_id" = $1 AND "user_id" = $2;`;
+    pool
+      .query(deleteQuery, [req.params.coinId, req.user.id]) //auth check
+      .then((result) => {
+        res.sendStatus(201);
+        console.log("success! Deleted all positions for coinId", req.params.coinId, ":", result);
+      })
+      .catch((error) => {
+        console.log("error in DELETE all positions for coin at crypto.router.js:", error);
         res.sendStatus(500);
       });
   } else {

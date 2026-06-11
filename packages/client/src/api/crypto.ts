@@ -37,3 +37,8 @@ export async function updatePosition(id: number, coinsPurchased: number): Promis
 export async function deletePosition(id: number): Promise<void> {
   await api.delete(`/crypto/holdings/${id}`);
 }
+
+/** Aggregate delete of all purchases of a particular coin */
+export async function deleteAllPositionsForCoin(coinId: string): Promise<void> {
+  await api.delete(`/crypto/holdings/coin/${coinId}`);
+}
