@@ -51,6 +51,8 @@ export function HoldingsDashboard() {
 
   const holdings = aggregateHoldings(positions ?? []);
 
+  const purchasesOfCoin = (coinId: string) => positions?.filter((p) => p.coinId === coinId) ?? [];
+
   if (holdings.length === 0) {
     return (
       <Typography color="text.secondary">
@@ -120,8 +122,32 @@ export function HoldingsDashboard() {
                 <TableRow>
                   <TableCell colSpan={6} sx={{ py: 0, border: 0 }}>
                     <Collapse in={openCoin === h.coinId} timeout="auto" unmountOnExit>
-                      {/* sub-table: this coin's individual purchases + edit/delete per row,
-              plus a red "Delete entire position" button */}
+                      <Box>
+                        <Table size="small">
+                          <TableHead>
+                            <TableRow>
+                              <TableCell sx={{ fontWeight: 600 }}>Amount</TableCell>
+                              <TableCell sx={{ fontWeight: 600 }}>Price per Coin</TableCell>
+                              <TableCell sx={{ fontWeight: 600 }}>Cost</TableCell>
+                              <TableCell sx={{ fontWeight: 600 }}>Purchased On</TableCell>
+                            </TableRow>
+                          </TableHead>
+                          <TableBody>
+                            {purchasesOfCoin(h.coinId).map((p) => (
+                              <TableRow key={p.id}>
+                                <TableCell>
+                                  {p.coinsPurchased.toLocaleString(undefined, {
+                                    maximumFractionDigits: 4,
+                                  })}
+                                </TableCell>
+                                <TableCell>{usd(p.pricePerFullCoin)}</TableCell>
+                                <TableCell>{usd(p.coinsPurchased * p.pricePerFullCoin)}</TableCell>
+                                <TableCell>{new Date(p.purchasedAt).toLocaleString()}</TableCell>
+                              </TableRow>
+                            ))}
+                          </TableBody>
+                        </Table>
+                      </Box>
                     </Collapse>
                   </TableCell>
                 </TableRow>
