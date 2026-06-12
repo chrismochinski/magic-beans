@@ -33,4 +33,6 @@ export const env = {
   port: Number(process.env.PORT ?? 5000),
   clientOrigin: process.env.CLIENT_ORIGIN ?? "http://localhost:5173",
   isProduction: process.env.NODE_ENV === "production",
+  /** Optional free CoinGecko "demo" API key - raises the rate limit when present. */
+  coingeckoApiKey: process.env.COINGECKO_API_KEY,
 };

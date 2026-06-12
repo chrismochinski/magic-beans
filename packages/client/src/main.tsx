@@ -15,7 +15,16 @@ import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // treat data as fresh for 60s, and don't refetch every time the window regains focus -
+      // both reduce how often we hit the (rate-limited) CoinGecko-backed endpoints
+      staleTime: 60_000,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 const theme = createTheme();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

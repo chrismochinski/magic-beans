@@ -22,6 +22,18 @@ app.use(cors({ origin: env.clientOrigin, credentials: true }));
 // Parse incoming JSON request bodies into req.body.
 app.use(express.json());
 
+// Dev-only request logger: prints each request + status + timing to the terminal (like Vite's HMR
+// lines), so you can watch refetches land when the client invalidates. Silent in production.
+if (!env.isProduction) {
+  app.use((req, res, next) => {
+    const start = Date.now();
+    res.on("finish", () => {
+      console.log(`→ ${req.method} ${req.originalUrl} ${res.statusCode} (${Date.now() - start}ms)`);
+    });
+    next();
+  });
+}
+
 // Simple health check, handy for "is the server even up?" and later for deploy platforms.
 app.get("/api/health", (_req, res) => {
   res.json({ status: "ok", time: new Date().toISOString() });

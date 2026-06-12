@@ -15,7 +15,7 @@ import { z } from "zod";
 import type { Position, PositionWithMarket } from "@magic-beans/shared";
 import { db } from "../db/index.js";
 import { positions, type PositionRow } from "../db/schema.js";
-import { fetchMarketCoins } from "../services/coingecko.js";
+import { getMarketCoins } from "../services/coingecko.js";
 import { getCurrentUserId } from "../lib/currentUser.js";
 import { asyncHandler } from "../lib/asyncHandler.js";
 
@@ -48,7 +48,7 @@ function toPosition(row: PositionRow): Position {
 cryptoRouter.get(
   "/",
   asyncHandler(async (_req, res) => {
-    const coins = await fetchMarketCoins();
+    const coins = await getMarketCoins();
     res.json(coins);
   }),
 );
@@ -76,9 +76,8 @@ cryptoRouter.get(
       return;
     }
 
-    // one CoinGecko call for all the coins this user holds (de-duplicated)
-    const uniqueIds = [...new Set(myPositions.map((p) => p.coinId))];
-    const market = await fetchMarketCoins(uniqueIds);
+    // the cached top-250 snapshot (no extra CoinGecko call); we look up each held coin in it
+    const market = await getMarketCoins();
     const marketById = new Map(market.map((coin) => [coin.id, coin]));
 
     const enriched: PositionWithMarket[] = myPositions.map((p) => {

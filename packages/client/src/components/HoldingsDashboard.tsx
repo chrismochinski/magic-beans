@@ -8,22 +8,26 @@
  * @author Chris "Mo" Mochinski
  */
 
+import { useState, Fragment } from "react";
 import {
   Alert,
   Avatar,
   Box,
   CircularProgress,
+  Collapse,
   Paper,
-  Table,
-  TableBody,
   TableCell,
   TableContainer,
+  Table,
+  TableBody,
   TableHead,
   TableRow,
   Typography,
+  IconButton,
 } from "@mui/material";
 import { useHoldings } from "../queries/useHoldings";
 import { aggregateHoldings } from "../lib/aggregateHoldings";
+import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 
 /** Formats a number as USD currency. */
 const usd = (n: number) => n.toLocaleString("en-US", { style: "currency", currency: "USD" });
@@ -31,6 +35,7 @@ const usd = (n: number) => n.toLocaleString("en-US", { style: "currency", curren
 /** The portfolio holdings table with per-coin rollups and a grand total. */
 export function HoldingsDashboard() {
   const { data: positions, isLoading, isError, error } = useHoldings();
+  const [openCoin, setOpenCoin] = useState<string | null>(null);
 
   if (isLoading) {
     return (
@@ -73,32 +78,54 @@ export function HoldingsDashboard() {
           </TableHead>
           <TableBody>
             {holdings.map((h) => (
-              <TableRow key={h.coinId} hover>
-                <TableCell>
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                    <Avatar src={h.image} alt={h.name} sx={{ width: 24, height: 24 }} />
-                    <Box>
-                      <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                        {h.symbol.toUpperCase()}
-                      </Typography>
-                      <Typography variant="caption" color="text.secondary">
-                        {h.name}
-                        {h.purchaseCount > 1 ? ` (${h.purchaseCount} buys)` : ""}
-                      </Typography>
+              <Fragment key={h.coinId}>
+                <TableRow hover>
+                  <TableCell>
+                    <IconButton
+                      size="small"
+                      onClick={() => setOpenCoin(openCoin === h.coinId ? null : h.coinId)}>
+                      {openCoin === h.coinId ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+                    </IconButton>
+                  </TableCell>
+
+                  <TableCell>
+                    <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                      <Avatar src={h.image} alt={h.name} sx={{ width: 24, height: 24 }} />
+                      <Box>
+                        <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                          {h.symbol.toUpperCase()}
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary">
+                          {h.name}
+                          {h.purchaseCount > 1 ? ` (${h.purchaseCount} buys)` : ""}
+                        </Typography>
+                      </Box>
                     </Box>
-                  </Box>
-                </TableCell>
-                <TableCell align="right">
-                  {h.totalCoins.toLocaleString(undefined, { maximumFractionDigits: 4 })}
-                </TableCell>
-                <TableCell align="right">{usd(h.totalInvested)}</TableCell>
-                <TableCell align="right">{usd(h.currentValue)}</TableCell>
-                <TableCell
-                  align="right"
-                  sx={{ color: h.gainLoss >= 0 ? "success.main" : "error.main", fontWeight: 600 }}>
-                  {usd(h.gainLoss)} ({h.gainLossPct.toFixed(1)}%)
-                </TableCell>
-              </TableRow>
+                  </TableCell>
+                  <TableCell align="right">
+                    {h.totalCoins.toLocaleString(undefined, { maximumFractionDigits: 4 })}
+                  </TableCell>
+                  <TableCell align="right">{usd(h.totalInvested)}</TableCell>
+                  <TableCell align="right">{usd(h.currentValue)}</TableCell>
+                  <TableCell
+                    align="right"
+                    sx={{
+                      color: h.gainLoss >= 0 ? "success.main" : "error.main",
+                      fontWeight: 600,
+                    }}>
+                    {usd(h.gainLoss)} ({h.gainLossPct.toFixed(1)}%)
+                  </TableCell>
+                </TableRow>
+
+                <TableRow>
+                  <TableCell colSpan={6} sx={{ py: 0, border: 0 }}>
+                    <Collapse in={openCoin === h.coinId} timeout="auto" unmountOnExit>
+                      {/* sub-table: this coin's individual purchases + edit/delete per row,
+              plus a red "Delete entire position" button */}
+                    </Collapse>
+                  </TableCell>
+                </TableRow>
+              </Fragment>
             ))}
           </TableBody>
         </Table>
